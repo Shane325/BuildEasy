@@ -1,0 +1,49 @@
+<form ng-submit="saveProject()" class="form-inline project-form">
+  <div class="form-group">
+    <label class="sr-only" for="projectName">Project Name</label>
+    <input ng-model="newProject.name" type="text" class="form-control" id="projectName" placeholder="Name">
+  </div>
+  <div class="form-group">
+    <label class="sr-only"for="address">Address</label>
+    <input ng-model="newProject.address" type="text" class="form-control" id="address" placeholder="Address">
+  </div>
+  <div class="form-group">
+    <label class="sr-only"for="phoneNumber">Phone number</label>
+    <input ng-model="newProject.phone" type="text" class="form-control" id="phoneNumber" placeholder="Phone">
+  </div>
+   <div class="form-group">
+    <label class="sr-only" for="email">Email Address</label>
+    <input ng-model="newProject.email" type="text" class="form-control" id="email" placeholder="Email Address">
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="startDate">Start Date</label>
+    <input ng-model="newProject.startdate" type="text" class="form-control" id="startDate" placeholder="Start Date">
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="endDate">End Date</label>
+    <input ng-model="newProject.enddate" type="text" class="form-control" id="endDate" placeholder="End Date">
+  </div>
+  <button type="submit" class="btn btn-primary">Add project</button>
+</form>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Project Name</th>
+      <th>Email</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tr ng-repeat="project in projects | orderByPriority">
+    <td>{{ project.name }}</td>
+    <td>{{ project.email }}</td>
+    <td>{{ project.startdate }}</td>
+    <td>{{ project.enddate }}</td>
+    <td>
+      <button type="submit" class="btn btn-success">Info</button>
+      <button ng-click="projects.$remove(project.$id)" type="submit" class="btn btn-danger">Delete</button>
+    </td>
+  </tr>
+</table>

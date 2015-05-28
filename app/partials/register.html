@@ -1,0 +1,14 @@
+<form ng-submit="register()" ng-controller="AuthController" class="form-signin">
+	<h2 class="form-signin-heading">Sign up</h2>
+	<label for="inputEmail" class="sr-only">Email address</label>
+	<input ng-model="user.email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+	<label for="inputPassword" class="sr-only">Password</label>
+	<input ng-model="user.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+	<label for="inputFirstname" class="sr-only">First name</label>
+	<input ng-model="user.firstName" type="firstName" id="inputFirstname" class="form-control" placeholder="First name" required>
+	<label for="inputLastname" class="sr-only">Last name</label>
+	<input ng-model="user.lastName" type="lastName" id="inputLastname" class="form-control" placeholder="Last name" required>
+	<label for="inputCompanyName" class="sr-only">Company name</label>
+	<input ng-model="user.companyName" type="companyName" id="inputCompanyName" class="form-control" placeholder="Company name" required>
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+</form>

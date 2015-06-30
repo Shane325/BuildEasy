@@ -1,0 +1,15 @@
+<form ng-submit="saveNewEmployee()" class="form-inline">
+	<fieldset>
+		<legend>Add Employee</legend>
+		<div class="divider"></div>
+			<label class="sr-only" for="empFirstName">Employee First Name</label>
+			<input ng-model="newEmployee.firstName" type="text" class="form-control" id="empFirstName" placeholder="First Name" style="width: 200px;">
+			<div class="divider"></div>
+			<label class="sr-only" for="empLastName">Employee Last Name</label>
+			<input ng-model="newEmployee.lastName" type="text" class="form-control" id="empLastName" placeholder="Last Name" style="width: 200px;">
+
+	</fieldset>
+	<div class="form-group divider-5">
+	  		<button type="submit" class="btn btn-primary">Submit</button>
+	</div>
+</form>

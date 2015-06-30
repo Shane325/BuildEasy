@@ -27,5 +27,21 @@ config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/projects_page.html',
     controller: 'ProjectsController'
   });
+  $routeProvider.when('/daily_reports', {
+    templateUrl: 'partials/daily_reports.html',
+    controller: 'DailyReportsController'
+  });
+  $routeProvider.when('/rfi', {
+    templateUrl: 'partials/rfi.html',
+    controller: 'RequestForInfoController'
+  });
+  $routeProvider.when('/timesheet', {
+    templateUrl: 'partials/timesheet.html',
+    controller: 'TimesheetController'
+  });
+  $routeProvider.when('/add_employee', {
+    templateUrl: 'partials/add_employee.html',
+    controller: 'EmployeeController'
+  });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

@@ -1,0 +1,41 @@
+<div id="heading">
+	<h2>Time Sheet</h2>
+</div>
+
+<table class="table table-striped">
+	<thead>
+		<tr align="center">
+			<th colspan="4">Name</th>
+			<th colspan="2">Saturday</th>
+			<th colspan="2">Sunday</th>
+			<th colspan="2">Monday</th>
+			<th colspan="2">Tuesday</th>
+			<th colspan="2">Wednesday</th>
+			<th colspan="2">Thursday</th>
+			<th colspan="2">Friday</th>
+		</tr>
+		<tr align="center">
+			<th colspan="4">&nbsp</th>
+			<th>Hrs</th>
+			<th>Job</th>
+			<th>Hrs</th>
+			<th>Job</th>
+			<th>Hrs</th>
+			<th>Job</th>
+			<th>Hrs</th>
+			<th>Job</th>
+			<th>Hrs</th>
+			<th>Job</th>
+			<th>Hrs</th>
+			<th>Job</th>
+			<th>Hrs</th>
+			<th>Job</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="employee in employees">
+			<td>{{ employee.firstName }}</td>
+			<td>{{ employee.lastName }}</td>
+		</tr>
+	</tbody>
+</table>

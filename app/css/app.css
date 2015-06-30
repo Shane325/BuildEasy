@@ -8,11 +8,65 @@ body {
 .starter-template h1 {
   font-size: 63px;
 }
-.project-form {
-  
-}
 .btn-primary {
 	margin-top: 20px;
 }
+.divider {
+	width: 5px;
+	height: auto;
+	display: inline-block;
+}
+.project-form h2 {
+	font-size: 30px;
+	position: relative;
+	left: 40px;
+	
+}
+.project-form ul {
+	list-style-type:none;
+}
+#project-name {
+	width:200px;
+}
+.placeholder {
+	color: grey;
+}
+select option:first-child {
+	color: grey; 
+	display: none;
+}
+select option {
+	color: #555;
+} 
+fieldset {
+	width:500px;
+}
+.dailyreport-form legend {
+	font-size:20px;
+}
+.dailyreport-form input.textbox-300{
+	width: 300px;
+	float: left;
+}
+.dailyreport-form .divider-5{
+	clear: both;
+	padding: 5px;
+}
+.rfi-form {
+	width:700px;
+	margin:0 auto;
+	border: thin solid #B2B2B2;
+}
+.rfi-form legend{
+	padding:10px 10px;
+}
+.rfi-form fieldset {
+	padding: 10px 10px;
+}
+#rfi-submit-button {
+	padding:10px 10px;
+}
+
+
 
 

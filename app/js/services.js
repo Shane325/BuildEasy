@@ -27,6 +27,54 @@ angular.module('myApp.services', [])
 
 	return projectServiceObject;
 })
+.factory('dailyReportsService', function(dataService, $location){
+	var dailyReports = dataService.$child('dailyReports');
+
+	var dailyReportsServiceObject = {
+		saveDailyReport: function(dailyReport){
+			dailyReports.$add(dailyReport);
+		}
+	};
+
+	return dailyReportsServiceObject;
+})
+.factory('rfiService', function(dataService, $location){
+	var requestForInformation = dataService.$child('requestForInformation');
+
+	var rfiServiceObject = {
+		saveRfi: function(rfi){
+			requestForInformation.$add(rfi);
+		}
+	};
+
+	return rfiServiceObject;
+})
+.factory('employeeService', function(dataService, $location){
+	var newEmployee = dataService.$child('employees');
+
+	var employeeServiceObject = {
+		saveNewEmployee: function(employee){
+			newEmployee.$add(employee);
+		}
+	};
+
+	return employeeServiceObject;
+})
+.factory('timesheetService', function(dataService, $location){
+	var newTimesheet = dataService.$child('timesheets');
+	var employees = dataService.$child('employees');
+
+	var timesheetServiceObject = {
+		saveNewTimesheet: function(timesheet){
+			newTimesheet.$add(timesheet);
+		},
+		getEmployees: function(){
+			return employees;
+		}
+	};
+
+	return timesheetServiceObject;
+})
 .factory('authService', function($firebaseSimpleLogin, $location, $rootScope, FIREBASE_URL, dataService){
 	var authRef = new Firebase(FIREBASE_URL);
 	var auth = $firebaseSimpleLogin(authRef);

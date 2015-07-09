@@ -61,7 +61,7 @@ angular.module('myApp.services', [])
 	return employeeServiceObject;
 })
 .factory('timesheetService', function(dataService, $location){
-	var newTimesheet = dataService.$child('timesheets');
+	var newTimesheet = dataService.$child('timeSheets');
 	var employees = dataService.$child('employees');
 
 	var timesheetServiceObject = {

@@ -16,21 +16,6 @@ body {
 	height: auto;
 	display: inline-block;
 }
-.project-form h2 {
-	font-size: 30px;
-	position: relative;
-	left: 40px;
-	
-}
-.project-form ul {
-	list-style-type:none;
-}
-#project-name {
-	width:200px;
-}
-.placeholder {
-	color: grey;
-}
 select option:first-child {
 	color: grey; 
 	display: none;

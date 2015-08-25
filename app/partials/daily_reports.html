@@ -1,56 +1,84 @@
-<form ng-submit="saveDailyReport()" class="form-inline dailyreport-form">
-	<fieldset>
-		<legend>Daily Report</legend>  
-	  	<div class="form-group divider-5">
-		    <label class="sr-only" for="date">Date</label>
-		    <input ng-model="newDailyReport.date" type="date" class="form-control textbox-300" id="date" placeholder="Date">
-	  	</div>
-		<div class="form-group divider-5">
-		   	<label class="sr-only" for="jobNumber">Job Number</label>
-		    <input ng-model="newDailyReport.jobNumber" type="text" class="form-control textbox-300" id="jobNumber" placeholder="Job Number">
-	  	</div>
-		<div class="form-group divider-5">
-			<label class="sr-only" for="crew">Crew</label>
-			<input ng-model="newDailyReport.crew" type="text" class="form-control textbox-300" id="crew" placeholder="Crew"/>
-		</div>
-		<div class="form-group divider-5">
-			<label class="sr-only" for="foreman">Foreman</label>
-			<input ng-model="newDailyReport.foreman" type="text" class="form-control textbox-300" id="foreman" placeholder="Foreman"/>
-		</div>
-		<div class="form-group divider-5">
-			<label class="sr-only" for="operators">Operators</label>
-			<input ng-model="newDailyReport.operators" type="text" class="form-control textbox-300" id="operators" placeholder="Operators"/>
-		</div>	
-		<div class="form-group divider-5">
-			<label class="sr-only" for="laborers">Laborers</label>
-			<input ng-model="newDailyReport.laborers" type="text" class="form-control textbox-300" id="laborers" placeholder="Laborers"/>
-		</div>	
-		<div class="form-group divider-5">
-			<label class="sr-only" for="other">Other</label>
-			<input ng-model="newDailyReport.other" type="text" class="form-control textbox-300" id="other" placeholder="Other"/>
-		</div>	
-		<div class="form-group divider-5">
-			<label class="sr-only" for="equipment">Equipment</label>
-			<input ng-model="newDailyReport.equipment" type="text" class="form-control textbox-300" id="equipment" placeholder="Equipment used"/>
-		</div>	
-		<div class="form-group divider-5">
-			<label class="sr-only" for="subcontractors">Subcontractors</label>
-			<input ng-model="newDailyReport.subcontractors" type="text" class="form-control textbox-300" id="subcontractors" placeholder="Subcontractors"/>
-		</div>	
-		<div class="form-group divider-5">
-			<label class="sr-only" for="workPerformed">Work Performed</label>
-			<input ng-model="newDailyReport.workPerformed" type="text" class="form-control textbox-300" id="workPerformed" placeholder="Work Performed"/>
-		</div>	
-		<div class="form-group divider-5">
-			<label class="sr-only" for="extraWorkPerformed">Extra Work Performed</label>
-			<input ng-model="newDailyReport.extraWorkPerformed" type="text" class="form-control textbox-300" id="extraWorkPerformed" placeholder="Extra Work Performed"/>
-		</div>
-		<div class="form-group divider-5">
-			<label class="sr-only" for="otherNotes">Other Notes</label>
-			<input ng-model="newDailyReport.otherNotes" type="text" class="form-control textbox-300" id="otherNotes" placeholder="Other Notes"/>
-		</div>
-	</fieldset>
-	<div class="form-group divider-5">
-	  		<button type="submit" class="btn btn-primary">Submit</button>
-	</div>
-</form>
+<div class="daily-report-page">
+    <div class="daily_report_page" id="daily-report-table">
+        <form ng-submit="saveDailyReport()" class="form-horizontal">
+            <div class="row">
+                <h2>Daily Report</h2>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label class="sr-only" for="date">Date</label>
+                    <input ng-model="newDailyReport.date" type="date" class="form-control" id="date" placeholder="Date">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label class="sr-only" for="jobNumber">Job Number</label>
+                    <input ng-model="newDailyReport.jobNumber" type="text" class="form-control" id="jobNumber" placeholder="Job Number">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label class="sr-only" for="crew">Crew</label>
+                    <input ng-model="newDailyReport.crew" type="text" class="form-control" id="crew" placeholder="Crew"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label class="sr-only" for="foreman">Foreman</label>
+                    <input ng-model="newDailyReport.foreman" type="text" class="form-control" id="foreman" placeholder="Foreman"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label class="sr-only" for="operators">Operators</label>
+                    <input ng-model="newDailyReport.operators" type="text" class="form-control" id="operators" placeholder="Operators"/>
+                </div>	
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label class="sr-only" for="laborers">Laborers</label>
+                    <input ng-model="newDailyReport.laborers" type="text" class="form-control" id="laborers" placeholder="Laborers"/>
+                </div>	
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label class="sr-only" for="other">Other</label>
+                    <input ng-model="newDailyReport.other" type="text" class="form-control" id="other" placeholder="Other"/>
+                </div>	
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label class="sr-only" for="equipment">Equipment</label>
+                    <input ng-model="newDailyReport.equipment" type="text" class="form-control" id="equipment" placeholder="Equipment used"/>
+                </div>	
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label class="sr-only" for="subcontractors">Subcontractors</label>
+                    <input ng-model="newDailyReport.subcontractors" type="text" class="form-control" id="subcontractors" placeholder="Subcontractors"/>
+                </div>	
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label class="sr-only" for="workPerformed">Work Performed</label>
+                    <input ng-model="newDailyReport.workPerformed" type="text" class="form-control" id="workPerformed" placeholder="Work Performed"/>
+                </div>	
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label class="sr-only" for="extraWorkPerformed">Extra Work Performed</label>
+                    <input ng-model="newDailyReport.extraWorkPerformed" type="text" class="form-control" id="extraWorkPerformed" placeholder="Extra Work Performed"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label class="sr-only" for="otherNotes">Other Notes</label>
+                    <input ng-model="newDailyReport.otherNotes" type="text" class="form-control" id="otherNotes" placeholder="Other Notes"/>
+                </div>
+            </div>
+            <div class="row">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

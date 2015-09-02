@@ -12,15 +12,15 @@ angular.module('myApp', [
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {
-  	templateUrl: 'partials/landing_page.html', 
+  	templateUrl: 'partials/landing_page.html',
   	controller: 'LandingPageController'
   });
   $routeProvider.when('/register', {
-  	templateUrl: 'partials/register.html', 
+  	templateUrl: 'partials/register.html',
   	controller: 'AuthController'
   });
   $routeProvider.when('/login', {
-  	templateUrl: 'partials/login.html', 
+  	templateUrl: 'partials/login.html',
   	controller: 'AuthController'
   });
   $routeProvider.when('/projects_page', {
@@ -42,6 +42,9 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/add_employee', {
     templateUrl: 'partials/add_employee.html',
     controller: 'EmployeeController'
+  });
+  $routeProvider.when('/home_page', {
+    templateUrl: 'partials/home_page.html'
   });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

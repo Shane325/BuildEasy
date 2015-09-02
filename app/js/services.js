@@ -89,7 +89,7 @@ angular.module('myApp.services', [])
 				authServiceObject.login(user, function(){
 					emails.$add({email: user.email});
 				});
-			});	
+			});
 		},
 		login: function(user, optionalCallback){
 			auth.$login('password', user).then(function(data){
@@ -97,7 +97,7 @@ angular.module('myApp.services', [])
 				if(optionalCallback){
 					optionalCallback();
 				}
-				$location.path('/projects_page')
+				$location.path('/home_page')
 			});
 		},
 		logout: function(){
@@ -115,7 +115,7 @@ angular.module('myApp.services', [])
 
 	$rootScope.$on("$firebaseSimpleLogin:logout", function() {
 		$rootScope.currentUser = null;
-	});	
+	});
 
 	return authServiceObject;
 });

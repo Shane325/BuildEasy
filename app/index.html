@@ -23,8 +23,31 @@
 
 <body>
 
-  <!-- Navbar that stays on the top of every page -->
-  
+  <nav ng-controller="AuthController" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/home_page">BuildEasy</a>
+      </div>
+
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#/login" ng-hide="currentUser">Log in</a>
+          </li>
+          <li>
+            <a href="" ng-click="logout()" ng-show="currentUser">Log out</a>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+
   <!-- Main content that changes base on route -->
   <div ng-view class="container"></div>
 

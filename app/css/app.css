@@ -26,17 +26,6 @@ select option {
 fieldset {
 	width:500px;
 }
-.dailyreport-form legend {
-	font-size:20px;
-}
-.dailyreport-form input.textbox-300{
-	width: 300px;
-	float: left;
-}
-.dailyreport-form .divider-5{
-	clear: both;
-	padding: 5px;
-}
 .rfi-form {
 	width:700px;
 	margin:0 auto;

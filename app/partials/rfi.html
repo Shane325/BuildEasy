@@ -1,48 +1,59 @@
-<div class="rfi-page">
-    <div class="rfi-page" id="rfi-form">
-        <form ng-submit="saveRfi()" class="form-horizontal">
-            <div class="row">
-                <h2>Request For Info</h2>
+<div class="container">
+    <form ng-submit="saveRfi()" class="form-horizontal" role="form">
+        <div class="form-group">
+            <div class="col-md-1 text-right">
+                <label for="date">Date</label>
             </div>
-            <div class="row">
-                <div class="form-group col-md-3">
-                    <label class="sr-only" for="date">Date</label>
-                    <input ng-model="newRfi.date" type="date" class="form-control" id="date" placeholder="Date">
-                </div>
+            <div class="col-md-2">
+                <input ng-model="newRfi.date" type="date" class="form-control" id="date" placeholder="Date">
             </div>
-            <div class="row">
-                <div class="form-group col-md-3">
-                    <label class="sr-only" for="project">Project</label>
-                    <input ng-model="newRfi.project" type="text" class="form-control" id="project" placeholder="Project">
-                </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1 text-right">
+                <label for="project">Project</label>
             </div>
-            <div class="row">
-                <div class="form-group col-md-3">
-                    <label class="sr-only" for="to">To</label>
-                    <input ng-model="newRfi.to" type="text" class="form-control" id="to" placeholder="To">
-                </div>
+            <div class="col-md-2">
+                <input ng-model="newRfi.project" type="text" class="form-control" id="project"/>
             </div>
-            <div class="row">
-                <div class="form-group col-md-3">
-                    <label class="sr-only" for="requestedBy">Requested By</label>
-                    <input ng-model="newRfi.requestedBy" type="text" class="form-control" id="requestedBy" placeholder="Requested By">
-                </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1 text-right">
+                <label for="to">To</label>
             </div>
-            <div class="row">
-                <div class="form-group col-md-3">
-                    <label class="sr-only" for="subject">Subject</label>
-                    <input ng-model="newRfi.subject" type="text" class="form-control" id="subject" placeholder="Subject">
-                </div>
+            <div class="col-md-2">
+                <textarea ng-model="newRfi.to" type="text" class="form-control" rows="3" id="to" placeholder="Name of recipient"></textarea>
             </div>
-            <div class="row">
-                <div class="form-group col-md-3">
-                    <label class="sr-only" for="contractorQuestion">Contractor Question</label>
-                    <input ng-model="newRfi.contractorQuestion" type="text" class="form-control" id="contractorQuestion" placeholder="Contractor Question">
-                </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1 text-right">
+                <label for="requestedBy">Requested By</label>
             </div>
-            <div class="row">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="col-md-2">
+                <textarea ng-model="newRfi.requestedBy" type="text" class="form-control" rows="3" id="requestedBy" placeholder="Requested By"></textarea>
             </div>
-        </form>
-    </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1 text-right">
+                <label for="subject">Subject</label>
+            </div>
+            <div class="col-md-2">
+                <input ng-model="newRfi.subject" type="text" class="form-control" id="subject"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1 text-right">
+                <label for="contractorQuestion">Contractor Question</label>
+            </div>
+            <div class="col-md-4">
+                <textarea ng-model="newRfi.contractorQuestion" type="text" class="form-control" rows="4" id="contractorQuestion" placeholder="Contractor Question"></textarea>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>

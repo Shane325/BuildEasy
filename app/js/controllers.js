@@ -72,12 +72,12 @@ angular.module('myApp.controllers', [])
 .controller('EmployeeController', ['$scope', 'employeeService', function($scope, employeeService){
 
 	//Object to store new employee details
-	$scope.newEmployee = {firstName: '', lastName: ''};
+	$scope.newEmployee = {firstName: '', lastName: '', phone: '', email: '', rate: ''};
 
 	//function to save a new employee
 	$scope.saveNewEmployee = function(){
 		employeeService.saveNewEmployee($scope.newEmployee);
-		$scope.newEmployee = {firstName: '', lastName: ''};
+		$scope.newEmployee = {firstName: '', lastName: '', phone: '', email: '', rate: ''};
 	};
 
     //Bind employees to $scope so I can show them on the employee page

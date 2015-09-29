@@ -9,6 +9,19 @@
             <input ng-model="newEmployee.lastName" type="text" class="form-control" id="empLastName" placeholder="Last Name"/>
         </div>
         <div class="form-group">
+            <label class="sr-only" for="empPhone">Employee Phone</label>
+            <input ng-model="newEmployee.phone" type="tel" class="form-control" id="empPhone" placeholder="Phone Number"/>
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="empEmail">Employee Email</label>
+            <input ng-model="newEmployee.email" type="email" class="form-control" id="empEmail" placeholder="Email"/>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">$</span>
+                <label class="sr-only" for="empRate"></label>
+                <input ng-model="newEmployee.rate" type="number" class="form-control" id="empRate" placeholder="Hourly Rate"/>
+        </div>
+        <div class="form-group">
             <button type="submit" class="btn btn-default">Submit</button>
         </div>
     </form>

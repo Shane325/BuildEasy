@@ -8,6 +8,22 @@
             <label class="sr-only" for="empLastName">Employee Last Name</label>
             <input ng-model="newEmployee.lastName" type="text" class="form-control" id="empLastName" placeholder="Last Name"/>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
     </form>
 </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+    </thead>
+    <tr ng-repeat="employee in employees | orderByPriority">
+        <td>{{  }}</td>
+        <td>{{ employee.firstName }}</td>
+        <td>{{ employee.lastName }}</td>
+    </tr>
+</table>

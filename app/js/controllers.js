@@ -79,10 +79,13 @@ angular.module('myApp.controllers', [])
 		employeeService.saveNewEmployee($scope.newEmployee);
 		$scope.newEmployee = {firstName: '', lastName: ''};
 	};
-		
+
+    //Bind employees to $scope so I can show them on the employee page
+    $scope.employees = employeeService.getEmployees();
+
 }])
 .controller('TimesheetController', ['$scope', 'timesheetService', function($scope, timesheetService){
-	
+
 	//Object to store new Timesheet
 	$scope.newTimesheet = {firstName:'', lastName:'', weekEnding:'', timeSheet:[
 														{saturday: {job:'', hours:''}},

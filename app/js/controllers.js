@@ -86,8 +86,15 @@ angular.module('myApp.controllers', [])
 }])
 .controller('TimesheetController', ['$scope', 'timesheetService', function($scope, timesheetService){
 
+	//Bind employees to $scope so I can show them on the timesheet page
+	$scope.employees = timesheetService.getEmployees();
+
+    //Get employee first and last name
+    var firstName = $scope.employees.firstName;
+    var lastName = $scope.employees.lastName;
+
 	//Object to store new Timesheet
-	$scope.newTimesheet = {firstName:'', lastName:'', weekEnding:'', timeSheet: {
+	$scope.newTimesheet = {firstName:firstName, lastName:lastName, weekEnding:'', timeSheet: {
 														saturday: {job:'', hours:''},
 														sunday: {job:'', hours:''},
 														monday: {job:'', hours:''},
@@ -97,8 +104,6 @@ angular.module('myApp.controllers', [])
 														friday: {job:'', hours:''}
 														}}
 
-	//Bind employees to $scope so I can show them on the timesheet page
-	$scope.employees = timesheetService.getEmployees();
 
 	$scope.saveNewTimesheet = function(){
 		timesheetService.saveNewTimesheet($scope.newTimesheet);

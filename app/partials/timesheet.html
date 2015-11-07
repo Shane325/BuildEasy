@@ -35,10 +35,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="employee in employees">
+			<tr ng-repeat-start="employee in employees">
                 <td>{{ employee.firstName}}</td>
                 <td>{{ employee.lastName }}</td>
-				<td>&nbsp</td>
+				<td ng-repeat-end>&nbsp</td>
 				<td>&nbsp</td>
 				<td><input ng-model="newTimesheet.timeSheet.saturday.hours" type="text" size="2" name="hours"/></td>
 				<td><input ng-model="newTimesheet.timeSheet.saturday.job" type="text" size="2" name="job"/></td>

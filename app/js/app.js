@@ -46,5 +46,9 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/home_page', {
     templateUrl: 'partials/home_page.html'
   });
+  $routeProvider.when('/employees', {
+    templateUrl: 'partials/employees.html',
+    controller: 'EmployeeController'
+  });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

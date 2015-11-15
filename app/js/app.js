@@ -50,5 +50,8 @@ config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/employees.html',
     controller: 'EmployeeController'
   });
+  $routeProvider.when('/myModal', {
+    templateUrl: 'partials/edit_employee.html'
+  });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

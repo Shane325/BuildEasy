@@ -17,7 +17,7 @@
         <td>{{ employee.email }}</td>
         <td>{{ employee.rate }}</td>
         <td>
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Edit</button>
+            <button ng-click="editEmployee(employee)" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Edit</button>
             <button ng-click="employees.$remove(employee.$id)" type="submit" class="btn btn-danger">Delete</button>
         </td>
     </tr>
@@ -33,7 +33,7 @@
         <h4 class="modal-title" id="myModalLabel">Edit Employee</h4>
       </div>
       <div class="modal-body">
-
+          <input type="text" ng-model="employeeModal.firstName"/>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

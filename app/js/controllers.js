@@ -83,6 +83,10 @@ angular.module('myApp.controllers', [])
     //Bind employees to $scope so I can show them on the employee page
     $scope.employees = employeeService.getEmployees();
 
+    $scope.editEmployee = function(employee){
+        $scope.employeeModal = employee;
+    };
+
 }])
 .controller('TimesheetController', ['$scope', 'timesheetService', 'employeeService', function($scope, timesheetService){
 

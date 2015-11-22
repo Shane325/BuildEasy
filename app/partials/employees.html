@@ -33,11 +33,15 @@
         <h4 class="modal-title" id="myModalLabel">Edit Employee</h4>
       </div>
       <div class="modal-body">
-          <input type="text" ng-model="employeeModal.firstName"/>
+          <input type="text" ng-model="employee.firstName"/>
+          <input type="text" ng-model="employee.lastName"/>
+          <input type="text" ng-model="employee.phone"/>
+          <input type="text" ng-model="employee.email"/>
+          <input type="text" ng-model="employee.rate"/>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button ng-click="saveEmployee()" type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

@@ -84,8 +84,10 @@ angular.module('myApp.controllers', [])
     $scope.employees = employeeService.getEmployees();
 
     $scope.editEmployee = function(employee){
-        $scope.employeeModal = employee;
+        $scope.employee = employee;
+        console.log(employee);
     };
+
 
 }])
 .controller('TimesheetController', ['$scope', 'timesheetService', 'employeeService', function($scope, timesheetService){

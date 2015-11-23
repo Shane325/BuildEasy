@@ -85,7 +85,11 @@ angular.module('myApp.controllers', [])
 
     $scope.editEmployee = function(employee){
         $scope.employee = employee;
-        console.log(employee);
+        console.log(employee.$id);
+    };
+    
+    $scope.saveEmployee = function(employee){
+        employeeService.editEmployee(employee.$id, employee);
     };
 
 

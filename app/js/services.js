@@ -58,6 +58,10 @@ angular.module('myApp.services', [])
 		},
         getEmployees: function(){
             return employees;
+        },
+        editEmployee: function(empId, employee){
+            var empRef = dataService.$child('employees').child(empId);
+            empRef.update(employee);
         }
 	};
 

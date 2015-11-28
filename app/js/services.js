@@ -50,18 +50,19 @@ angular.module('myApp.services', [])
 	return rfiServiceObject;
 })
 .factory('employeeService', function(dataService, $location){
-	var newEmployee = dataService.$child('employees');
+    
+    //get employees data route
     var employees = dataService.$child('employees');
+    
 	var employeeServiceObject = {
 		saveNewEmployee: function(employee){
-			newEmployee.$add(employee);
+			employees.$add(employee);
 		},
         getEmployees: function(){
             return employees;
         },
-        editEmployee: function(empId, employee){
-            var empRef = dataService.$child('employees').child(empId);
-            empRef.update(employee);
+        updateEmployee: function(employee){
+            employees.$child(employee.$id).$set(employee);
         }
 	};
 

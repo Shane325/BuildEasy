@@ -49,10 +49,21 @@ angular.module('myApp.services', [])
 
 	return rfiServiceObject;
 })
-.factory('employeeService', function(dataService, $location){
+.factory('employeeService', function(dataService, alertService, $location){
     
     //get employees data route
     var employees = dataService.$child('employees');
+    
+    //onComplete method
+    var onComplete = function(error) {
+        if (error) {
+            console.log('Synchronization failed');
+        } else {
+            console.log('Synchronization succeeded');
+            
+            alertService.addAlert('Employee saved!', 'alert-success');
+        }
+    };
     
 	var employeeServiceObject = {
 		saveNewEmployee: function(employee){
@@ -62,11 +73,13 @@ angular.module('myApp.services', [])
             return employees;
         },
         updateEmployee: function(employee){
-            employees.$child(employee.$id).$set(employee);
+            
+            employees.$child(employee.$id).$set(employee, onComplete());
         }
 	};
-
+    
 	return employeeServiceObject;
+    
 })
 .factory('timesheetService', function(dataService, $location){
 	var newTimesheet = dataService.$child('timeSheets');
@@ -126,4 +139,23 @@ angular.module('myApp.services', [])
 	});
 
 	return authServiceObject;
+})
+.factory('alertService', function() {
+    
+    var alertServiceObject = {
+        
+        alerts: {},
+        
+        addAlert: function(message, type) {
+            this.alerts[type] = this.alerts[type] || [];
+            this.alerts[type].push(message);
+        },
+        clearAlerts: function() {
+            for(var x in this.alerts) {
+                delete this.alerts[x];
+            }
+        }
+    };
+    
+    return alertServiceObject;
 });

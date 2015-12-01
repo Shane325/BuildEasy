@@ -49,10 +49,15 @@ angular.module('myApp.services', [])
 
 	return rfiServiceObject;
 })
-.factory('employeeService', function(dataService, alertService, $location){
+.factory('employeeService', function(dataService, alertService, $location, $timeout){
     
     //get employees data route
     var employees = dataService.$child('employees');
+    
+
+    var logSomething = $timeout(function(){
+        console.log('something');
+    }, 3000);
     
     //onComplete method
     var onComplete = function(error) {
@@ -64,7 +69,10 @@ angular.module('myApp.services', [])
             alertService.addAlert('Employee saved!', 'alert-success');
             //trying to clear alert array
             //TODO: test the setTimeout function, it doesn't seem to be working
-            setTimeout(alertService.clearAlerts(), 5000);
+            //$timeout(logSomething(), 3000);
+            var logSomething = $timeout(function(){
+                console.log('something');
+                }, 3000);
         }
     };
     

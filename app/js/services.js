@@ -62,7 +62,8 @@ angular.module('myApp.services', [])
             console.log('Synchronization succeeded');
             
             alertService.addAlert('Employee saved!', 'alert-success');
-            
+            //trying to clear alert array
+            //TODO: test the setTimeout function, it doesn't seem to be working
             setTimeout(alertService.clearAlerts(), 5000);
         }
     };

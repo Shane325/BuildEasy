@@ -71,19 +71,6 @@ angular.module('myApp.controllers', [])
 }])
 .controller('EmployeeController', ['$scope', 'employeeService', 'alertService', function($scope, employeeService, alertService){
 
-//    $scope.doGood = function() {
-//        alertService.addAlert('Yay!', 'alert-success');
-//    };
-//    
-//    $scope.doEvil = function() {
-//        alertService.addAlert('Noooo!', 'alert-error');
-//    };
-//    
-//    $scope.reset = function() {
-//        alertService.clearAlerts();
-//    };
-//    
-    
 	//Object to store new employee details
 	$scope.newEmployee = {firstName: '', lastName: '', phone: '', email: '', rate: ''};
 

@@ -62,6 +62,8 @@ angular.module('myApp.services', [])
             console.log('Synchronization succeeded');
             
             alertService.addAlert('Employee saved!', 'alert-success');
+            
+            setTimeout(alertService.clearAlerts(), 5000);
         }
     };
     

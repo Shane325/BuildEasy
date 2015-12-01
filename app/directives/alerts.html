@@ -1,0 +1,5 @@
+<div ng-controller="AlertsController">
+    <div ng-repeat="(key, val) in alerts" class="alert {{key}} alert-dismissable">
+        <div ng-repeat="msg in val">{{msg}}</div>
+    </div>
+</div>

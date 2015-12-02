@@ -37,35 +37,38 @@
             <form class="form-horizontal">
               <div class="row">
                   <div class="form-group col-md-4">
-                    <input type="text" ng-model="employee.firstName" class="form-control"/>
+                    <input type="text" ng-model="employee.firstName" class="form-control" placeholder="First Name"/>
                   </div>
               </div>
               <div class="row">
                   <div class="form-group col-md-4">
-                    <input type="text" ng-model="employee.lastName" class="form-control"/>
+                    <input type="text" ng-model="employee.lastName" class="form-control" placeholder="Last Name"/>
                   </div>
               </div>
               <div class="row">
                   <div class="form-group col-md-4">
-                    <input type="text" ng-model="employee.phone" class="form-control"/>
+                    <input type="tel" ng-model="employee.phone" class="form-control" placeholder="Phone"/>
                   </div>
               </div>
               <div class="row">
                   <div class="form-group col-md-4">
-                    <input type="text" ng-model="employee.email" class="form-control"/>
+                    <input type="email" ng-model="employee.email" class="form-control" placeholder="Email"/>
                   </div>
               </div>
               <div class="row">
                   <div class="form-group col-md-4">
-                    <input type="text" ng-model="employee.rate" class="form-control"/>
+                      <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input type="currency" ng-model="employee.rate" class="form-control" id="empRate" placeholder="Hourly Rate"/>
+                      </div>
                   </div>
               </div>
             </form>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button ng-click="updateEmployee(employee)" type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
       </div>
       <div ng-controller="AlertsController">
         <alert-custom alert-object="alerts"></alert-custom>

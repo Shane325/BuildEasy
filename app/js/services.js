@@ -63,9 +63,9 @@ angular.module('myApp.services', [])
             
             alertService.addAlert('Employee saved!', 'alert-success');
             //Wait 3 seconds and then clear alerts array
-//            $timeout(function(){
-//                alertService.clearAlerts();
-//            }, 3000);
+            $timeout(function(){
+                alertService.clearAlerts();
+            }, 3000);
         }
     };
     

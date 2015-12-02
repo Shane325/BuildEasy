@@ -60,3 +60,6 @@ fieldset {
 #daily-report-form{
      padding:20px;
 }
+.alert {
+    margin: 8px;
+}

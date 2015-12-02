@@ -54,11 +54,6 @@ angular.module('myApp.services', [])
     //get employees data route
     var employees = dataService.$child('employees');
     
-
-    var logSomething = $timeout(function(){
-        console.log('something');
-    }, 3000);
-    
     //onComplete method
     var onComplete = function(error) {
         if (error) {
@@ -67,12 +62,10 @@ angular.module('myApp.services', [])
             console.log('Synchronization succeeded');
             
             alertService.addAlert('Employee saved!', 'alert-success');
-            //trying to clear alert array
-            //TODO: test the setTimeout function, it doesn't seem to be working
-            //$timeout(logSomething(), 3000);
-            var logSomething = $timeout(function(){
-                console.log('something');
-                }, 3000);
+            //Wait 3 seconds and then clear alerts array
+//            $timeout(function(){
+//                alertService.clearAlerts();
+//            }, 3000);
         }
     };
     
@@ -160,6 +153,7 @@ angular.module('myApp.services', [])
         addAlert: function(message, type) {
             this.alerts[type] = this.alerts[type] || [];
             this.alerts[type].push(message);
+            
         },
         clearAlerts: function() {
             for(var x in this.alerts) {

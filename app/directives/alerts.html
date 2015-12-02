@@ -1,5 +1,7 @@
-<div ng-controller="AlertsController">
-    <div ng-repeat="(key, val) in alerts" class="alert {{key}} alert-dismissable">
-        <div ng-repeat="msg in val">{{msg}}</div>
-    </div>
+
+<div ng-repeat="(key, val) in alertObject" class="alert {{key}}">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>        
+    <div ng-repeat="msg in val track by $index">{{msg}}</div>
 </div>
+
+

@@ -16,6 +16,10 @@ angular.module('myApp.directives', [])
     return {
         restrict: 'E',
         templateUrl: 'directives/alerts.html',
-        replace: true
+        replace: true,
+        //isolate the fuckin scope!
+        scope: {
+            alertObject: "="
+        }
     }
 });

@@ -76,9 +76,9 @@ angular.module('myApp.services', [])
         getEmployees: function(){
             return employees;
         },
-        updateEmployee: function(employee){
-            
-            employees.$child(employee.$id).$set(employee, onComplete());
+        updateEmployee: function(empId, employee){
+           
+            employees.$child(empId).$set(employee, onComplete());
         }
 	};
     

@@ -84,13 +84,13 @@ angular.module('myApp.controllers', [])
     $scope.employees = employeeService.getEmployees();
 
     $scope.editEmployee = function(employee){
-        $scope.employee = employee;
+        
+        $scope.employeeTemp = {firstName: employee.firstName, lastName: employee.lastName, phone: employee.phone, email: employee.email, rate: employee.rate};
+        $scope.employeeId = employee.$id;
     };
     
-    $scope.updateEmployee = function(employee){
-
-        employeeService.updateEmployee(employee);
-        
+    $scope.updateEmployee = function(){
+        employeeService.updateEmployee($scope.employeeId, $scope.employeeTemp);
     };
 
 

@@ -61,7 +61,7 @@ angular.module('myApp.services', [])
         } else {
             console.log('Synchronization succeeded');
             
-            alertService.addAlert('Employee saved!', 'alert-success');
+            alertService.addAlert('Employee saved', 'alert-success');
             //Wait 3 seconds and then clear alerts array
             $timeout(function(){
                 alertService.clearAlerts();

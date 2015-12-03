@@ -39,10 +39,6 @@ config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/timesheet.html',
     controller: 'TimesheetController'
   });
-  $routeProvider.when('/add_employee', {
-    templateUrl: 'partials/add_employee.html',
-    controller: 'EmployeeController'
-  });
   $routeProvider.when('/home_page', {
     templateUrl: 'partials/home_page.html'
   });

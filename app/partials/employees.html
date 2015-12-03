@@ -23,16 +23,30 @@
         </td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
         <td>
-            <button type="button" class="btn btn-success"><a href="#/add_employee" style="text-decoration:none; color:white;">Add</a></button>
+            <input ng-model="newEmployee.firstName" type="text" class="form-control" placeholder="First Name"/>
+        </td>
+        <td>
+            <input ng-model="newEmployee.lastName" type="text" class="form-control" placeholder="Last Name"/>
+        </td>
+        <td>
+            <input ng-model="newEmployee.phone" type="tel" class="form-control" placeholder="Phone Number"/>
+        </td>
+        <td>
+            <input ng-model="newEmployee.email" type="email" class="form-control" placeholder="Email"/>
+        </td>
+        <td>
+            <input ng-model="newEmployee.rate" type="currency" class="form-control" placeholder="Hourly Rate"/>
+        </td>
+        <td>
+            <button ng-click="saveNewEmployee()" type="submit" class="btn btn-success">Add</button>
+            <button type="button" class="btn btn-default">Clear</button>
         </td>
     </tr>
 </table>
+<div ng-controller="AlertsController">
+    <alert-custom alert-object="alerts"></alert-custom>
+</div>
 </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

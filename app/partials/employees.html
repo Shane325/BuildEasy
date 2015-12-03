@@ -67,8 +67,10 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button ng-click="updateEmployee(employee)" type="submit" class="btn btn-primary">Save</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
+        <div>
+            <button ng-click="updateEmployee(employee)" type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
+        </div>
       </div>
       <div ng-controller="AlertsController">
         <alert-custom alert-object="alerts"></alert-custom>

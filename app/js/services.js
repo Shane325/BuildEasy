@@ -71,7 +71,9 @@ angular.module('myApp.services', [])
     
 	var employeeServiceObject = {
 		saveNewEmployee: function(employee){
-			employees.$add(employee);
+            
+			employees.$add(employee, onComplete());
+            
 		},
         getEmployees: function(){
             return employees;

@@ -105,7 +105,7 @@ angular.module('myApp.controllers', [])
 
 
 }])
-.controller('TimesheetController', ['$scope', 'timesheetService', 'employeeService', function($scope, timesheetService){
+.controller('TimesheetController', ['$scope', 'timesheetService', 'employeeService', function($scope, timesheetService, employeeService){
 
 	//Object to store new Timesheet
 	$scope.newTimesheet = {firstName:'', lastName:'', weekEnding:'', timeSheet: {

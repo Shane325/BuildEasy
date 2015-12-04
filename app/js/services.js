@@ -98,6 +98,7 @@ angular.module('myApp.services', [])
 	var timesheetServiceObject = {
 		saveNewTimesheet: function(timesheet){
 			newTimesheet.$add(timesheet);
+            console.log(timesheet);
 		},
 		getEmployees: function(){
 			return employees;

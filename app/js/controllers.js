@@ -98,6 +98,10 @@ angular.module('myApp.controllers', [])
     $scope.updateEmployee = function(){
         employeeService.updateEmployee($scope.employeeId, $scope.employeeTemp);
     };
+    
+    $scope.deleteEmployee = function(employee){
+        employeeService.deleteEmployee(employee);  
+    };
 
 
 }])

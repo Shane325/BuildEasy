@@ -55,13 +55,17 @@ angular.module('myApp.services', [])
     var employees = dataService.$child('employees');
     
     //onComplete method
-    var onComplete = function(error) {
+    var onComplete = function(error, type) {
+        
         if (error) {
             console.log('Synchronization failed');
         } else {
-            console.log('Synchronization succeeded');
-            
-            alertService.addAlert('Employee saved', 'alert-success');
+
+            if(type == 'save'){
+                alertService.addAlert('Employee saved', 'alert-success');
+            }else if(type == 'delete'){
+                alertService.addAlert('Employee deleted', 'alert-danger');
+            }
             //Wait 3 seconds and then clear alerts array
             $timeout(function(){
                 alertService.clearAlerts();
@@ -71,16 +75,16 @@ angular.module('myApp.services', [])
     
 	var employeeServiceObject = {
 		saveNewEmployee: function(employee){
-            
-			employees.$add(employee, onComplete());
-            
+			employees.$add(employee, onComplete(null, 'save'));
 		},
         getEmployees: function(){
             return employees;
         },
         updateEmployee: function(empId, employee){
-           
-            employees.$child(empId).$set(employee, onComplete());
+            employees.$child(empId).$set(employee, onComplete(null, 'save'));
+        },
+        deleteEmployee: function(employee){
+            employees.$remove(employee.$id, onComplete(null, 'delete'));
         }
 	};
     

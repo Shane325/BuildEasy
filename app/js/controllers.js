@@ -122,6 +122,8 @@ angular.module('myApp.controllers', [])
 	$scope.employees = employeeService.getEmployees();
 
 	$scope.saveNewTimesheet = function(){
+        
+        console.log($scope.newTimesheet);
 		timesheetService.saveNewTimesheet($scope.newTimesheet);
 		$scope.newTimesheet = {firstName:'', lastName:'', weekEnding:'', timeSheet:{
 														saturday: {job:'', hours:''},

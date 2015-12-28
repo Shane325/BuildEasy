@@ -110,6 +110,7 @@ angular.module('myApp.services', [])
 .factory('authService', function($firebaseSimpleLogin, $location, $rootScope, FIREBASE_URL, dataService){
 	var authRef = new Firebase(FIREBASE_URL);
 	var auth = $firebaseSimpleLogin(authRef);
+    
 	var emails = dataService.$child('emails');
 	var userProfile = dataService.$child('userProfile');
 
@@ -124,13 +125,21 @@ angular.module('myApp.services', [])
 			});
 		},
 		login: function(user, optionalCallback){
-			auth.$login('password', user).then(function(data){
-				// console.log(data);
-				if(optionalCallback){
-					optionalCallback();
-				}
-				$location.path('/home_page')
-			});
+//			auth.$login('password', user).then(function(data){
+//				console.log(data);
+//				if(optionalCallback){
+//					optionalCallback();
+//				}
+//				$location.path('/home_page')
+//			});
+            auth.$login('password', user).then(function(data){
+                if(data){
+                    console.log('here is the data object: ')
+                    console.log(data);
+                }else{
+                    console.log('error thrown');
+                }
+            });
 		},
 		logout: function(){
 			auth.$logout();

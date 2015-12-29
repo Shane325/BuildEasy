@@ -129,10 +129,9 @@ angular.module('myApp.services', [])
                 console.log(data);
 				$location.path('/home_page')
 			}, function(error){
-                
                 console.log(error.code);
                 console.log(error.message);
-                
+                //alert(error);
                 if(error.code === 'INVALID_EMAIL'){
                     alertService.addAlert('Incorrect Email address', 'alert-danger');    
                 }else if(error.code === 'INVALID_USER'){
@@ -143,9 +142,9 @@ angular.module('myApp.services', [])
                     alertService.addAlert(error.code, 'alert-danger');
                 }
                 //Wait 5 seconds and then clear alerts array
-//                $timeout(function(){
-//                    alertService.clearAlerts();
-//                }, 5000);
+                $timeout(function(){
+                    alertService.clearAlerts();
+                }, 5000);
             });
 		},
 		logout: function(){

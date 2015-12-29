@@ -107,7 +107,7 @@ angular.module('myApp.services', [])
 
 	return timesheetServiceObject;
 })
-.factory('authService', function($firebaseSimpleLogin, $location, $rootScope, FIREBASE_URL, dataService){
+.factory('authService', function($firebaseSimpleLogin, $location, $rootScope, FIREBASE_URL, dataService, alertService, $timeout){
 	var authRef = new Firebase(FIREBASE_URL);
 	var auth = $firebaseSimpleLogin(authRef);
     
@@ -124,21 +124,17 @@ angular.module('myApp.services', [])
 				});
 			});
 		},
-		login: function(user, optionalCallback){
-//			auth.$login('password', user).then(function(data){
-//				console.log(data);
-//				if(optionalCallback){
-//					optionalCallback();
-//				}
-//				$location.path('/home_page')
-//			});
-            auth.$login('password', user).then(function(data){
-                if(data){
-                    console.log('here is the data object: ')
-                    console.log(data);
-                }else{
-                    console.log('error thrown');
-                }
+		login: function(user){
+			auth.$login('password', user).then(function(data){
+                console.log(data);
+				$location.path('/home_page')
+			}, function(error){
+                console.log(error);
+                alertService.addAlert('Error', 'alert-danger');
+                //Wait 3 seconds and then clear alerts array
+                $timeout(function(){
+                    alertService.clearAlerts();
+                }, 5000);
             });
 		},
 		logout: function(){

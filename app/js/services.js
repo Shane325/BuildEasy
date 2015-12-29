@@ -129,12 +129,23 @@ angular.module('myApp.services', [])
                 console.log(data);
 				$location.path('/home_page')
 			}, function(error){
-                console.log(error);
-                alertService.addAlert('Error', 'alert-danger');
-                //Wait 3 seconds and then clear alerts array
-                $timeout(function(){
-                    alertService.clearAlerts();
-                }, 5000);
+                
+                console.log(error.code);
+                console.log(error.message);
+                
+                if(error.code === 'INVALID_EMAIL'){
+                    alertService.addAlert('Incorrect Email address', 'alert-danger');    
+                }else if(error.code === 'INVALID_USER'){
+                    alertService.addAlert('Incorrect Usernameu', 'alert-danger');
+                }else if(error.code === 'INVALID_PASSWORD'){
+                    alertService.addAlert('Incorrect Password', 'alert-danger');
+                }else{
+                    alertService.addAlert(error.code, 'alert-danger');
+                }
+                //Wait 5 seconds and then clear alerts array
+//                $timeout(function(){
+//                    alertService.clearAlerts();
+//                }, 5000);
             });
 		},
 		logout: function(){

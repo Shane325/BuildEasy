@@ -66,10 +66,6 @@ angular.module('myApp.services', [])
             }else if(type == 'delete'){
                 alertService.addAlert('Employee deleted', 'alert-danger');
             }
-            //Wait 3 seconds and then clear alerts array
-            $timeout(function(){
-                alertService.clearAlerts();
-            }, 3000);
         }
     };
     
@@ -136,16 +132,13 @@ angular.module('myApp.services', [])
                 if(error.code === 'INVALID_EMAIL'){
                     alertService.addAlert('Incorrect Email address', 'alert-danger');    
                 }else if(error.code === 'INVALID_USER'){
-                    alertService.addAlert('Incorrect Usernameu', 'alert-danger');
+                    alertService.addAlert('Incorrect Username', 'alert-danger');
                 }else if(error.code === 'INVALID_PASSWORD'){
                     alertService.addAlert('Incorrect Password', 'alert-danger');
                 }else{
                     alertService.addAlert(error.code, 'alert-danger');
                 }
-                //Wait 5 seconds and then clear alerts array
-                $timeout(function(){
-                    alertService.clearAlerts();
-                }, 5000);
+            
             });
 		},
 		logout: function(){
@@ -155,9 +148,23 @@ angular.module('myApp.services', [])
 		getCurrentUser: function(){
 			return auth.$getCurrentUser();
 		},
-        sendPasswordResetEmail: function(email){
-            console.log(email);
-            auth.resetPassword(email);
+        sendPasswordResetEmail: function(user){
+            //console.log(user);
+            //console.log(user.email);
+            authRef.resetPassword(user, function(error){
+                if (error){
+                    switch (error.code) {
+                        case "INVALID_USER":
+                        console.log("The specified user account does not exist.");
+                        alertService.addAlert('The specified user account does not exist', 'alert-danger');
+                        break;
+                        default:
+                        console.log("Error resetting password:", error);
+                    }
+                }else{
+                    console.log("Password reset email sent successfully!");
+                }
+            });
         }
 	};
 
@@ -171,7 +178,7 @@ angular.module('myApp.services', [])
 
 	return authServiceObject;
 })
-.factory('alertService', function() {
+.factory('alertService', function($timeout) {
     
     var alertServiceObject = {
         
@@ -180,6 +187,11 @@ angular.module('myApp.services', [])
         addAlert: function(message, type) {
             this.alerts[type] = this.alerts[type] || [];
             this.alerts[type].push(message);
+            
+            //Wait 5 seconds and clear the alerts array
+            $timeout(function(){
+                    alertServiceObject.clearAlerts();
+            }, 5000);
             
         },
         clearAlerts: function() {

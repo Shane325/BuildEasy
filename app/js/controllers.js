@@ -27,7 +27,7 @@ angular.module('myApp.controllers', [])
     
     //Method to send user a reset password email
     $scope.sendPasswordResetEmail = function() {
-        authService.sendPasswordResetEmail($scope.user.email);  
+        authService.sendPasswordResetEmail($scope.user);  
     };
 
 }])

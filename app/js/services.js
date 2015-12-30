@@ -129,9 +129,10 @@ angular.module('myApp.services', [])
                 console.log(data);
 				$location.path('/home_page')
 			}, function(error){
-                console.log(error.code);
-                console.log(error.message);
-                //alert(error);
+                //console.log(error.code);
+                //console.log(error.message);
+
+                //handle each error code
                 if(error.code === 'INVALID_EMAIL'){
                     alertService.addAlert('Incorrect Email address', 'alert-danger');    
                 }else if(error.code === 'INVALID_USER'){
@@ -153,7 +154,11 @@ angular.module('myApp.services', [])
 		},
 		getCurrentUser: function(){
 			return auth.$getCurrentUser();
-		}
+		},
+        sendPasswordResetEmail: function(email){
+            console.log(email);
+            auth.resetPassword(email);
+        }
 	};
 
 	$rootScope.$on("$firebaseSimpleLogin:login", function(e, user) {

@@ -24,6 +24,11 @@ angular.module('myApp.controllers', [])
 	$scope.logout = function() {
 		authService.logout();
 	};
+    
+    //Method to send user a reset password email
+    $scope.sendPasswordResetEmail = function() {
+        authService.sendPasswordResetEmail($scope.user.email);  
+    };
 
 }])
 .controller('ProjectsController', ['$scope', 'projectService', 'authService',function($scope, projectService, authService) {

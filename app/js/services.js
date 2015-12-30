@@ -155,17 +155,36 @@ angular.module('myApp.services', [])
                 if (error){
                     switch (error.code) {
                         case "INVALID_USER":
-                        console.log("The specified user account does not exist.");
-                        alertService.addAlert('The specified user account does not exist', 'alert-danger');
-                        break;
+                            console.log("The specified user account does not exist.");
+                            alertService.addAlert('The specified user account does not exist', 'alert-danger');
+                            break;
                         default:
-                        console.log("Error resetting password:", error);
-                        alertService.addAlert('Error resetting password', 'alert-danger');
+                            console.log("Error resetting password:", error);
+                            alertService.addAlert('Error resetting password', 'alert-danger');
                     }
                 }else{
                     console.log("Password reset email sent successfully!");
                     alertService.addAlert('Password reset email sent successfully to ' + user.email, 'alert-success');
                 }
+            });
+        },
+        changePassword: function(userDetails){
+            //console.log(userDetails);
+            authRef.changePassword(userDetails, function(error){
+                if (error){
+                    switch (error.code) {
+                          case "INVALID_PASSWORD":
+                            console.log("The specified user account password is incorrect.");
+                            break;
+                          case "INVALID_USER":
+                            console.log("The specified user account does not exist.");
+                            break;
+                          default:
+                            console.log("Error changing password:", error);
+                        }
+               }else{
+                   console.log("User password changed successfully!");
+               } 
             });
         }
 	};

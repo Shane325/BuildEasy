@@ -29,6 +29,11 @@ angular.module('myApp.controllers', [])
     $scope.sendPasswordResetEmail = function() {
         authService.sendPasswordResetEmail($scope.user);  
     };
+    
+    //Method to reset the users password
+    $scope.changePassword = function() {
+        authService.changePassword($scope.userDetails);  
+    };
 
 }])
 .controller('ProjectsController', ['$scope', 'projectService', 'authService',function($scope, projectService, authService) {

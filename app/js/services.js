@@ -149,22 +149,29 @@ angular.module('myApp.services', [])
 			return auth.$getCurrentUser();
 		},
         sendPasswordResetEmail: function(user){
-            //console.log(user);
+            console.log(user);
             //console.log(user.email);
             authRef.resetPassword(user, function(error){
                 if (error){
-                    switch (error.code) {
-                        case "INVALID_USER":
-                            console.log("The specified user account does not exist.");
-                            alertService.addAlert('The specified user account does not exist', 'alert-danger');
-                            break;
-                        default:
-                            console.log("Error resetting password:", error);
-                            alertService.addAlert('Error resetting password', 'alert-danger');
+                    console.log(error.code);
+                    if(error.code === 'INVALID_USER'){
+                        alertService.addAlert('The specified user account does not exist', 'alert-danger');
+                    }else{
+                    alertService.addAlert(error.code, 'alert-danger');
                     }
+//                    
+//                    switch (error.code) {
+//                        case "INVALID_USER":
+//                            console.log("The specified user account does not exist.");
+//                            //alertService.addAlert('The specified user account does not exist', 'alert-danger');
+//                            break;
+//                        default:
+//                            console.log("Error resetting password:", error);
+//                            //alertService.addAlert('Error resetting password', 'alert-danger');
+//                    }
                 }else{
                     console.log("Password reset email sent successfully!");
-                    alertService.addAlert('Password reset email sent successfully to ' + user.email, 'alert-success');
+                    //alertService.addAlert('Password reset email sent successfully to ' + user.email, 'alert-success');
                 }
             });
         },
@@ -175,15 +182,19 @@ angular.module('myApp.services', [])
                     switch (error.code) {
                           case "INVALID_PASSWORD":
                             console.log("The specified user account password is incorrect.");
+                            alertService.addAlert('The specified user password is incorrect')
                             break;
                           case "INVALID_USER":
                             console.log("The specified user account does not exist.");
+                            alertService.addAlert('The specified user account does not exist', 'alert-danger');
                             break;
                           default:
                             console.log("Error changing password:", error);
+                            alertService.addAlert('Error changing password', 'alert-danger');
                         }
                }else{
                    console.log("User password changed successfully!");
+                   alertService.addAlert('User password changed successfully', 'alert-success');
                } 
             });
         }

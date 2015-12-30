@@ -47,5 +47,9 @@ config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/employees.html',
     controller: 'EmployeeController'
   });
+  $routeProvider.when('/reset_password', {
+    templateUrl: 'partials/reset_password.html',
+    controller: 'AuthController'
+  });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

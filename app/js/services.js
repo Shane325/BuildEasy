@@ -160,9 +160,11 @@ angular.module('myApp.services', [])
                         break;
                         default:
                         console.log("Error resetting password:", error);
+                        alertService.addAlert('Error resetting password', 'alert-danger');
                     }
                 }else{
                     console.log("Password reset email sent successfully!");
+                    alertService.addAlert('Password reset email sent successfully to ' + user.email, 'alert-success');
                 }
             });
         }

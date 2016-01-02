@@ -12,7 +12,6 @@ angular.module('myApp.directives', [])
   }])
 
 .directive("alertCustom", function(){
-    
     return {
         restrict: 'E',
         templateUrl: 'directives/alerts.html',

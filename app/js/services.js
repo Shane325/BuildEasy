@@ -103,7 +103,7 @@ angular.module('myApp.services', [])
 
 	return timesheetServiceObject;
 })
-.factory('authService', function($firebaseSimpleLogin, $location, $rootScope, FIREBASE_URL, dataService, alertService, $timeout){
+.factory('authService', function($firebaseSimpleLogin, $location, $rootScope, FIREBASE_URL, dataService, alertService){
 	var authRef = new Firebase(FIREBASE_URL);
 	var auth = $firebaseSimpleLogin(authRef);
     
@@ -149,29 +149,13 @@ angular.module('myApp.services', [])
 			return auth.$getCurrentUser();
 		},
         sendPasswordResetEmail: function(user){
-            console.log(user);
-            //console.log(user.email);
             authRef.resetPassword(user, function(error){
                 if (error){
-                    console.log(error.code);
-                    if(error.code === 'INVALID_USER'){
-                        alertService.addAlert('The specified user account does not exist', 'alert-danger');
-                    }else{
-                    alertService.addAlert(error.code, 'alert-danger');
-                    }
-//                    
-//                    switch (error.code) {
-//                        case "INVALID_USER":
-//                            console.log("The specified user account does not exist.");
-//                            //alertService.addAlert('The specified user account does not exist', 'alert-danger');
-//                            break;
-//                        default:
-//                            console.log("Error resetting password:", error);
-//                            //alertService.addAlert('Error resetting password', 'alert-danger');
-//                    }
+                    //console.log("Error");
+                    alertService.addAlert('Error', 'alert-danger');
                 }else{
-                    console.log("Password reset email sent successfully!");
-                    //alertService.addAlert('Password reset email sent successfully to ' + user.email, 'alert-success');
+                    //console.log("Success");
+                    alertService.addAlert('Success', 'alert-success');
                 }
             });
         },
@@ -182,7 +166,7 @@ angular.module('myApp.services', [])
                     switch (error.code) {
                           case "INVALID_PASSWORD":
                             console.log("The specified user account password is incorrect.");
-                            alertService.addAlert('The specified user password is incorrect')
+                            alertService.addAlert('The specified user password is incorrect');
                             break;
                           case "INVALID_USER":
                             console.log("The specified user account does not exist.");
@@ -220,6 +204,7 @@ angular.module('myApp.services', [])
             this.alerts[type] = this.alerts[type] || [];
             this.alerts[type].push(message);
             
+            //console.log(this.alerts);
             //Wait 5 seconds and clear the alerts array
             $timeout(function(){
                     alertServiceObject.clearAlerts();

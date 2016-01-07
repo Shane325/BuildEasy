@@ -115,9 +115,14 @@ angular.module('myApp.services', [])
 			auth.$createUser(user.email, user.password).then(function(data){
 				userProfile.$add(user);
 				// console.log(data);
-				authServiceObject.login(user, function(){
-					emails.$add({email: user.email});
-				});
+                
+                
+                //log user in and enter their email address into DB
+                //I have disabled the email part for now
+                
+				authServiceObject.login(user);//, function(){
+//					emails.$add({email: user.email});
+//				});
 			});
 		},
 		login: function(user){

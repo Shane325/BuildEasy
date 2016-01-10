@@ -35,25 +35,27 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="employee in employees">
-                <td>{{ employee.firstName}}</td>
-                <td>{{ employee.lastName }}</td>
+			<tr>
+<!--                <td>{{ employee.firstName}}</td>-->
+<!--                <td>{{ employee.lastName }}</td>-->
+                <td><input ng-model="newTimesheet.timeSheet.firstName" type="text" size="6" name="firstName"/></td>
+                <td><input ng-model="newTimesheet.timeSheet.lastName" type="text" size="6" name="lastName"/></td>
 				<td>&nbsp</td>
 				<td>&nbsp</td>
-				<td><input ng-model="newTimesheet.timeSheet.saturday.hours" type="text" size="2" name="hours"/></td>
-				<td><input ng-model="newTimesheet.timeSheet.saturday.job" type="text" size="2" name="job"/></td>
-				<td><input ng-model="newTimesheet.timeSheet.sunday.hours" type="text" size="2" name="hours"/> </td>
-				<td><input ng-model="newTimesheet.timeSheet.sunday.job" type="text" size="2" name="job"/>   </td>
-				<td><input ng-model="newTimesheet.timeSheet.monday.hours" type="text" size="2" name="hours"/> </td>
-				<td><input ng-model="newTimesheet.timeSheet.monday.job" type="text" size="2" name="job"/>   </td>
-				<td><input ng-model="newTimesheet.timeSheet.tuesday.hours" type="text" size="2" name="hours"/> </td>
-				<td><input ng-model="newTimesheet.timeSheet.tuesday.job" type="text" size="2" name="job"/>   </td>
-				<td><input ng-model="newTimesheet.timeSheet.wednesday.hours" type="text" size="2" name="hours"/> </td>
-				<td><input ng-model="newTimesheet.timeSheet.wednesday.job" type="text" size="2" name="job"/>   </td>
-				<td><input ng-model="newTimesheet.timeSheet.thursday.hours" type="text" size="2" name="hours"/> </td>
-				<td><input ng-model="newTimesheet.timeSheet.thursday.job" type="text" size="2" name="job"/>   </td>
-				<td><input ng-model="newTimesheet.timeSheet.friday.hours" type="text" size="2" name="hours"/> </td>
-				<td><input ng-model="newTimesheet.timeSheet.friday.job" type="text" size="2" name="job"/>   </td>
+				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.saturday.hours" type="text" size="2" name="hours"/></td>
+				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.saturday.job" type="text" size="2" name="job"/></td>
+				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.sunday.hours" type="text" size="2" name="hours"/> </td>
+				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.sunday.job" type="text" size="2" name="job"/>   </td>
+				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.monday.hours" type="text" size="2" name="hours"/> </td>
+				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.monday.job" type="text" size="2" name="job"/>   </td>
+				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.tuesday.hours" type="text" size="2" name="hours"/> </td>
+				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.tuesday.job" type="text" size="2" name="job"/>   </td>
+				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.wednesday.hours" type="text" size="2" name="hours"/> </td>
+				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.wednesday.job" type="text" size="2" name="job"/>   </td>
+				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.thursday.hours" type="text" size="2" name="hours"/> </td>
+				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.thursday.job" type="text" size="2" name="job"/>   </td>
+				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.friday.hours" type="text" size="2" name="hours"/> </td>
+				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.friday.job" type="text" size="2" name="job"/>   </td>
 			</tr>
 		</tbody>
 	</table>

@@ -118,32 +118,46 @@ angular.module('myApp.controllers', [])
 .controller('TimesheetController', ['$scope', 'timesheetService', 'employeeService', function($scope, timesheetService, employeeService){
 
 	//Object to store new Timesheet
-	$scope.newTimesheet = {firstName:'', lastName:'', weekEnding:'', timeSheet: {
-														saturday: {job:'', hours:''},
-														sunday: {job:'', hours:''},
-														monday: {job:'', hours:''},
-														tuesday: {job:'', hours:''},
-														wednesday: {job:'', hours:''},
-														thursday: {job:'', hours:''},
-														friday: {job:'', hours:''}
-														}}
+	$scope.newTimesheet =  {weekEnding: '', timeSheet: {firstName:'', lastName:'', employeeTimeSheet: {
+                                                                                                        saturday: {job:'', hours:''},
+                                                                                                        sunday: {job:'', hours:''},
+                                                                                                        monday: {job:'', hours:''},
+                                                                                                        tuesday: {job:'', hours:''},
+                                                                                                        wednesday: {job:'', hours:''},
+                                                                                                        thursday: {job:'', hours:''},
+                                                                                                        friday: {job:'', hours:''}
+														                                              }
+                                                       }
+                            }
 
 	//Bind employees to $scope so I can show them on the timesheet page
 	$scope.employees = employeeService.getEmployees();
 
 	$scope.saveNewTimesheet = function(){
         
-        console.log($scope.newTimesheet);
+        //Calculate date value for weekEnding field
+        var curr = new Date; // get current date
+        var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
+        var last = first + 5; // last day is the first day + 5. This will give week ending of Friday
+        //var firstday = new Date(curr.setDate(first)).toUTCString();
+        //var lastday = new Date(curr.setDate(last)).toUTCString();
+        $scope.newTimesheet.weekEnding = new Date(curr.setDate(last)).toDateString();
+        
+        //console.log($scope.newTimesheet.weekEnding);
+
 		timesheetService.saveNewTimesheet($scope.newTimesheet);
-		$scope.newTimesheet = {firstName:'', lastName:'', weekEnding:'', timeSheet:{
-														saturday: {job:'', hours:''},
-														sunday: {job:'', hours:''},
-														monday: {job:'', hours:''},
-														tuesday: {job:'', hours:''},
-														wednesday: {job:'', hours:''},
-														thursday: {job:'', hours:''},
-														friday: {job:'', hours:''}
-                                                         }	}
+        //clear newTimesheet model
+		$scope.newTimesheet =  {weekEnding: '', timeSheet: {firstName:'', lastName:'', employeeTimeSheet: {
+                                                                                                        saturday: {job:'', hours:''},
+                                                                                                        sunday: {job:'', hours:''},
+                                                                                                        monday: {job:'', hours:''},
+                                                                                                        tuesday: {job:'', hours:''},
+                                                                                                        wednesday: {job:'', hours:''},
+                                                                                                        thursday: {job:'', hours:''},
+                                                                                                        friday: {job:'', hours:''}
+														                                              }
+                                                       }
+                            }
 	};
 }])
 .controller('AlertsController', ['$scope', 'alertService', function($scope, alertService){

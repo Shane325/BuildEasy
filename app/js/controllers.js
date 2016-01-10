@@ -58,13 +58,18 @@ angular.module('myApp.controllers', [])
 .controller('DailyReportsController', ['$scope', 'dailyReportsService',function($scope, dailyReportsService) {
 
 	//Object to store data from the Daily reports form
-	$scope.newDailyReport = {date: '', jobNumber: '', crew: '', foreman: '', operators: '', laborers: '', other: '', equipment: '', subcontractors:'', workPerformed: '', extraWorkPerformed: '', otherNotes: ''};
+	$scope.newDailyReport = {date: '', project:'', jobNumber: '', crew: '', foreman: '', operators: '', laborers: '', other: '', equipment: '', subcontractors:'', workPerformed: '', extraWorkPerformed: '', otherNotes: ''};
 
 	//function to save a new Daily Report
 	$scope.saveDailyReport = function(){
 		dailyReportsService.saveDailyReport($scope.newDailyReport);
-		$scope.newDailyReport = {date: '', jobNumber: '', crew: '', foreman: '', operators: '', laborers: '', other: '', equipment: '', subcontractors:'', workPerformed: '', extraWorkPerformed: '', otherNotes: ''};
+		$scope.newDailyReport = {date: '', project:'', jobNumber: '', crew: '', foreman: '', operators: '', laborers: '', other: '', equipment: '', subcontractors:'', workPerformed: '', extraWorkPerformed: '', otherNotes: ''};
 	};
+    
+    //function to clear the form
+    $scope.clearNewDailyReport = function(){
+        $scope.newDailyReport = {date: '', project:'', jobNumber: '', crew: '', foreman: '', operators: '', laborers: '', other: '', equipment: '', subcontractors:'', workPerformed: '', extraWorkPerformed: '', otherNotes: ''};
+    };
 
 }])
 .controller('RequestForInfoController', ['$scope', 'rfiService', function($scope, rfiService){

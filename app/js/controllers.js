@@ -92,6 +92,13 @@ angular.module('myApp.controllers', [])
     
     //Bind RFI's to the scope so I can display them for the user
     $scope.requestForInformation = rfiService.getRfis();
+    
+    //Edit rfi function
+    $scope.editRfi = function(rfi){
+        
+        $scope.rfiTemp = {rfiNumber:rfi.rfiNumber, date: rfi.date, project: rfi.project, to: rfi.to, cc:rfi.cc, requestedBy: rfi.requestedBy, subject: rfi.subject, contractorQuestion: rfi.contractorQuestion, contractorSuggestion:rfi.contractorSuggestion, isChange:rfi.isChange};
+        $scope.rfiId = rfi.$id;
+    }
 
 }])
 .controller('EmployeeController', ['$scope', 'employeeService', 'alertService', function($scope, employeeService, alertService){

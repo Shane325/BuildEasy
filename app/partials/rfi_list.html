@@ -2,9 +2,34 @@
     <h2>Request for Information</h2>
     <div class="panel panel-default" ng-repeat="rfi in requestForInformation">
       <div class="panel-heading">
-        <h3 class="panel-title">RFI #: {{ rfi.rfiNumber }}</h3>
-        
+        <h3 class="panel-title">RFI #: {{ rfi.rfiNumber }} {{ rfi.date | date:'fullDate' }}
+        <button ng-click="editRfi(rfi)" type="button" class="btn btn-default" data-toggle="modal" data-target="#rfiModal">Edit</button>
+          </h3>
       </div>
       <div class="panel-body">{{ rfi.contractorQuestion }}</div>
+    </div>
+</div>
+
+<!--Modal Code-->
+<div class="modal fade" id="rfiModal" tabindex="-1" role="dialog" aria-lebelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Edit RFI</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <form class="form-horizontal">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <input type="text" ng-model="rfiTemp.contractorQuestion" class="form-control" placeholder="Contractor Question"/>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

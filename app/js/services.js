@@ -44,7 +44,10 @@ angular.module('myApp.services', [])
 	var rfiServiceObject = {
 		saveRfi: function(rfi){
 			requestForInformation.$add(rfi);
-		}
+		},
+        getRfis: function(){
+            return requestForInformation;
+        }
 	};
 
 	return rfiServiceObject;

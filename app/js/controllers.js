@@ -84,6 +84,9 @@ angular.module('myApp.controllers', [])
     $scope.clearNewRfi = function(){
         $scope.newRfi = {date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};        
     };
+    
+    //Bind RFI's to the scope so I can display them for the user
+    $scope.requestForInformation = rfiService.getRfis();
 
 }])
 .controller('EmployeeController', ['$scope', 'employeeService', 'alertService', function($scope, employeeService, alertService){

@@ -77,6 +77,11 @@ angular.module('myApp.controllers', [])
 		rfiService.saveRfi($scope.newRfi);
 		$scope.newRfi = {date: '', project: '', to: '', requestedBy: '', subject: '', contractorQuestion: ''};
 	};
+    
+    //function for the Clear button
+    $scope.clearNewRfi = function(){
+        $scope.newRfi = {date: '', project: '', to: '', requestedBy: '', subject: '', contractorQuestion: ''};        
+    };
 
 }])
 .controller('EmployeeController', ['$scope', 'employeeService', 'alertService', function($scope, employeeService, alertService){

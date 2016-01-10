@@ -70,17 +70,19 @@ angular.module('myApp.controllers', [])
 .controller('RequestForInfoController', ['$scope', 'rfiService', function($scope, rfiService){
 
 	//Object to store data from the rfi form
-	$scope.newRfi = {date: '', project: '', to: '', requestedBy: '', subject: '', contractorQuestion: ''};
+	$scope.newRfi = {date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};
 
 	//function to save a new Rfi
 	$scope.saveRfi = function(){
-		rfiService.saveRfi($scope.newRfi);
-		$scope.newRfi = {date: '', project: '', to: '', requestedBy: '', subject: '', contractorQuestion: ''};
+		
+        console.log($scope.newRfi);
+        rfiService.saveRfi($scope.newRfi);
+		$scope.newRfi = {date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};
 	};
     
     //function for the Clear button
     $scope.clearNewRfi = function(){
-        $scope.newRfi = {date: '', project: '', to: '', requestedBy: '', subject: '', contractorQuestion: ''};        
+        $scope.newRfi = {date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};        
     };
 
 }])

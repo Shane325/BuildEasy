@@ -51,5 +51,9 @@ config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/reset_password.html',
     controller: 'AuthController'
   });
+  $routeProvider.when('/rfi_list', {
+    templateUrl: 'partials/rfi_list.html',
+    controller: 'RequestForInformationController'
+  });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

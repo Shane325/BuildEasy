@@ -53,7 +53,7 @@ config(['$routeProvider', function($routeProvider) {
   });
   $routeProvider.when('/rfi_list', {
     templateUrl: 'partials/rfi_list.html',
-    controller: 'RequestForInformationController'
+    controller: 'RequestForInfoController'
   });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

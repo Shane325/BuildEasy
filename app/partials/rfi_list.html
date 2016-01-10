@@ -2,7 +2,8 @@
     <h2>Request for Information</h2>
     <div class="panel panel-default" ng-repeat="rfi in requestForInformation">
       <div class="panel-heading">
-        <h3 class="panel-title">{{ rfi.subject }}</h3>
+        <h3 class="panel-title">RFI #: {{ rfi.rfiNumber }}</h3>
+        
       </div>
       <div class="panel-body">{{ rfi.contractorQuestion }}</div>
     </div>

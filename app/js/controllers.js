@@ -75,19 +75,19 @@ angular.module('myApp.controllers', [])
 .controller('RequestForInfoController', ['$scope', 'rfiService', function($scope, rfiService){
 
 	//Object to store data from the rfi form
-	$scope.newRfi = {date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};
+	$scope.newRfi = {rfiNumber:'', date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};
 
 	//function to save a new Rfi
 	$scope.saveRfi = function(){
 		
         console.log($scope.newRfi);
         rfiService.saveRfi($scope.newRfi);
-		$scope.newRfi = {date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};
+		$scope.newRfi = {rfiNumber:'', date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};
 	};
     
     //function for the Clear button
     $scope.clearNewRfi = function(){
-        $scope.newRfi = {date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};        
+        $scope.newRfi = {rfiNumber:'', date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};        
     };
     
     //Bind RFI's to the scope so I can display them for the user

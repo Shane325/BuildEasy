@@ -43,6 +43,9 @@ angular.module('myApp.services', [])
 
 	var rfiServiceObject = {
 		saveRfi: function(rfi){
+            
+            rfi.rfiNumber = Math.floor(Math.random()*100000001);
+            
 			requestForInformation.$add(rfi);
 		},
         getRfis: function(){

@@ -6,7 +6,7 @@
         <button ng-click="editRfi(rfi)" type="button" class="btn btn-default" data-toggle="modal" data-target="#rfiModal">Edit</button>
           </h3>
       </div>
-      <div class="panel-body">{{ rfi.contractorQuestion }}</div>
+      <div class="panel-body">{{ rfi.subject }}</div>
     </div>
 </div>
 
@@ -23,7 +23,61 @@
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-md-3">
-                                    <input type="text" ng-model="rfiTemp.contractorQuestion" class="form-control" placeholder="Contractor Question"/>
+                                    <label class="sr-only" for="to">To</label>
+                                    <input ng-model="rfiTemp.to" type="email" class="form-control" id="to" placeholder="To (email address)"/>
+                                </div>
+                                <div class="col-md-3 col-md-offset-2">
+                                    <label class="sr-only" for="date">Date</label>
+                                    <input ng-model="rfiTemp.date" type="date" class="form-control" id="date" placeholder="Date"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label class="sr-only" for="cc">CC</label>
+                                    <input ng-model="rfiTemp.cc" type="email" class="form-control" id="cc" placeholder="CC (email address)"/>
+                                </div>
+                                <div class="col-md-3 col-md-offset-2">
+                                    <label class="sr-only" for="project">Project</label>
+                                    <input ng-model="rfiTemp.project" type="text" class="form-control" id="project" placeholder="Project"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label class="sr-only" for="requestedBy">Requested By</label>
+                                    <input ng-model="rfiTemp.requestedBy" type="text" class="form-control" id="requestedBy" placeholder="Requested By"/>
+                                </div>
+                                <div class="col-md-3 col-md-offset-2">
+                                    <label class="sr-only" for="subject">Subject</label>
+                                    <input ng-model="rfiTemp.subject" type="text" class="form-control" id="subject" placeholder="Subject"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-8">
+                                    <label class="sr-only" for="contractorQuestion">Contractor Question</label>
+                                    <textarea ng-model="rfiTemp.contractorQuestion" class="form-control" rows="5" id="contractorQuestion" placeholder="Contractor Question"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-8">
+                                    <label class="sr-only" for="contractorSuggestion">Contractor Suggestion</label>
+                                    <textarea ng-model="rfiTemp.contractorSuggestion" class="form-control" rows="5" id="contractorSuggestion" placeholder="Contractor Suggestion"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    Is the above a change?
+                                    <label><input ng-model="rfiTemp.isChange" type="radio" name="isChange" value="Yes"/> Yes</label>
+                                    <label><input ng-model="rfiTemp.isChange" type="radio" name="isChange" value="No"/> No</label>
                                 </div>
                             </div>
                         </div>

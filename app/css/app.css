@@ -60,3 +60,11 @@ fieldset {
 .alert {
     margin: 8px;
 }
+#rfiModal .modal-content {
+    width: 800px; 
+/*    margin-top: -300px !important;*/
+/*    margin-left:  -350px !important; */
+}
+#rfiModal .modal-body {
+/*    max-height: 525px;*/
+}

@@ -50,6 +50,12 @@ angular.module('myApp.services', [])
 		},
         getRfis: function(){
             return requestForInformation;
+        },
+        updateRfi: function(rfiId, rfi){
+            requestForInformation.$child(rfiId).$set(rfi);
+        },
+        deleteRfi: function(rfi){
+            requestForInformation.$remove(rfi.$id);
         }
 	};
 

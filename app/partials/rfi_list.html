@@ -4,6 +4,7 @@
       <div class="panel-heading">
         <h3 class="panel-title">RFI #: {{ rfi.rfiNumber }} {{ rfi.date | date:'fullDate' }}
         <button ng-click="editRfi(rfi)" type="button" class="btn btn-default" data-toggle="modal" data-target="#rfiModal">Edit</button>
+        <button ng-click="deleteRfi(rfi)" type="submit" class="btn btn-danger">Delete</button>
           </h3>
       </div>
       <div class="panel-body">{{ rfi.subject }}</div>
@@ -15,7 +16,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Edit RFI</h4>
+                <h4 class="modal-title" id="myModalLabel">Edit RFI #: {{ rfiTemp.rfiNumber }}</h4>
             </div>
             <div class="modal-body">
                 <div class="container">
@@ -83,6 +84,12 @@
                         </div>
                     </form>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <div>
+                    <button ng-click="updateRfi()" type="submit" class="btn btn-primary" data-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
+                </div>  
             </div>
         </div>
     </div>

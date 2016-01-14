@@ -95,10 +95,24 @@ angular.module('myApp.controllers', [])
     
     //Edit rfi function
     $scope.editRfi = function(rfi){
+        //convert date string into correct format 
+        var newDate = new Date(rfi.date);
         
-        $scope.rfiTemp = {rfiNumber:rfi.rfiNumber, date: rfi.date, project: rfi.project, to: rfi.to, cc:rfi.cc, requestedBy: rfi.requestedBy, subject: rfi.subject, contractorQuestion: rfi.contractorQuestion, contractorSuggestion:rfi.contractorSuggestion, isChange:rfi.isChange};
+        $scope.rfiTemp = {rfiNumber:rfi.rfiNumber, date: newDate, project: rfi.project, to: rfi.to, cc:rfi.cc, requestedBy: rfi.requestedBy, subject: rfi.subject, contractorQuestion: rfi.contractorQuestion, contractorSuggestion:rfi.contractorSuggestion, isChange:rfi.isChange};
         $scope.rfiId = rfi.$id;
-    }
+
+    };
+    
+    //update rfi object
+    $scope.updateRfi = function(){
+
+        rfiService.updateRfi($scope.rfiId, $scope.rfiTemp);
+    };
+    
+    //delete rfi object
+    $scope.deleteRfi = function(rfi){
+        rfiService.deleteRfi(rfi);
+    };
 
 }])
 .controller('EmployeeController', ['$scope', 'employeeService', 'alertService', function($scope, employeeService, alertService){

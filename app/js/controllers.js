@@ -113,6 +113,11 @@ angular.module('myApp.controllers', [])
     $scope.deleteRfi = function(rfi){
         rfiService.deleteRfi(rfi);
     };
+    
+    //submit/email rfi
+    $scope.submitRfi = function(rfi){
+        rfiService.submitRfi(rfi);  
+    };
 
 }])
 .controller('EmployeeController', ['$scope', 'employeeService', 'alertService', function($scope, employeeService, alertService){

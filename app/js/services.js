@@ -40,6 +40,7 @@ angular.module('myApp.services', [])
 })
 .factory('rfiService', function(dataService, $location){
 	var requestForInformation = dataService.$child('requestForInformation');
+    var submitRfi = dataService.$child('submitRfi');
 
 	var rfiServiceObject = {
 		saveRfi: function(rfi){
@@ -56,6 +57,10 @@ angular.module('myApp.services', [])
         },
         deleteRfi: function(rfi){
             requestForInformation.$remove(rfi.$id);
+        },
+        submitRfi: function(rfi){
+//            console.log(rfi);
+            submitRfi.$add(rfi);
         }
 	};
 

@@ -59,7 +59,7 @@ angular.module('myApp.services', [])
             requestForInformation.$remove(rfi.$id);
         },
         submitRfi: function(rfi){
-//            console.log(rfi);
+//              console.log(rfi);
             submitRfi.$add(rfi);
         }
 	};

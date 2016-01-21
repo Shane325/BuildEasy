@@ -50,6 +50,16 @@ angular.module('myApp.controllers', [])
 
   	//function to save a new project
   	$scope.saveProject = function(){
+        //convert date string into correct format 
+//        var newStartDate = new Date($scope.newProject.startdate);
+//        var newEndDate = new Date($scope.newProject.enddate);
+//        
+//        $scope.newProject.startdate = newStartDate;
+//        $scope.newProject.enddate = newEndDate;
+//        
+//        console.log($scope.newProject.startdate);
+//        console.log($scope.newProject.enddate);
+        
   		projectService.saveProject($scope.newProject, $scope.currentUser.id);
   		$scope.newProject = {name: '', address: '', city: '', state: '', zip: '', phone: '', email: '', startdate: '', enddate: ''};
   	};

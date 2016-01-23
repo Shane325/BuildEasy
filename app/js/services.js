@@ -13,6 +13,22 @@ angular.module('myApp.services', [])
 
 	return fireData;
 })
+.factory('homeService', function(dataService){
+    var users = dataService.$child('users');
+    
+    var homeServiceObject = {
+         getProjectByProjectId: function(userId, projectId){
+             
+             console.log('homeServiceObject');
+             console.log(userId);
+             console.log(projectId);
+             return users.$child(userId).$child('projects').$child(projectId);
+         } 
+    };
+    
+    return homeServiceObject;
+
+})
 .factory('projectService', function(dataService, $location){
 	var users = dataService.$child('users');
 

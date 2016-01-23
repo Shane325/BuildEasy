@@ -24,8 +24,8 @@ config(['$routeProvider', function($routeProvider) {
   	templateUrl: 'partials/login.html',
   	controller: 'AuthController'
   });
-  $routeProvider.when('/projects_page', {
-    templateUrl: 'partials/projects_page.html',
+  $routeProvider.when('/projects', {
+    templateUrl: 'partials/projects.html',
     controller: 'ProjectsController'
   });
   $routeProvider.when('/daily_reports', {

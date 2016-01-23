@@ -1,5 +1,5 @@
 <div class="container">    
-    <table class="table table-bordered">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>Project Name</th>
@@ -15,7 +15,7 @@
         <td>{{ project.startdate }}</td>
         <td>{{ project.enddate }}</td>
         <td>
-          <button type="submit" class="btn btn-success">Info</button>
+          <button ng-click="selectProject(project)" type="submit" class="btn btn-success">Select</button>
           <button ng-click="projects.$remove(project.$id)" type="submit" class="btn btn-danger">Delete</button>
         </td>
       </tr>

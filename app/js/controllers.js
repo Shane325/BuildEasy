@@ -36,7 +36,7 @@ angular.module('myApp.controllers', [])
     };
 
 }])
-.controller('ProjectsController', ['$scope', 'projectService', 'authService',function($scope, projectService, authService) {
+.controller('ProjectsController', ['$scope', 'projectService', 'authService', '$location', function($scope, projectService, authService, $location) {
 	//Bind user projects to $scope.projects
 	authService.getCurrentUser().then(function(user){
 		if(user){
@@ -44,6 +44,12 @@ angular.module('myApp.controllers', [])
 		};
 	});
 
+    //function to select a project from the table
+    $scope.selectProject = function(project){
+        console.log(project.$id);
+        $location.path('/home_page');
+        
+    };
 
 	//Object to store data from the project form
   	$scope.newProject = {name: '', address: '', city: '', state: '', zip: '', phone: '', email: '', startdate: '', enddate: ''};

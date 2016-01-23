@@ -19,9 +19,6 @@ angular.module('myApp.services', [])
     var homeServiceObject = {
          getProjectByProjectId: function(userId, projectId){
              
-             console.log('homeServiceObject');
-             console.log(userId);
-             console.log(projectId);
              return users.$child(userId).$child('projects').$child(projectId);
          } 
     };

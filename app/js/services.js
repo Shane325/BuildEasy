@@ -159,7 +159,7 @@ angular.module('myApp.services', [])
 		login: function(user){
 			auth.$login('password', user).then(function(data){
                 console.log(data);
-				$location.path('/home_page')
+				$location.path('/projects')
 			}, function(error){
                 //console.log(error.code);
                 //console.log(error.message);

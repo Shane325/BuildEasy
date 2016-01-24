@@ -68,3 +68,12 @@ fieldset {
 #rfiModal .modal-body {
 /*    max-height: 525px;*/
 }
+.dashboard-panel {
+    width:200px;
+    height:200px;
+}
+.dashboard {
+    margin:auto;
+    width:80%;
+}
+

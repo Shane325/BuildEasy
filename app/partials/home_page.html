@@ -1,12 +1,34 @@
 <div class="container">
-    <p>The project name is: {{ currentProject.name }}</p>
-    <ul class="nav nav-pills" role="tablist">
-        <li role="presentation" class="active"><a href="#/daily_reports">Daily Reports <span class="badge">42</span></a></li>
-        <li role="presentation" class="active">
-            <a href="#/rfi_list">RFIs <span class="badge">12</span></a>
-        </li>
-        <li role="presentation" class="active">
-            <a href="#/timesheet">Timesheets<span class="badge">6</span></a>
-        </li>
-    </ul>
+    <div class="dashboard">
+        <div class="row">    
+            <div class="col-md-3">
+                <div class="panel panel-default dashboard-panel">
+                  <div class="panel-body">
+                    Request For Information
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default dashboard-panel">
+                  <div class="panel-body">
+                    Daily Report
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default dashboard-panel">
+                  <div class="panel-body">
+                    Timesheet
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default dashboard-panel">
+                  <div class="panel-body">
+                    Employees
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

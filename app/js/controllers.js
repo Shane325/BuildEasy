@@ -36,7 +36,7 @@ angular.module('myApp.controllers', [])
     };
 
 }])
-.controller('HomeController', ['$scope', 'homeService', 'authService', '$routeParams', function($scope, homeService, authService, $routeParams){
+.controller('HomeController', ['$scope', 'homeService', 'authService', '$routeParams', '$location', function($scope, homeService, authService, $routeParams, $location){
     
     $scope.projectId = $routeParams.projectId;
     
@@ -47,6 +47,11 @@ angular.module('myApp.controllers', [])
             console.log($scope.currentProject);
         } 
     });
+    
+    $scope.selectRfis = function(projectId){
+//        console.log(projectId);
+        $location.path('/rfi_list/' + projectId);  
+    };
     
 }])
 .controller('ProjectsController', ['$scope', 'projectService', 'authService', '$location', '$log', function($scope, projectService, authService, $location, $log) {   
@@ -100,10 +105,18 @@ angular.module('myApp.controllers', [])
     };
 
 }])
-.controller('RequestForInfoController', ['$scope', 'rfiService', function($scope, rfiService){
+.controller('RequestForInfoController', ['$scope', 'rfiService', '$routeParams', '$location', function($scope, rfiService, routeParams, location){
 
+    //test the routeParams object
+    $scope.projectId = $routeParams.projectId;
+    
 	//Object to store data from the rfi form
 	$scope.newRfi = {rfiNumber:'', date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};
+    
+    //function to navigate from rfi_list to rfi page
+    $scope.goToRfiPage = function(){
+        $location.path('/rfi/' + $scope.projectId);
+    }
 
 	//function to save a new Rfi
 	$scope.saveRfi = function(){

@@ -54,13 +54,13 @@ angular.module('myApp.services', [])
 .factory('rfiService', function(dataService, $location){
 	var requestForInformation = dataService.$child('requestForInformation');
     var submitRfi = dataService.$child('submitRfi');
+    var projects = dataService.$child('projects');
 
 	var rfiServiceObject = {
-		saveRfi: function(rfi){
+		saveRfi: function(rfi, projectId){
             
             rfi.rfiNumber = Math.floor(Math.random()*100000001);
-            
-			requestForInformation.$add(rfi);
+            projects.$child(projectId).$child('requestForInformation').$add(rfi);
 		},
         getRfis: function(){
             return requestForInformation;

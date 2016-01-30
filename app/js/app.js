@@ -32,7 +32,7 @@ config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/daily_reports.html',
     controller: 'DailyReportsController'
   });
-  $routeProvider.when('/rfi/:projectId', {
+  $routeProvider.when('/rfi', {
     templateUrl: 'partials/rfi.html',
     controller: 'RequestForInfoController'
   });
@@ -55,6 +55,10 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/rfi_list/:projectId', {
     templateUrl: 'partials/rfi_list.html',
     controller: 'RequestForInfoController'
+  });
+  $routeProvider.when('/welcome', {
+    templateUrl: 'partials/welcome.html',
+    controller: 'WelcomeController'
   });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

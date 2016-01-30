@@ -13,6 +13,93 @@ angular.module('myApp.services', [])
 
 	return fireData;
 })
+.factory('authService', function($firebaseSimpleLogin, $location, $rootScope, FIREBASE_URL, dataService, alertService){
+	//
+    var authRef = new Firebase(FIREBASE_URL);
+	var auth = $firebaseSimpleLogin(authRef);
+	var emails = dataService.$child('emails');
+	var userInfo = dataService.$child('userInfo');
+    
+    //auth service object that contains all of the functions
+	var authServiceObject = {
+		register: function(user){
+			auth.$createUser(user.email, user.password).then(function(data){
+                authServiceObject.login(user, 'y');
+			});
+		},
+		login: function(user, firstTimeLoginFlag){
+			auth.$login('password', user).then(function(data){
+                if(firstTimeLoginFlag === 'y'){
+                    $location.path('/welcome');
+                }else{
+                    $location.path('/projects');
+                }
+			}, function(error){
+                //handle each error code
+                if(error.code === 'INVALID_EMAIL'){
+                    alertService.addAlert('Incorrect Email address', 'alert-danger');    
+                }else if(error.code === 'INVALID_USER'){
+                    alertService.addAlert('Incorrect Username', 'alert-danger');
+                }else if(error.code === 'INVALID_PASSWORD'){
+                    alertService.addAlert('Incorrect Password', 'alert-danger');
+                }else{
+                    alertService.addAlert(error.code, 'alert-danger');
+                }
+            });
+		},
+        createUserProfile: function(userInfo){
+            userInfo.$push(userInfo);
+        },
+		logout: function(){
+			auth.$logout();
+			$location.path('/');
+		},
+		getCurrentUser: function(){
+			return auth.$getCurrentUser();
+		},
+        sendPasswordResetEmail: function(user){
+            authRef.resetPassword(user, function(error){
+                if (error){
+                    alertService.addAlert('Error', 'alert-danger');
+                }else{
+                    alertService.addAlert('Success', 'alert-success');
+                }
+            });
+        },
+        changePassword: function(userDetails){
+            authRef.changePassword(userDetails, function(error){
+                if (error){
+                    switch (error.code) {
+                          case "INVALID_PASSWORD":
+                            console.log("The specified user account password is incorrect.");
+                            alertService.addAlert('The specified user password is incorrect');
+                            break;
+                          case "INVALID_USER":
+                            console.log("The specified user account does not exist.");
+                            alertService.addAlert('The specified user account does not exist', 'alert-danger');
+                            break;
+                          default:
+                            console.log("Error changing password:", error);
+                            alertService.addAlert('Error changing password', 'alert-danger');
+                        }
+               }else{
+                   console.log("User password changed successfully!");
+                   alertService.addAlert('User password changed successfully', 'alert-success');
+               } 
+            });
+        }
+	};
+
+	$rootScope.$on("$firebaseSimpleLogin:login", function(e, user) {
+		$rootScope.currentUser = user;
+	});
+
+	$rootScope.$on("$firebaseSimpleLogin:logout", function() {
+		$rootScope.currentUser = null;
+	});
+
+	return authServiceObject;
+})
 .factory('homeService', function(dataService){
     var users = dataService.$child('users');
     
@@ -131,103 +218,6 @@ angular.module('myApp.services', [])
 	};
 
 	return timesheetServiceObject;
-})
-.factory('authService', function($firebaseSimpleLogin, $location, $rootScope, FIREBASE_URL, dataService, alertService){
-	var authRef = new Firebase(FIREBASE_URL);
-	var auth = $firebaseSimpleLogin(authRef);
-    
-	var emails = dataService.$child('emails');
-	var userProfile = dataService.$child('userProfile');
-
-	var authServiceObject = {
-		register: function(user){
-			auth.$createUser(user.email, user.password).then(function(data){
-				 //userProfile.$add(user);
-				 console.log(user);
-                
-                
-                //log user in and enter their email address into DB
-                //I have disabled the email part for now
-                
-//				authServiceObject.login(user, function(){
-//					emails.$add({email: user.email});
-//				});
-                authServiceObject.login(user);
-			});
-		},
-		login: function(user){
-			auth.$login('password', user).then(function(data){
-                console.log(data);
-				$location.path('/projects')
-			}, function(error){
-                //console.log(error.code);
-                //console.log(error.message);
-
-                //handle each error code
-                if(error.code === 'INVALID_EMAIL'){
-                    alertService.addAlert('Incorrect Email address', 'alert-danger');    
-                }else if(error.code === 'INVALID_USER'){
-                    alertService.addAlert('Incorrect Username', 'alert-danger');
-                }else if(error.code === 'INVALID_PASSWORD'){
-                    alertService.addAlert('Incorrect Password', 'alert-danger');
-                }else{
-                    alertService.addAlert(error.code, 'alert-danger');
-                }
-            
-            });
-		},
-		logout: function(){
-			auth.$logout();
-			$location.path('/');
-		},
-		getCurrentUser: function(){
-			return auth.$getCurrentUser();
-		},
-        sendPasswordResetEmail: function(user){
-            authRef.resetPassword(user, function(error){
-                if (error){
-                    //console.log("Error");
-                    alertService.addAlert('Error', 'alert-danger');
-                }else{
-                    //console.log("Success");
-                    alertService.addAlert('Success', 'alert-success');
-                }
-            });
-        },
-        changePassword: function(userDetails){
-            //console.log(userDetails);
-            authRef.changePassword(userDetails, function(error){
-                if (error){
-                    switch (error.code) {
-                          case "INVALID_PASSWORD":
-                            console.log("The specified user account password is incorrect.");
-                            alertService.addAlert('The specified user password is incorrect');
-                            break;
-                          case "INVALID_USER":
-                            console.log("The specified user account does not exist.");
-                            alertService.addAlert('The specified user account does not exist', 'alert-danger');
-                            break;
-                          default:
-                            console.log("Error changing password:", error);
-                            alertService.addAlert('Error changing password', 'alert-danger');
-                        }
-               }else{
-                   console.log("User password changed successfully!");
-                   alertService.addAlert('User password changed successfully', 'alert-success');
-               } 
-            });
-        }
-	};
-
-	$rootScope.$on("$firebaseSimpleLogin:login", function(e, user) {
-		$rootScope.currentUser = user;
-	});
-
-	$rootScope.$on("$firebaseSimpleLogin:logout", function() {
-		$rootScope.currentUser = null;
-	});
-
-	return authServiceObject;
 })
 .factory('alertService', function($timeout) {
     

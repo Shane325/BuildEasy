@@ -6,18 +6,23 @@ angular.module('myApp.controllers', [])
 .controller('LandingPageController', [function() {
 
 }])
-.controller('AuthController', ['$scope', 'authService', function($scope, authService) {
+.controller('AuthController', ['$scope', '$location', 'authService', function($scope, $location, authService) {
 	//Object bound to inputs on the register and login pages
 	$scope.user = {email: '', password: '', firstName: '', lastName: '', companyName: ''};
 
 	//Method to register a new user using the authService
 	$scope.register = function() {
+        //register new user with firebase
 		authService.register($scope.user);
+        
+        //create user profile in the database
+        var userInfo = { firstName: $scope.user.firstName, lastName: $scope.user.lastName, email: $scope.user.email, company: $scope.user.companyName };
+        authService.createUserProfile(userInfo);
 	};
 
 	//Method to log in a user using the authService
 	$scope.login = function() {
-		authService.login($scope.user);
+		authService.login($scope.user, 'n');
 	};
 
 	//Method to logout a user using the authService
@@ -35,6 +40,12 @@ angular.module('myApp.controllers', [])
         authService.changePassword($scope.userDetails);  
     };
 
+}])
+.controller('WelcomeController', ['$scope', '$location', 'authService', function($scope, $location, authService) {
+    //get current user
+    var currentUser = authService.getCurrentUser();
+    console.log(currentUser);
+    
 }])
 .controller('HomeController', ['$scope', 'homeService', 'authService', '$routeParams', '$location', function($scope, homeService, authService, $routeParams, $location){
     
@@ -73,15 +84,6 @@ angular.module('myApp.controllers', [])
 
   	//function to save a new project
   	$scope.saveProject = function(){
-        //convert date string into correct format 
-//        var newStartDate = new Date($scope.newProject.startdate);
-//        var newEndDate = new Date($scope.newProject.enddate);
-//        
-//        $scope.newProject.startdate = newStartDate;
-//        $scope.newProject.enddate = newEndDate;
-//        
-//        console.log($scope.newProject.startdate);
-//        console.log($scope.newProject.enddate);
         
   		projectService.saveProject($scope.newProject, $scope.currentUser.id);
   		$scope.newProject = {name: '', address: '', city: '', state: '', zip: '', phone: '', email: '', startdate: '', enddate: ''};
@@ -106,19 +108,19 @@ angular.module('myApp.controllers', [])
     };
 
 }])
-.controller('RequestForInfoController', ['$scope', 'rfiService', '$routeParams', '$location', function($scope, rfiService, routeParams, location){
+.controller('RequestForInfoController', ['$scope', '$routeParams', '$location', 'rfiService', function($scope, $routeParams, $location, rfiService){
 
     //test the routeParams object
-    $scope.projectId = $routeParams.projectId;
-    //console.log(projectId);
+    //$scope.projectId = $routeParams.projectId;
+    console.log($routeParams.projectId);
     
 	//Object to store data from the rfi form
 	$scope.newRfi = {rfiNumber:'', date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};
     
     //function to navigate from rfi_list to rfi page
-    $scope.goToRfiPage = function(){
-        $location.path('/rfi/' + $scope.projectId);
-    }
+//    $scope.goToRfiPage = function(){
+//        $location.path('/rfi/' + $scope.projectId);
+//    }
 
 	//function to save a new Rfi
 	$scope.saveRfi = function(){

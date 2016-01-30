@@ -85,6 +85,7 @@ angular.module('myApp.controllers', [])
         
   		projectService.saveProject($scope.newProject, $scope.currentUser.id);
   		$scope.newProject = {name: '', address: '', city: '', state: '', zip: '', phone: '', email: '', startdate: '', enddate: ''};
+        $location.path('/projects');
   	};
 
 }])
@@ -109,7 +110,7 @@ angular.module('myApp.controllers', [])
 
     //test the routeParams object
     $scope.projectId = $routeParams.projectId;
-    console.log(projectId);
+    //console.log(projectId);
     
 	//Object to store data from the rfi form
 	$scope.newRfi = {rfiNumber:'', date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};

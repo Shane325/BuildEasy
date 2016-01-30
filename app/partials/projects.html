@@ -20,8 +20,8 @@
               <tr ng-repeat="project in projects | orderByPriority">
                 <td>{{ project.name }}</td>
                 <td>{{ project.email }}</td>
-                <td>{{ project.startdate }}</td>
-                <td>{{ project.enddate }}</td>
+                <td>{{ project.startdate | date : medium }}</td>
+                <td>{{ project.enddate | date : medium }}</td>
                 <td>
                   <button ng-click="selectProject(project)" type="submit" class="btn btn-success">Select</button>
                   <button ng-click="projects.$remove(project.$id)" type="submit" class="btn btn-danger">Delete</button>

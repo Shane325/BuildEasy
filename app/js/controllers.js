@@ -135,7 +135,8 @@ angular.module('myApp.controllers', [])
     
     //Bind RFI's to the scope so I can display them for the user
     $scope.requestForInformation = rfiService.getRfisByProject($scope.projectId);
-    
+    $scope.rfiCount = $scope.requestForInformation.length;
+    console.log('length: '+ $scope.rfiCount);
     //Edit rfi function
     $scope.editRfi = function(rfi){
         //convert date string into correct format 
@@ -157,10 +158,16 @@ angular.module('myApp.controllers', [])
         rfiService.deleteRfi(rfi);
     };
     
-    //submit/email rfi
+    //submit email rfi
     $scope.submitRfi = function(rfi){
         rfiService.submitRfi(rfi);  
     };
+    
+    //count rfi objects
+//    $scope.rfiCount = function(){
+//        var rfiCount = $scope.requestForInformation.length;
+//        console.log(rfiCount);  
+//    };
 
 }])
 .controller('EmployeeController', ['$scope', 'employeeService', 'alertService', function($scope, employeeService, alertService){

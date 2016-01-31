@@ -1,6 +1,10 @@
 body {
   padding-top: 80px;
 }
+.container {
+    margin: auto;
+    width: 100%;
+}
 .starter-template {
   padding: 40px 15px;
   text-align: center;
@@ -17,31 +21,6 @@ select option {
 } 
 fieldset {
 	width:500px;
-}
-.rfi-form {
-	width:700px;
-	margin:0 auto;
-	border: thin solid #B2B2B2;
-}
-.rfi-form legend{
-	padding:10px 10px;
-}
-.rfi-form fieldset {
-	padding: 10px 10px;
-}
-#rfi-submit-button {
-	padding:10px 10px;
-}
-.pp{
-}  
-#pf{
-}
-#pt{
-}
-#pf form{
-}
-#pt {
-    margin-top:20px;
 }
 .tab-content{
     margin-top:20px;

@@ -110,22 +110,21 @@ angular.module('myApp.controllers', [])
 .controller('RequestForInfoController', ['$scope', '$routeParams', '$location', 'rfiService', function($scope, $routeParams, $location, rfiService){
 
     //test the routeParams object
-    //$scope.projectId = $routeParams.projectId;
-    console.log($routeParams.projectId);
+    $scope.projectId = $routeParams.projectId;
     
 	//Object to store data from the rfi form
 	$scope.newRfi = {rfiNumber:'', date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};
     
-    //function to navigate from rfi_list to rfi page
-//    $scope.goToRfiPage = function(){
-//        $location.path('/rfi/' + $scope.projectId);
-//    }
+    // function to navigate from rfi_list to rfi page
+    $scope.goToRfiPage = function(){
+        $location.path('/rfi/' + $scope.projectId);
+    }
 
 	//function to save a new Rfi
 	$scope.saveRfi = function(){
 		
         //console.log($scope.newRfi);
-        rfiService.saveRfi($scope.newRfi, projectId);
+        rfiService.saveRfi($scope.newRfi, $scope.projectId);
 		$scope.newRfi = {rfiNumber:'', date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};
 	};
     

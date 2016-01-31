@@ -32,7 +32,7 @@ config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/daily_reports.html',
     controller: 'DailyReportsController'
   });
-  $routeProvider.when('/rfi', {
+  $routeProvider.when('/rfi/:projectId', {
     templateUrl: 'partials/rfi.html',
     controller: 'RequestForInfoController'
   });

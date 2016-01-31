@@ -129,7 +129,7 @@ angular.module('myApp.services', [])
 
 })
 .factory('projectService', function(dataService, $location){
-	var users = dataService.$child('users');
+	var users = dataService.$child('userProject');
 
 	var projectServiceObject = {
 		saveProject: function(project, userId){
@@ -156,13 +156,16 @@ angular.module('myApp.services', [])
 .factory('rfiService', function(dataService, $location){
 	var requestForInformation = dataService.$child('requestForInformation');
     var submitRfi = dataService.$child('submitRfi');
-    var projects = dataService.$child('projects');
+    var projectRfi = dataService.$child('projectRfi');
 
 	var rfiServiceObject = {
 		saveRfi: function(rfi, projectId){
             
             rfi.rfiNumber = Math.floor(Math.random()*100000001);
-            projects.$child(projectId).$child('requestForInformation').$add(rfi);
+            projectRfi.$child(projectId).$set(rfi);
+            
+            $location.path('/rfi_list/' + projectId);
+            
 		},
         getRfis: function(){
             return requestForInformation;

@@ -14,10 +14,6 @@ angular.module('myApp.controllers', [])
 	$scope.register = function() {
         //register new user with firebase
 		authService.register($scope.user);
-        
-        //create user profile in the database
-        var userInfo = { firstName: $scope.user.firstName, lastName: $scope.user.lastName, email: $scope.user.email, company: $scope.user.companyName };
-        authService.createUserProfile(userInfo);
 	};
 
 	//Method to log in a user using the authService
@@ -41,10 +37,13 @@ angular.module('myApp.controllers', [])
     };
 
 }])
-.controller('WelcomeController', ['$scope', '$location', 'authService', function($scope, $location, authService) {
-    //get current user
-    var currentUser = authService.getCurrentUser();
-    console.log(currentUser);
+.controller('WelcomeController', ['$scope', '$location', 'authService', 'welcomeService', function($scope, $location, authService, welcomeService) {
+    //get current user info and bind it to scope
+    authService.getCurrentUser().then(function(user){
+        if(user){
+            $scope.userInfo = welcomeService.getUserInfo(user.id);
+        }
+    })
     
 }])
 .controller('HomeController', ['$scope', 'homeService', 'authService', '$routeParams', '$location', function($scope, homeService, authService, $routeParams, $location){

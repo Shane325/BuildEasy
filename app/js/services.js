@@ -18,13 +18,16 @@ angular.module('myApp.services', [])
     var authRef = new Firebase(FIREBASE_URL);
 	var auth = $firebaseSimpleLogin(authRef);
 	var emails = dataService.$child('emails');
-	var userInfo = dataService.$child('userInfo');
+	var userInfoPath = dataService.$child('userInfo');
     
     //auth service object that contains all of the functions
 	var authServiceObject = {
 		register: function(user){
 			auth.$createUser(user.email, user.password).then(function(data){
+                //console.log(data);
                 authServiceObject.login(user, 'y');
+                
+                userInfoPath.$child(data.id).$set(user);
 			});
 		},
 		login: function(user, firstTimeLoginFlag){
@@ -47,8 +50,8 @@ angular.module('myApp.services', [])
                 }
             });
 		},
-        createUserProfile: function(userInfo){
-            userInfo.$push(userInfo);
+        createUserProfile: function(userInfo, userId){
+            userInfoPath.$child(userId).$set(userInfo);
         },
 		logout: function(){
 			auth.$logout();
@@ -99,6 +102,18 @@ angular.module('myApp.services', [])
 	});
 
 	return authServiceObject;
+})
+.factory('welcomeService', function(dataService){
+    
+    var userInfoPath = dataService.$child('userInfo');
+    
+    var welcomeServiceObject = {
+        getUserInfo: function(userId){
+            return userInfoPath.$child(userId);
+        }
+    };
+    
+    return welcomeServiceObject;
 })
 .factory('homeService', function(dataService){
     var users = dataService.$child('users');

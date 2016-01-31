@@ -162,13 +162,13 @@ angular.module('myApp.services', [])
 		saveRfi: function(rfi, projectId){
             
             rfi.rfiNumber = Math.floor(Math.random()*100000001);
-            projectRfi.$child(projectId).$set(rfi);
+            projectRfi.$child(projectId).$child('rfi').$add(rfi);
             
             $location.path('/rfi_list/' + projectId);
             
 		},
-        getRfis: function(){
-            return requestForInformation;
+        getRfisByProject: function(projectId){
+            return projectRfi.$child(projectId).$child('rfi');
         },
         updateRfi: function(rfiId, rfi){
             requestForInformation.$child(rfiId).$set(rfi);

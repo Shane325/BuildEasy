@@ -152,8 +152,8 @@ angular.module('myApp.controllers', [])
     };
     
     //delete rfi object
-    $scope.deleteRfi = function(rfi){
-        rfiService.deleteRfi(rfi);
+    $scope.deleteRfi = function(rfiId){
+        rfiService.deleteRfi(rfiId, $scope.projectId);
     };
     
     //submit email rfi

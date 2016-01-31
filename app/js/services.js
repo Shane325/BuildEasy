@@ -176,9 +176,10 @@ angular.module('myApp.services', [])
 //            console.log(projectId);
             projectRfi.$child(projectId).$child('rfi').$child(rfiId).$set(rfi);
         },
-        deleteRfi: function(rfi){
-            console.log(rfi.$id);
-            //requestForInformation.$remove(rfi.$id);
+        deleteRfi: function(rfiId, projectId){
+//            console.log(rfiId);
+//            console.log(projectId);
+            projectRfi.$child(projectId).$child('rfi').$remove(rfiId);
         },
         submitRfi: function(rfi){
             submitRfi.$add(rfi);

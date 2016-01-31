@@ -170,11 +170,15 @@ angular.module('myApp.services', [])
         getRfisByProject: function(projectId){
             return projectRfi.$child(projectId).$child('rfi');
         },
-        updateRfi: function(rfiId, rfi){
-            requestForInformation.$child(rfiId).$set(rfi);
+        updateRfi: function(rfiId, rfi, projectId){
+//            console.log(rfiId);
+//            console.log(rfi);
+//            console.log(projectId);
+            projectRfi.$child(projectId).$child('rfi').$child(rfiId).$set(rfi);
         },
         deleteRfi: function(rfi){
-            requestForInformation.$remove(rfi.$id);
+            console.log(rfi.$id);
+            //requestForInformation.$remove(rfi.$id);
         },
         submitRfi: function(rfi){
             submitRfi.$add(rfi);

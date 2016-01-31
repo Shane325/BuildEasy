@@ -135,22 +135,20 @@ angular.module('myApp.controllers', [])
     
     //Bind RFI's to the scope so I can display them for the user
     $scope.requestForInformation = rfiService.getRfisByProject($scope.projectId);
-    $scope.rfiCount = $scope.requestForInformation.length;
-    console.log('length: '+ $scope.rfiCount);
+    
     //Edit rfi function
-    $scope.editRfi = function(rfi){
+    $scope.editRfi = function(rfiId, rfi){
         //convert date string into correct format 
         var newDate = new Date(rfi.date);
         
         $scope.rfiTemp = {rfiNumber:rfi.rfiNumber, date: newDate, project: rfi.project, to: rfi.to, cc:rfi.cc, requestedBy: rfi.requestedBy, subject: rfi.subject, contractorQuestion: rfi.contractorQuestion, contractorSuggestion:rfi.contractorSuggestion, isChange:rfi.isChange};
-        $scope.rfiId = rfi.$id;
+        $scope.rfiId = rfiId;
 
     };
     
     //update rfi object
     $scope.updateRfi = function(){
-
-        rfiService.updateRfi($scope.rfiId, $scope.rfiTemp);
+        rfiService.updateRfi($scope.rfiId, $scope.rfiTemp, $scope.projectId);
     };
     
     //delete rfi object
@@ -162,12 +160,6 @@ angular.module('myApp.controllers', [])
     $scope.submitRfi = function(rfi){
         rfiService.submitRfi(rfi);  
     };
-    
-    //count rfi objects
-//    $scope.rfiCount = function(){
-//        var rfiCount = $scope.requestForInformation.length;
-//        console.log(rfiCount);  
-//    };
 
 }])
 .controller('EmployeeController', ['$scope', 'employeeService', 'alertService', function($scope, employeeService, alertService){

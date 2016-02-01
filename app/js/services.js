@@ -143,11 +143,11 @@ angular.module('myApp.services', [])
 	return projectServiceObject;
 })
 .factory('dailyReportsService', function(dataService, $location){
-	var dailyReports = dataService.$child('dailyReports');
+	var projectDailyReport = dataService.$child('projectDailyReport');
 
 	var dailyReportsServiceObject = {
-		saveDailyReport: function(dailyReport){
-			dailyReports.$add(dailyReport);
+		saveDailyReport: function(dailyReport, projectId){
+			projectDailyReport.$child(projectId).$child('dailyReport').$add(dailyReport);
 		}
 	};
 
@@ -189,9 +189,11 @@ angular.module('myApp.services', [])
 	return rfiServiceObject;
 })
 .factory('employeeService', function(dataService, alertService, $location, $timeout){
+    var projectEmployee = dataService.$child('projectEmployee');
     
     //get employees data route
-    var employees = dataService.$child('employees');
+//    var employees = dataService.$child('employees');
+    
     
     //onComplete method
     var onComplete = function(error, type) {
@@ -209,17 +211,17 @@ angular.module('myApp.services', [])
     };
     
 	var employeeServiceObject = {
-		saveNewEmployee: function(employee){
-			employees.$add(employee, onComplete(null, 'save'));
+		saveNewEmployee: function(employee, projectId){
+            projectEmployee.$child(projectId).$child('employee').$add(employee, onComplete(null, 'save'));
 		},
-        getEmployees: function(){
-            return employees;
+        getEmployeesByProject: function(projectId){
+            return projectEmployee.$child(projectId).$child('employee');
         },
-        updateEmployee: function(empId, employee){
-            employees.$child(empId).$set(employee, onComplete(null, 'save'));
+        updateEmployee: function(empId, employee, projectId){
+            projectEmployee.$child(projectId).$child('employee').$child(empId).$set(employee, onComplete(null, 'save'));
         },
-        deleteEmployee: function(employee){
-            employees.$remove(employee.$id, onComplete(null, 'delete'));
+        deleteEmployee: function(employee, projectId){
+            projectEmployee.$child(projectId).$child('employee').$remove(employee.$id, onComplete(null, 'delete'));
         }
 	};
     

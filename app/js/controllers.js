@@ -58,9 +58,19 @@ angular.module('myApp.controllers', [])
         } 
     });
     
+    //navigate to the rfi page
     $scope.selectRfis = function(projectId){
-//        console.log(projectId);
         $location.path('/rfi_list/' + projectId);  
+    };
+    
+    //navigate to the daily report page
+    $scope.selectDailyReport = function(projectId){
+        $location.path('/daily_report_list/' + projectId);  
+    };
+    
+    //navigate to the employee page
+    $scope.selectEmployees = function(projectId){
+        $location.path('/employees/' + projectId);  
     };
     
 }])
@@ -90,14 +100,17 @@ angular.module('myApp.controllers', [])
   	};
 
 }])
-.controller('DailyReportsController', ['$scope', 'dailyReportsService',function($scope, dailyReportsService) {
-
+.controller('DailyReportsController', ['$scope', '$routeParams', '$location', 'dailyReportsService', function($scope, $routeParams, $location, dailyReportsService) {
+    
+    //capture the routeparams variable
+    $scope.projectId = $routeParams.projectId;
+    
 	//Object to store data from the Daily reports form
 	$scope.newDailyReport = {date: '', project:'', jobNumber: '', crew: '', foreman: '', operators: '', laborers: '', other: '', equipment: '', subcontractors:'', workPerformed: '', extraWorkPerformed: '', otherNotes: ''};
 
 	//function to save a new Daily Report
 	$scope.saveDailyReport = function(){
-		dailyReportsService.saveDailyReport($scope.newDailyReport);
+		dailyReportsService.saveDailyReport($scope.newDailyReport, $scope.projectId);
 		$scope.newDailyReport = {date: '', project:'', jobNumber: '', crew: '', foreman: '', operators: '', laborers: '', other: '', equipment: '', subcontractors:'', workPerformed: '', extraWorkPerformed: '', otherNotes: ''};
 	};
     
@@ -106,6 +119,11 @@ angular.module('myApp.controllers', [])
         $scope.newDailyReport = {date: '', project:'', jobNumber: '', crew: '', foreman: '', operators: '', laborers: '', other: '', equipment: '', subcontractors:'', workPerformed: '', extraWorkPerformed: '', otherNotes: ''};
     };
 
+    //function to navigate from daily report list to daily report form
+    $scope.goToDailyReportPage = function(){
+        $location.path('/daily_reports/' + $scope.projectId);  
+    };
+    
 }])
 .controller('RequestForInfoController', ['$scope', '$routeParams', '$location', 'rfiService', function($scope, $routeParams, $location, rfiService){
 
@@ -162,14 +180,17 @@ angular.module('myApp.controllers', [])
     };
 
 }])
-.controller('EmployeeController', ['$scope', 'employeeService', 'alertService', function($scope, employeeService, alertService){
+.controller('EmployeeController', ['$scope', '$routeParams', 'employeeService', 'alertService', function($scope, $routeParams, employeeService, alertService){
+    
+    //get projectId from route params variable
+    $scope.projectId = $routeParams.projectId;
 
 	//Object to store new employee details
 	$scope.newEmployee = {firstName: '', lastName: '', phone: '', email: '', rate: ''};
 
 	//function to save a new employee
 	$scope.saveNewEmployee = function(){
-		employeeService.saveNewEmployee($scope.newEmployee);
+		employeeService.saveNewEmployee($scope.newEmployee, $scope.projectId);
 		$scope.newEmployee = {firstName: '', lastName: '', phone: '', email: '', rate: ''};
 	};
     
@@ -180,7 +201,7 @@ angular.module('myApp.controllers', [])
     };
 
     //Bind employees to $scope so I can show them on the employee page
-    $scope.employees = employeeService.getEmployees();
+    $scope.employees = employeeService.getEmployeesByProject($scope.projectId);
 
     $scope.editEmployee = function(employee){
         
@@ -189,11 +210,11 @@ angular.module('myApp.controllers', [])
     };
     
     $scope.updateEmployee = function(){
-        employeeService.updateEmployee($scope.employeeId, $scope.employeeTemp);
+        employeeService.updateEmployee($scope.employeeId, $scope.employeeTemp, $scope.projectId);
     };
     
     $scope.deleteEmployee = function(employee){
-        employeeService.deleteEmployee(employee);  
+        employeeService.deleteEmployee(employee, $scope.projectId);  
     };
 
 

@@ -28,7 +28,7 @@ config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/projects.html',
     controller: 'ProjectsController'
   });
-  $routeProvider.when('/daily_reports', {
+  $routeProvider.when('/daily_reports/:projectId', {
     templateUrl: 'partials/daily_reports.html',
     controller: 'DailyReportsController'
   });
@@ -44,7 +44,7 @@ config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/home_page.html',
     controller: 'HomeController'
   });
-  $routeProvider.when('/employees', {
+  $routeProvider.when('/employees/:projectId', {
     templateUrl: 'partials/employees.html',
     controller: 'EmployeeController'
   });
@@ -59,6 +59,10 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/welcome', {
     templateUrl: 'partials/welcome.html',
     controller: 'WelcomeController'
+  });
+  $routeProvider.when('/daily_report_list/:projectId', {
+    templateUrl: 'partials/daily_report_list.html',
+    controller: 'DailyReportsController'
   });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

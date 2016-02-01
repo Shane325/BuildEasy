@@ -151,6 +151,9 @@ angular.module('myApp.services', [])
 		},
         getDailyReportByProject: function(projectId){
             return projectDailyReport.$child(projectId).$child('dailyReport');
+        },
+        updateDailyReport: function(dailyReportId, dailyReport, projectId){
+            projectDailyReport.$child(projectId).$child('dailyReport').$child(dailyReportId).$set(dailyReport);
         }
 	};
 

@@ -114,14 +114,22 @@ angular.module('myApp.controllers', [])
 		$scope.newDailyReport = {date: '', project:'', jobNumber: '', crew: '', foreman: '', operators: '', laborers: '', other: '', equipment: '', subcontractors:'', workPerformed: '', extraWorkPerformed: '', otherNotes: ''};
 	};
     
+    //function that populates daily report modal
     $scope.editDailyReport = function(dailyReportId, dailyReport){
         
-        $scope.dailyReportTemp = {date: dailyReport.date, project:dailyReport.project, jobNumber: dailyReport.jobNumber, crew: dailyReport.crew, foreman: dailyReport.foreman, operators: dailyReport.operators, laborers: dailyReport.laborers, other: dailyReport.other, equipment: dailyReport.equipment, subcontractors: dailyReport.subcontractors, workPerformed: dailyReport.workPerformed, extraWorkPerformed: dailyReport.extraWorkPerformed, otherNotes: dailyReport.otherNotes};
+        var newDate = new Date(dailyReport.date);
+        
+        $scope.dailyReportTemp = {date: newDate, project:dailyReport.project, jobNumber: dailyReport.jobNumber, crew: dailyReport.crew, foreman: dailyReport.foreman, operators: dailyReport.operators, laborers: dailyReport.laborers, other: dailyReport.other, equipment: dailyReport.equipment, subcontractors: dailyReport.subcontractors, workPerformed: dailyReport.workPerformed, extraWorkPerformed: dailyReport.extraWorkPerformed, otherNotes: dailyReport.otherNotes};
         
         $scope.dailyReportId = dailyReportId;
         
         console.log($scope.dailyReportTemp);
         console.log($scope.dailyReportId);
+    };
+    
+    //function to update changes to a daily report
+    $scope.updateDailyReport = function(){
+        dailyReportsService.updateDailyReport($scope.dailyReportId, $scope.dailyReportTemp, $scope.projectId);  
     };
     
     //function to clear the form

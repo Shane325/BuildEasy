@@ -1,4 +1,8 @@
 <div class="container">
     <h2>Daily Report List</h2>
     <button ng-click="goToDailyReportPage()" type="button" class="btn btn-default">Add</button>
+    
+    <div class="list-group" ng-repeat="dailyReport in dailyReports">
+        <button type="button" class="list-group-item">{{ dailyReport.date | date : medium }}</button>
+    </div>
 </div>

@@ -148,7 +148,10 @@ angular.module('myApp.services', [])
 	var dailyReportsServiceObject = {
 		saveDailyReport: function(dailyReport, projectId){
 			projectDailyReport.$child(projectId).$child('dailyReport').$add(dailyReport);
-		}
+		},
+        getDailyReportByProject: function(projectId){
+            return projectDailyReport.$child(projectId).$child('dailyReport');
+        }
 	};
 
 	return dailyReportsServiceObject;

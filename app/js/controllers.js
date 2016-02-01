@@ -124,6 +124,9 @@ angular.module('myApp.controllers', [])
         $location.path('/daily_reports/' + $scope.projectId);  
     };
     
+    //bind daily reports to scope for this project, so I can display them to the user
+    $scope.dailyReports = dailyReportsService.getDailyReportByProject($scope.projectId);
+    
 }])
 .controller('RequestForInfoController', ['$scope', '$routeParams', '$location', 'rfiService', function($scope, $routeParams, $location, rfiService){
 

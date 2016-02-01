@@ -114,6 +114,16 @@ angular.module('myApp.controllers', [])
 		$scope.newDailyReport = {date: '', project:'', jobNumber: '', crew: '', foreman: '', operators: '', laborers: '', other: '', equipment: '', subcontractors:'', workPerformed: '', extraWorkPerformed: '', otherNotes: ''};
 	};
     
+    $scope.editDailyReport = function(dailyReportId, dailyReport){
+        
+        $scope.dailyReportTemp = {date: dailyReport.date, project:dailyReport.project, jobNumber: dailyReport.jobNumber, crew: dailyReport.crew, foreman: dailyReport.foreman, operators: dailyReport.operators, laborers: dailyReport.laborers, other: dailyReport.other, equipment: dailyReport.equipment, subcontractors: dailyReport.subcontractors, workPerformed: dailyReport.workPerformed, extraWorkPerformed: dailyReport.extraWorkPerformed, otherNotes: dailyReport.otherNotes};
+        
+        $scope.dailyReportId = dailyReportId;
+        
+        console.log($scope.dailyReportTemp);
+        console.log($scope.dailyReportId);
+    };
+    
     //function to clear the form
     $scope.clearNewDailyReport = function(){
         $scope.newDailyReport = {date: '', project:'', jobNumber: '', crew: '', foreman: '', operators: '', laborers: '', other: '', equipment: '', subcontractors:'', workPerformed: '', extraWorkPerformed: '', otherNotes: ''};

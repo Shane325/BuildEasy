@@ -103,6 +103,21 @@ angular.module('myApp.services', [])
 
 	return authServiceObject;
 })
+.factory('navService', function($location){
+    var navServiceObject = {
+        goToDashboard: function(projectId){
+            $location.path('/home_page/' + projectId);  
+        },
+        goToRfiList: function(projectId){
+            $location.path('/rfi_list/' + projectId);
+        },
+        goToRfi: function(projectId){
+            $location.path('/rfi/' + projectId);
+        }
+    };
+    
+    return navServiceObject;
+})
 .factory('welcomeService', function(dataService){
     
     var userInfoPath = dataService.$child('userInfo');

@@ -146,7 +146,7 @@ angular.module('myApp.controllers', [])
     $scope.dailyReports = dailyReportsService.getDailyReportByProject($scope.projectId);
     
 }])
-.controller('RequestForInfoController', ['$scope', '$routeParams', '$location', 'rfiService', function($scope, $routeParams, $location, rfiService){
+.controller('RequestForInfoController', ['$scope', '$routeParams', '$location', 'rfiService', 'navService', function($scope, $routeParams, $location, rfiService, navService){
     
     //get todays date for the date input field on the rfi form
 //    var date = new Date();
@@ -163,11 +163,6 @@ angular.module('myApp.controllers', [])
 	//Object to store data from the rfi form
 	$scope.newRfi = {rfiNumber:'', date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};
     
-    // function to navigate from rfi_list to rfi page
-    $scope.goToRfiPage = function(){
-        $location.path('/rfi/' + $scope.projectId);
-    }
-
 	//function to save a new Rfi
 	$scope.saveRfi = function(){
         //console.log($scope.newRfi);
@@ -206,6 +201,19 @@ angular.module('myApp.controllers', [])
     //submit email rfi
     $scope.submitRfi = function(rfi){
         rfiService.submitRfi(rfi);  
+    };
+    
+    // navigation functions
+    $scope.goToRfiList = function(){
+        navService.goToRfiList($scope.projectId);
+    };
+    
+    $scope.goToRfi = function(){
+        navService.goToRfi($scope.projectId);
+    };
+
+    $scope.goToDashboard = function(){
+        navService.goToDashboard($scope.projectId);
     };
 
 }])

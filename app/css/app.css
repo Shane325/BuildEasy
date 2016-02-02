@@ -46,7 +46,7 @@ fieldset {
     width:200px;
 /*    height:200px;*/
 }
-.dashboard {
+.inner-container {
     margin:auto;
     width:80%;
     padding:20px;

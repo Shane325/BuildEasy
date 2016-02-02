@@ -1,8 +1,8 @@
 <div class="container">
     <div class="inner-container">
         <ol class="breadcrumb">
-          <li><a href="#">Project</a></li>
-          <li><a href="#">Dashboard</a></li>
+          <li><a href="#/projects">Project</a></li>
+          <li><a href="" ng-click="goToDashboard()">Dashboard</a></li>
           <li class="active">Rfi</li>
         </ol>
         <h2>Request for Information</h2>
@@ -19,7 +19,7 @@
           <div class="panel-body">{{ rfi.subject }}</div>
         </div>
         <div>
-            <button ng-click="goToRfiPage()" type="button" class="btn btn-primary">Add</button>
+            <button ng-click="goToRfi()" type="button" class="btn btn-primary">Add</button>
         </div>
     </div>
 </div>

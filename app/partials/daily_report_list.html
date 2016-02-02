@@ -1,12 +1,12 @@
 <div class="container">
     <div class="inner-container">
         <ol class="breadcrumb">
-          <li><a href="#">Project</a></li>
-          <li><a href="#">Dashboard</a></li>
-          <li class="active">Daily Reports</li>
+          <li><a href="#/projects">Project</a></li>
+          <li><a href="#" ng-click="goToDashboard()">Dashboard</a></li>
+          <li class="active">Daily Report</li>
         </ol>
         <h2>Daily Report List</h2>
-        <div class="panel panel-default" ng-repeat="($id, dailyReport) in dailyReports track by $index">
+        <div class="panel panel-default" ng-repeat="($id, dailyReport) in dailyReports track by $index" style="width:150px;">
             <div class="panel-body">
                 <button ng-click="editDailyReport($id, dailyReport)" type="button" class="btn btn-link" data-toggle="modal" data-target="#dailyReportModal">{{ dailyReport.date | date: medium }}</button>
             </div>
@@ -18,44 +18,24 @@
 <!--Modal Code-->
 <div class="modal fade" id="dailyReportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content modal-daily">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">{{ dailyReportTemp.date | date : medium }}</h4>
+                <h4 class="modal-title" id="myModalLabel"> Edit Daily Report: {{ dailyReportTemp.date | date : medium }}</h4>
             </div>
             <div class="modal-body">
                 <div class="container">
                     <div class="form-horizontal">
                         <div class="row">
                             <div class="form-group">
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <label class="sr-only" for="date">Date</label>
                                     <input ng-model="dailyReportTemp.date" type="date" class="form-control" id="date" placeholder="Date"/>
                                 </div>
-                                <div class="col-md-2 col-md-offset-2">
-                                    <label class="sr-only" for="crew">Crew</label>
-                                    <input ng-model="dailyReportTemp.crew" type="text" class="form-control" id="crew" placeholder="Crew"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-2">
-                                    <label class="sr-only" for="project">Project</label>
-                                    <input ng-model="dailyReportTemp.project" type="text" class="form-control" id="project" placeholder="Project"/>
-                                </div>
-                                <div class="col-md-2 col-md-offset-2">
+                                <div class="col-md-2 col-md-offset-1">
                                     <label class="sr-only" for="foreman">Foreman</label>
                                     <input ng-model="dailyReportTemp.foreman" type="text" class="form-control" id="foreman" placeholder="Foreman"/>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-2">
-                                    <label class="sr-only" for="jobNumber">Job Number</label>
-                                    <input ng-model="dailyReportTemp.jobNumber" type="text" class="form-control" id="jobNumber" placeholder="Job Number"/>
-                                </div>
-                                <div class="col-md-2 col-md-offset-2">
+                                <div class="col-md-2 col-md-offset-.5">
                                     <label class="sr-only" for="operators">Operators</label>
                                     <input ng-model="dailyReportTemp.operators" type="text" class="form-control" id="operators" placeholder="Operators"/>
                                 </div>
@@ -63,15 +43,15 @@
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <div class="col-md-2 col-md-offset-4">
+                                <div class="col-md-3">
+                                    <label class="sr-only" for="project">Project</label>
+                                    <input ng-model="dailyReportTemp.project" type="text" class="form-control" id="project" placeholder="Project"/>
+                                </div>
+                                <div class="col-md-2 col-md-offset-1">
                                     <label class="sr-only" for="laborers">Laborers</label>
                                     <input ng-model="dailyReportTemp.laborers" type="text" class="form-control" id="laborers" placeholder="Laborers"/>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-2 col-md-offset-4">
+                                <div class="col-md-2 col-md-offset-.5">
                                     <label class="sr-only" for="other">Other</label>
                                     <input ng-model="dailyReportTemp.other" type="text" class="form-control" id="other" placeholder="Other"/>
                                 </div>
@@ -79,15 +59,23 @@
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <div class="col-md-6">
-                                    <label class="sr-only" for="equipment">Equipment</label>
-                                    <textarea ng-model="dailyReportTemp.equipment" class="form-control" rows="3" id="equipment" placeholder="Equipment"/>
+                                <div class="col-md-3">
+                                    <label class="sr-only" for="jobNumber">Job Number</label>
+                                    <input ng-model="dailyReportTemp.jobNumber" type="text" class="form-control" id="jobNumber" placeholder="Job Number"/>
+                                </div>
+                                <div class="col-md-2 col-md-offset-3">
+                                    <label class="sr-only" for="crew">Crew</label>
+                                    <input ng-model="dailyReportTemp.crew" type="text" class="form-control" id="crew" placeholder="Crew"/>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <label class="sr-only" for="equipment">Equipment</label>
+                                    <textarea ng-model="dailyReportTemp.equipment" class="form-control" rows="3" id="equipment" placeholder="Equipment"/>
+                                </div>
+                                <div class="col-md-4 col-md-offset-.5">
                                     <label class="sr-only" for="subcontractors">Subcontractors</label>
                                     <textarea ng-model="dailyReportTemp.subcontractors" class="form-control" rows="3" id="subcontractors" placeholder="Subcontractors"/>
                                 </div>
@@ -95,23 +83,23 @@
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <label class="sr-only" for="workPerformed">Work Performed</label>
-                                    <textarea ng-model="dailyReportTemp.workPerformed" class="form-control" rows="3" id="workPerformed" placeholder="Work Performed"/>
+                                    <textarea ng-model="dailyReportTemp.workPerformed" class="form-control" rows="4" id="workPerformed" placeholder="Work Performed"/>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <label class="sr-only" for="extraWorkPerformed">Extra Work Performed</label>
-                                    <textarea ng-model="dailyReportTemp.extraWorkPerformed" class="form-control" rows="3" id="extraWorkPerformed" placeholder="Extra Work Performed"/>
+                                    <textarea ng-model="dailyReportTemp.extraWorkPerformed" class="form-control" rows="4" id="extraWorkPerformed" placeholder="Extra Work Performed"/>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <label class="sr-only" for="otherNotes">Other Notes</label>
                                     <textarea ng-model="dailyReportTemp.otherNotes" class="form-control" rows="3" id="otherNotes" placeholder="Other Notes"/>
                                 </div>

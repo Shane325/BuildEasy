@@ -147,7 +147,16 @@ angular.module('myApp.controllers', [])
     
 }])
 .controller('RequestForInfoController', ['$scope', '$routeParams', '$location', 'rfiService', function($scope, $routeParams, $location, rfiService){
-
+    
+    //get todays date for the date input field on the rfi form
+//    var date = new Date();
+//    var day = date.getDate();
+//    var month = date.getMonth() + 1;
+//    var year = date.getFullYear();
+//    if (month < 10) month = "0" + month;
+//    if (day < 10) day = "0" + day;
+//    $scope.today = new Date(year, month, day);
+    
     //test the routeParams object
     $scope.projectId = $routeParams.projectId;
     
@@ -161,7 +170,6 @@ angular.module('myApp.controllers', [])
 
 	//function to save a new Rfi
 	$scope.saveRfi = function(){
-		
         //console.log($scope.newRfi);
         rfiService.saveRfi($scope.newRfi, $scope.projectId);
 		$scope.newRfi = {rfiNumber:'', date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};

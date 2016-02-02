@@ -1,19 +1,26 @@
 <div class="container">
-    <h2>Request for Information</h2>
-    <div class="panel panel-default" ng-repeat="($id, rfi) in requestForInformation track by $index | orderBy: 'date'">
-      <div class="panel-heading clearfix">
-        <h3 class="panel-title">RFI #: {{ rfi.rfiNumber }} {{ rfi.date | date:'fullDate' }}
-        <div class="pull-right">
-            <button ng-click="editRfi($id, rfi)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#rfiModal">Edit</button>
-            <button ng-click="submitRfi(rfi)"type="button" class="btn btn-primary">Send</button>
-            <button ng-click="deleteRfi($id)" type="button" class="btn btn-danger">Delete</button>  
+    <div class="inner-container">
+        <ol class="breadcrumb">
+          <li><a href="#">Project</a></li>
+          <li><a href="#">Dashboard</a></li>
+          <li class="active">Rfi</li>
+        </ol>
+        <h2>Request for Information</h2>
+        <div class="panel panel-default" ng-repeat="($id, rfi) in requestForInformation track by $index | orderBy: 'date'">
+          <div class="panel-heading clearfix">
+            <h3 class="panel-title">RFI #: {{ rfi.rfiNumber }} {{ rfi.date | date:'fullDate' }}
+            <div class="pull-right">
+                <button ng-click="editRfi($id, rfi)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#rfiModal">Edit</button>
+                <button ng-click="submitRfi(rfi)"type="button" class="btn btn-primary">Send</button>
+                <button ng-click="deleteRfi($id)" type="button" class="btn btn-danger">Delete</button>  
+            </div>
+            </h3>  
+          </div>
+          <div class="panel-body">{{ rfi.subject }}</div>
         </div>
-        </h3>  
-      </div>
-      <div class="panel-body">{{ rfi.subject }}</div>
-    </div>
-    <div>
-        <button ng-click="goToRfiPage()" type="button" class="btn btn-primary">Add</button>
+        <div>
+            <button ng-click="goToRfiPage()" type="button" class="btn btn-primary">Add</button>
+        </div>
     </div>
 </div>
 

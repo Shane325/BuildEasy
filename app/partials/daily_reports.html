@@ -1,104 +1,106 @@
 <div class="container">
-    <form ng-submit="saveDailyReport()" class="form-horizontal" role="form">
-        <div class="row">
-            <h2 style="padding-bottom:20px;">Submit a Daily Report</h2>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-2">
-                    <label class="sr-only" for="date">Date</label>
-                    <input ng-model="newDailyReport.date" type="date" class="form-control" id="date" placeholder="Date"/>
-                </div>
-                <div class="col-md-2 col-md-offset-2">
-                    <label class="sr-only" for="crew">Crew</label>
-                    <input ng-model="newDailyReport.crew" type="text" class="form-control" id="crew" placeholder="Crew"/>
+    <div class="inner-container">
+        <form ng-submit="saveDailyReport()" class="form-horizontal" role="form">
+            <div class="row">
+                <h2 style="padding-bottom:20px;">Submit a Daily Report</h2>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label class="sr-only" for="date">Date</label>
+                        <input ng-model="newDailyReport.date" type="date" class="form-control" id="date" placeholder="Date"/>
+                    </div>
+                    <div class="col-md-2 col-md-offset-2">
+                        <label class="sr-only" for="crew">Crew</label>
+                        <input ng-model="newDailyReport.crew" type="text" class="form-control" id="crew" placeholder="Crew"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-2">
-                    <label class="sr-only" for="project">Project</label>
-                    <input ng-model="newDailyReport.project" type="text" class="form-control" id="project" placeholder="Project"/>
-                </div>
-                <div class="col-md-2 col-md-offset-2">
-                    <label class="sr-only" for="foreman">Foreman</label>
-                    <input ng-model="newDailyReport.foreman" type="text" class="form-control" id="foreman" placeholder="Foreman"/>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-2">
-                    <label class="sr-only" for="jobNumber">Job Number</label>
-                    <input ng-model="newDailyReport.jobNumber" type="text" class="form-control" id="jobNumber" placeholder="Job Number"/>
-                </div>
-                <div class="col-md-2 col-md-offset-2">
-                    <label class="sr-only" for="operators">Operators</label>
-                    <input ng-model="newDailyReport.operators" type="text" class="form-control" id="operators" placeholder="Operators"/>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label class="sr-only" for="project">Project</label>
+                        <input ng-model="newDailyReport.project" type="text" class="form-control" id="project" placeholder="Project"/>
+                    </div>
+                    <div class="col-md-2 col-md-offset-2">
+                        <label class="sr-only" for="foreman">Foreman</label>
+                        <input ng-model="newDailyReport.foreman" type="text" class="form-control" id="foreman" placeholder="Foreman"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-2 col-md-offset-4">
-                    <label class="sr-only" for="laborers">Laborers</label>
-                    <input ng-model="newDailyReport.laborers" type="text" class="form-control" id="laborers" placeholder="Laborers"/>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label class="sr-only" for="jobNumber">Job Number</label>
+                        <input ng-model="newDailyReport.jobNumber" type="text" class="form-control" id="jobNumber" placeholder="Job Number"/>
+                    </div>
+                    <div class="col-md-2 col-md-offset-2">
+                        <label class="sr-only" for="operators">Operators</label>
+                        <input ng-model="newDailyReport.operators" type="text" class="form-control" id="operators" placeholder="Operators"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-2 col-md-offset-4">
-                    <label class="sr-only" for="other">Other</label>
-                    <input ng-model="newDailyReport.other" type="text" class="form-control" id="other" placeholder="Other"/>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-2 col-md-offset-4">
+                        <label class="sr-only" for="laborers">Laborers</label>
+                        <input ng-model="newDailyReport.laborers" type="text" class="form-control" id="laborers" placeholder="Laborers"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-6">
-                    <label class="sr-only" for="equipment">Equipment</label>
-                    <textarea ng-model="newDailyReport.equipment" class="form-control" rows="3" id="equipment" placeholder="Equipment"/>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-2 col-md-offset-4">
+                        <label class="sr-only" for="other">Other</label>
+                        <input ng-model="newDailyReport.other" type="text" class="form-control" id="other" placeholder="Other"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-6">
-                    <label class="sr-only" for="subcontractors">Subcontractors</label>
-                    <textarea ng-model="newDailyReport.subcontractors" class="form-control" rows="3" id="subcontractors" placeholder="Subcontractors"/>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <label class="sr-only" for="equipment">Equipment</label>
+                        <textarea ng-model="newDailyReport.equipment" class="form-control" rows="3" id="equipment" placeholder="Equipment"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-6">
-                    <label class="sr-only" for="workPerformed">Work Performed</label>
-                    <textarea ng-model="newDailyReport.workPerformed" class="form-control" rows="3" id="workPerformed" placeholder="Work Performed"/>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <label class="sr-only" for="subcontractors">Subcontractors</label>
+                        <textarea ng-model="newDailyReport.subcontractors" class="form-control" rows="3" id="subcontractors" placeholder="Subcontractors"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-6">
-                    <label class="sr-only" for="extraWorkPerformed">Extra Work Performed</label>
-                    <textarea ng-model="newDailyReport.extraWorkPerformed" class="form-control" rows="3" id="extraWorkPerformed" placeholder="Extra Work Performed"/>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <label class="sr-only" for="workPerformed">Work Performed</label>
+                        <textarea ng-model="newDailyReport.workPerformed" class="form-control" rows="3" id="workPerformed" placeholder="Work Performed"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-6">
-                    <label class="sr-only" for="otherNotes">Other Notes</label>
-                    <textarea ng-model="newDailyReport.otherNotes" class="form-control" rows="3" id="otherNotes" placeholder="Other Notes"/>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <label class="sr-only" for="extraWorkPerformed">Extra Work Performed</label>
+                        <textarea ng-model="newDailyReport.extraWorkPerformed" class="form-control" rows="3" id="extraWorkPerformed" placeholder="Extra Work Performed"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <button type="submit" class="btn btn-primary">Add</button>
-            <button ng-click="clearNewDailyReport()" type="button" class="btn btn-default">Clear</button>
-            <a href="javascript:history.back()" class="btn btn-default" role="button">Go Back</a>
-        </div>
-    </form>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <label class="sr-only" for="otherNotes">Other Notes</label>
+                        <textarea ng-model="newDailyReport.otherNotes" class="form-control" rows="3" id="otherNotes" placeholder="Other Notes"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-primary">Add</button>
+                <button ng-click="clearNewDailyReport()" type="button" class="btn btn-default">Clear</button>
+                <a href="javascript:history.back()" class="btn btn-default" role="button">Go Back</a>
+            </div>
+        </form>
+    </div>
 </div>

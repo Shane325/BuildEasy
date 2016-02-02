@@ -1,16 +1,18 @@
 <div class="container">
-    <ol class="breadcrumb">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Library</a></li>
-      <li class="active">Data</li>
-    </ol>
-    <h2>Daily Report List</h2>
-    <div class="panel panel-default" ng-repeat="($id, dailyReport) in dailyReports track by $index">
-        <div class="panel-body">
-            <button ng-click="editDailyReport($id, dailyReport)" type="button" class="btn btn-link" data-toggle="modal" data-target="#dailyReportModal">{{ dailyReport.date | date: medium }}</button>
+    <div class="inner-container">
+        <ol class="breadcrumb">
+          <li><a href="#">Project</a></li>
+          <li><a href="#">Dashboard</a></li>
+          <li class="active">Daily Reports</li>
+        </ol>
+        <h2>Daily Report List</h2>
+        <div class="panel panel-default" ng-repeat="($id, dailyReport) in dailyReports track by $index">
+            <div class="panel-body">
+                <button ng-click="editDailyReport($id, dailyReport)" type="button" class="btn btn-link" data-toggle="modal" data-target="#dailyReportModal">{{ dailyReport.date | date: medium }}</button>
+            </div>
         </div>
+        <button ng-click="goToDailyReportPage()" type="button" class="btn btn-default">Add</button>
     </div>
-    <button ng-click="goToDailyReportPage()" type="button" class="btn btn-default">Add</button>
 </div>
 
 <!--Modal Code-->

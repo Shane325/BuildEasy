@@ -1,73 +1,77 @@
 <div class="container">
-    <form ng-submit="saveRfi()" class="form-horizontal" role="form" name="rfiForm">
-        <div class="row">
-            <h2 style="padding-bottom:20px;">Submit a Request For Information</h2>
-        </div>    
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-3">
-                    <label class="sr-only" for="to">To</label>
-                    <input ng-model="newRfi.to" type="email" class="form-control" id="to" placeholder="To (email address)"/>
-                </div>
-                <div class="col-md-3 col-md-offset-2">
-                    <label class="sr-only" for="date">Date</label>
-                    <input ng-model="newRfi.date" type="date" class="form-control" id="date" placeholder="Date"/>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-3">
-                    <label class="sr-only" for="cc">CC</label>
-                    <input ng-model="newRfi.cc" type="email" class="form-control" id="to" placeholder="CC (email address)"/>
-                </div>
-                <div class="col-md-3 col-md-offset-2">
-                    <label class="sr-only" for="project">Project</label>
-                    <input ng-model="newRfi.project" name="project" type="text" class="form-control" id="project" placeholder="Project"/>
+    <div class="inner-container">
+        <form ng-submit="saveRfi()" class="form-horizontal" role="form" name="rfiForm">
+            <div class="row">
+                <h2 style="padding-bottom:20px;">Submit a Request For Information</h2>
+            </div>    
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label class="sr-only" for="to">To</label>
+                        <input ng-model="newRfi.to" type="email" class="form-control" id="to" placeholder="To (email address)"/>
+                    </div>
+                    <div class="col-md-3 col-md-offset-3">
+                        <label class="sr-only" for="date">Date</label>
+                        <input ng-model="newRfi.date" type="date" class="form-control" id="date" placeholder="Date"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-3">
-                    <label class="sr-only" for="requestedBy">Requested By</label>
-                    <input ng-model="newRfi.requestedBy" type="text" class="form-control" id="requestedBy" placeholder="Requested By"/>
-                </div>
-                <div class="col-md-3 col-md-offset-2">
-                    <label class="sr-only" for="subject">Subject</label>
-                    <input ng-model="newRfi.subject" type="text" class="form-control" id="subject" placeholder="Subject"/>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="padding-top:40px;">
-            <div class="form-group">
-                <div class="col-md-8">
-                    <label class="sr-only" for="contractorQuestion">Contractor Question</label>
-                    <textarea ng-model="newRfi.contractorQuestion" class="form-control" rows="5" id="contractorQuestion" placeholder="Contractor Question"/>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label class="sr-only" for="cc">CC</label>
+                        <input ng-model="newRfi.cc" type="email" class="form-control" id="to" placeholder="CC (email address)"/>
+                    </div>
+                    <div class="col-md-3 col-md-offset-3">
+                        <label class="sr-only" for="project">Project</label>
+                        <input ng-model="newRfi.project" name="project" type="text" class="form-control" id="project" placeholder="Project"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-8">
-                    <label class="sr-only" for="contractorSuggestion">Contractor Suggestion</label>
-                    <textarea ng-model="newRfi.contractorSuggestion" class="form-control" rows="5" id="contractorSuggestion" placeholder="Contractor Suggestion"/>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label class="sr-only" for="requestedBy">Requested By</label>
+                        <input ng-model="newRfi.requestedBy" type="text" class="form-control" id="requestedBy" placeholder="Requested By"/>
+                    </div>
+                    <div class="col-md-3 col-md-offset-3">
+                        <label class="sr-only" for="subject">Subject</label>
+                        <input ng-model="newRfi.subject" type="text" class="form-control" id="subject" placeholder="Subject"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-3">
-                    Is the above a change?
-                    <label><input ng-model="newRfi.isChange" type="radio" name="isChange" value="Yes"/> Yes</label>
-                    <label><input ng-model="newRfi.isChange" type="radio" name="isChange" value="No"/> No</label>
+            <div class="row" style="padding-top:40px;">
+                <div class="form-group">
+                    <div class="col-md-9">
+                        <label class="sr-only" for="contractorQuestion">Contractor Question</label>
+                        <textarea ng-model="newRfi.contractorQuestion" class="form-control" rows="5" id="contractorQuestion" placeholder="Contractor Question"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <button type="submit" class="btn btn-primary">Add</button>
-            <button ng-click="clearNewRfi()" type="button" class="btn btn-default">Clear</button>
-            <a href="javascript:history.back()" class="btn btn-default" role="button">Go Back</a>
-        </div>
-    </form>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-9">
+                        <label class="sr-only" for="contractorSuggestion">Contractor Suggestion</label>
+                        <textarea ng-model="newRfi.contractorSuggestion" class="form-control" rows="5" id="contractorSuggestion" placeholder="Contractor Suggestion"/>
+                    </div>
+                </div>
+            </div>
+<!--
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        Is the above a change?
+                        <label><input ng-model="newRfi.isChange" type="radio" name="isChange" value="Yes"/> Yes</label>
+                        <label><input ng-model="newRfi.isChange" type="radio" name="isChange" value="No"/> No</label>
+                    </div>
+                </div>
+            </div>
+-->
+            <div class="row">
+                <button type="submit" class="btn btn-primary">Add</button>
+                <button ng-click="clearNewRfi()" type="button" class="btn btn-default">Clear</button>
+                <a href="javascript:history.back()" class="btn btn-default" role="button">Go Back</a>
+            </div>
+        </form>
+    </div>
 </div>

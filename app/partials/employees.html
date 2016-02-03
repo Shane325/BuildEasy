@@ -1,62 +1,65 @@
 <div class="container">
-    <ol class="breadcrumb">
-      <li><a href="#">Project</a></li>
-      <li><a href="#">Dashboard</a></li>
-      <li class="active">Employees</li>
-    </ol>
-<h3>Employees</h3>
-<table class="table">
-    <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Rate</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tr ng-repeat="employee in employees | orderByPriority">
-        <td>{{ employee.firstName }}</td>
-        <td>{{ employee.lastName }}</td>
-        <td>{{ employee.phone }}</td>
-        <td>{{ employee.email }}</td>
-        <td>{{ employee.rate }}</td>
-        <td>
-            <button ng-click="editEmployee(employee)" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Edit</button>
-            <button ng-click="deleteEmployee(employee)" type="button" class="btn btn-danger">Delete</button>
-        </td>
-    </tr>
-    <tr>
-<!--        TODO: Form Validation-->
-        <form>
-            <td>
-                <input type="text" ng-model="newEmployee.firstName" class="form-control" placeholder="First Name"/>    
-            </td>
-            <td>
-                <input ng-model="newEmployee.lastName" type="text" class="form-control" placeholder="Last Name" required/>
-            </td>
-            <td>
-                <input ng-model="newEmployee.phone" type="tel" class="form-control" placeholder="Phone Number"/>
-            </td>
-            <td>
-                <input ng-model="newEmployee.email" type="email" class="form-control" placeholder="Email"/>
-            </td>
-            <td>
-                <input ng-model="newEmployee.rate" type="currency" class="form-control" placeholder="Hourly Rate"/>
-            </td>
-            <td>
-                <button ng-click="saveNewEmployee()" type="submit" class="btn btn-success">Add</button>
-                <button ng-click="clearNewEmployee()" type="button" class="btn btn-default">Clear</button>
-            </td>
-        </form>
-    </tr>
-</table>
-<div ng-controller="AlertsController">
-    <alert-custom alert-object="alerts"></alert-custom>
-</div>
+    <div class="inner-container">
+        <ol class="breadcrumb">
+          <li><a href="#/projects">Project</a></li>
+          <li><a ng-click="goToDashboard()" href="">Dashboard</a></li>
+          <li class="active">Employees</li>
+        </ol>
+        <h3>Employees</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Rate</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="employee in employees | orderByPriority">
+                <td>{{ employee.firstName }}</td>
+                <td>{{ employee.lastName }}</td>
+                <td>{{ employee.phone }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.rate }}</td>
+                <td>
+                    <button ng-click="editEmployee(employee)" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Edit</button>
+                    <button ng-click="deleteEmployee(employee)" type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+            <tr>
+        <!--        TODO: Form Validation-->
+                <form>
+                    <td>
+                        <input type="text" ng-model="newEmployee.firstName" class="form-control" placeholder="First Name"/>    
+                    </td>
+                    <td>
+                        <input ng-model="newEmployee.lastName" type="text" class="form-control" placeholder="Last Name" required/>
+                    </td>
+                    <td>
+                        <input ng-model="newEmployee.phone" type="tel" class="form-control" placeholder="Phone Number"/>
+                    </td>
+                    <td>
+                        <input ng-model="newEmployee.email" type="email" class="form-control" placeholder="Email"/>
+                    </td>
+                    <td>
+                        <input ng-model="newEmployee.rate" type="currency" class="form-control" placeholder="Hourly Rate"/>
+                    </td>
+                    <td>
+                        <button ng-click="saveNewEmployee()" type="submit" class="btn btn-success">Add</button>
+                        <button ng-click="clearNewEmployee()" type="button" class="btn btn-default">Clear</button>
+                    </td>
+                </form>
+            </tr>
+        </table>
+        <div ng-controller="AlertsController">
+            <alert-custom alert-object="alerts"></alert-custom>
+        </div>
+    </div>
 </div>
 
+<!--Modal code-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

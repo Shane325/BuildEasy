@@ -1,5 +1,11 @@
 <div class="container">
     <div class="inner-container">
+        <ol class="breadcrumb">
+          <li><a href="#/projects">Project</a></li>
+          <li><a href="" ng-click="goToDashboard()">Dashboard</a></li>
+          <li><a href="" ng-click="goToDailyReportList()">Daily Report</a></li>
+          <li class="active">Add Daily Report</li>
+        </ol>
         <form ng-submit="saveDailyReport()" class="form-horizontal" role="form">
             <div class="row">
                 <h2 style="padding-bottom:20px;">Submit a Daily Report</h2>

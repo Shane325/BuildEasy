@@ -73,6 +73,11 @@ angular.module('myApp.controllers', [])
         $location.path('/employees/' + projectId);  
     };
     
+    //navigate to the timesheet page
+    $scope.selectTimesheet = function(projectId){
+        $location.path('/timesheet/' + projectId);
+    };
+    
 }])
 .controller('ProjectsController', ['$scope', 'projectService', 'authService', '$location', '$log', function($scope, projectService, authService, $location, $log) {   
     //Bind user projects to $scope.projects
@@ -100,7 +105,7 @@ angular.module('myApp.controllers', [])
   	};
 
 }])
-.controller('DailyReportsController', ['$scope', '$routeParams', '$location', 'dailyReportsService', function($scope, $routeParams, $location, dailyReportsService) {
+.controller('DailyReportsController', ['$scope', '$routeParams', '$location', 'dailyReportsService', 'navService', function($scope, $routeParams, $location, dailyReportsService, navService) {
     
     //capture the routeparams variable
     $scope.projectId = $routeParams.projectId;
@@ -127,6 +132,9 @@ angular.module('myApp.controllers', [])
         console.log($scope.dailyReportId);
     };
     
+    //bind daily reports to scope for this project, so I can display them to the user
+    $scope.dailyReports = dailyReportsService.getDailyReportByProject($scope.projectId);
+    
     //function to update changes to a daily report
     $scope.updateDailyReport = function(){
         dailyReportsService.updateDailyReport($scope.dailyReportId, $scope.dailyReportTemp, $scope.projectId);  
@@ -137,13 +145,18 @@ angular.module('myApp.controllers', [])
         $scope.newDailyReport = {date: '', project:'', jobNumber: '', crew: '', foreman: '', operators: '', laborers: '', other: '', equipment: '', subcontractors:'', workPerformed: '', extraWorkPerformed: '', otherNotes: ''};
     };
 
-    //function to navigate from daily report list to daily report form
+    //navigation functions
     $scope.goToDailyReportPage = function(){
         $location.path('/daily_reports/' + $scope.projectId);  
     };
     
-    //bind daily reports to scope for this project, so I can display them to the user
-    $scope.dailyReports = dailyReportsService.getDailyReportByProject($scope.projectId);
+    $scope.goToDashboard = function(){
+        navService.goToDashboard($scope.projectId);
+    };
+    
+    $scope.goToDailyReportList = function(){
+        navService.goToDailyReportList($scope.projectId);  
+    };
     
 }])
 .controller('RequestForInfoController', ['$scope', '$routeParams', '$location', 'rfiService', 'navService', function($scope, $routeParams, $location, rfiService, navService){
@@ -217,7 +230,7 @@ angular.module('myApp.controllers', [])
     };
 
 }])
-.controller('EmployeeController', ['$scope', '$routeParams', 'employeeService', 'alertService', function($scope, $routeParams, employeeService, alertService){
+.controller('EmployeeController', ['$scope', '$routeParams', 'employeeService', 'alertService', 'navService', function($scope, $routeParams, employeeService, alertService, navService){
     
     //get projectId from route params variable
     $scope.projectId = $routeParams.projectId;
@@ -253,11 +266,19 @@ angular.module('myApp.controllers', [])
     $scope.deleteEmployee = function(employee){
         employeeService.deleteEmployee(employee, $scope.projectId);  
     };
+    
+    // navigation functions
+    $scope.goToDashboard = function(){
+        navService.goToDashboard($scope.projectId);  
+    };
 
 
 }])
-.controller('TimesheetController', ['$scope', 'timesheetService', 'employeeService', function($scope, timesheetService, employeeService){
+.controller('TimesheetController', ['$scope', '$routeParams', 'timesheetService', 'employeeService', 'navService', function($scope, $routeParams, timesheetService, employeeService, navService){
 
+    //get projectId from route params variable
+    $scope.projectId = $routeParams.projectId;
+    
 	//Object to store new Timesheet
 	$scope.newTimesheet =  {weekEnding: '', timeSheet: {firstName:'', lastName:'', employeeTimeSheet: {
                                                                                                         saturday: {job:'', hours:''},
@@ -272,7 +293,7 @@ angular.module('myApp.controllers', [])
                             }
 
 	//Bind employees to $scope so I can show them on the timesheet page
-	$scope.employees = employeeService.getEmployees();
+	//$scope.employees = employeeService.getEmployees();
 
 	$scope.saveNewTimesheet = function(){
         
@@ -300,6 +321,12 @@ angular.module('myApp.controllers', [])
                                                        }
                             }
 	};
+    
+    // navigation functions
+    $scope.goToDashboard = function(){
+        navService.goToDashboard($scope.projectId);
+    };
+    
 }])
 .controller('AlertsController', ['$scope', 'alertService', function($scope, alertService){
     

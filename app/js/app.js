@@ -36,7 +36,7 @@ config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/rfi.html',
     controller: 'RequestForInfoController'
   });
-  $routeProvider.when('/timesheet', {
+  $routeProvider.when('/timesheet/:projectId', {
     templateUrl: 'partials/timesheet.html',
     controller: 'TimesheetController'
   });

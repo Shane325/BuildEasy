@@ -113,6 +113,9 @@ angular.module('myApp.services', [])
         },
         goToRfi: function(projectId){
             $location.path('/rfi/' + projectId);
+        },
+        goToDailyReportList: function(projectId){
+            $location.path('/daily_report_list/' + projectId);
         }
     };
     

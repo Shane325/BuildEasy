@@ -1,65 +1,72 @@
-<div id="heading">
-	<h2>Time Sheet</h2>
+<div class="container">
+    <div class="inner-container">
+        <ol class="breadcrumb">
+          <li><a href="#/projects">Project</a></li>
+          <li><a href="" ng-click="goToDashboard()">Dashboard</a></li>
+          <li class="active">Timesheet</li>
+        </ol>
+        <h2>Time Sheet</h2>
+        <form ng-submit="saveNewTimesheet()">
+            <table class="table table-striped">
+                <thead>
+                    <tr align="center">
+                        <th colspan="4">Name</th>
+                        <th colspan="2">Saturday</th>
+                        <th colspan="2">Sunday</th>
+                        <th colspan="2">Monday</th>
+                        <th colspan="2">Tuesday</th>
+                        <th colspan="2">Wednesday</th>
+                        <th colspan="2">Thursday</th>
+                        <th colspan="2">Friday</th>
+                    </tr>
+                    <tr align="center">
+                        <th>First</th>
+                        <th>Last</th>
+                        <th colspan="2">&nbsp</th>
+                        <th>Hrs</th>
+                        <th>Job</th>
+                        <th>Hrs</th>
+                        <th>Job</th>
+                        <th>Hrs</th>
+                        <th>Job</th>
+                        <th>Hrs</th>
+                        <th>Job</th>
+                        <th>Hrs</th>
+                        <th>Job</th>
+                        <th>Hrs</th>
+                        <th>Job</th>
+                        <th>Hrs</th>
+                        <th>Job</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+        <!--                <td>{{ employee.firstName}}</td>-->
+        <!--                <td>{{ employee.lastName }}</td>-->
+                        <td><input ng-model="newTimesheet.timeSheet.firstName" type="text" size="6" name="firstName"/></td>
+                        <td><input ng-model="newTimesheet.timeSheet.lastName" type="text" size="6" name="lastName"/></td>
+                        <td>&nbsp</td>
+                        <td>&nbsp</td>
+                        <td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.saturday.hours" type="text" size="2" name="hours"/></td>
+                        <td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.saturday.job" type="text" size="2" name="job"/></td>
+                        <td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.sunday.hours" type="text" size="2" name="hours"/> </td>
+                        <td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.sunday.job" type="text" size="2" name="job"/>   </td>
+                        <td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.monday.hours" type="text" size="2" name="hours"/> </td>
+                        <td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.monday.job" type="text" size="2" name="job"/>   </td>
+                        <td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.tuesday.hours" type="text" size="2" name="hours"/> </td>
+                        <td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.tuesday.job" type="text" size="2" name="job"/>   </td>
+                        <td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.wednesday.hours" type="text" size="2" name="hours"/> </td>
+                        <td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.wednesday.job" type="text" size="2" name="job"/>   </td>
+                        <td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.thursday.hours" type="text" size="2" name="hours"/> </td>
+                        <td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.thursday.job" type="text" size="2" name="job"/>   </td>
+                        <td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.friday.hours" type="text" size="2" name="hours"/> </td>
+                        <td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.friday.job" type="text" size="2" name="job"/>   </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
 </div>
-<form ng-submit="saveNewTimesheet()">
-	<table class="table table-striped">
-		<thead>
-			<tr align="center">
-				<th colspan="4">Name</th>
-				<th colspan="2">Saturday</th>
-				<th colspan="2">Sunday</th>
-				<th colspan="2">Monday</th>
-				<th colspan="2">Tuesday</th>
-				<th colspan="2">Wednesday</th>
-				<th colspan="2">Thursday</th>
-				<th colspan="2">Friday</th>
-			</tr>
-			<tr align="center">
-				<th>First</th>
-				<th>Last</th>
-				<th colspan="2">&nbsp</th>
-				<th>Hrs</th>
-				<th>Job</th>
-				<th>Hrs</th>
-				<th>Job</th>
-				<th>Hrs</th>
-				<th>Job</th>
-				<th>Hrs</th>
-				<th>Job</th>
-				<th>Hrs</th>
-				<th>Job</th>
-				<th>Hrs</th>
-				<th>Job</th>
-				<th>Hrs</th>
-				<th>Job</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-<!--                <td>{{ employee.firstName}}</td>-->
-<!--                <td>{{ employee.lastName }}</td>-->
-                <td><input ng-model="newTimesheet.timeSheet.firstName" type="text" size="6" name="firstName"/></td>
-                <td><input ng-model="newTimesheet.timeSheet.lastName" type="text" size="6" name="lastName"/></td>
-				<td>&nbsp</td>
-				<td>&nbsp</td>
-				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.saturday.hours" type="text" size="2" name="hours"/></td>
-				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.saturday.job" type="text" size="2" name="job"/></td>
-				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.sunday.hours" type="text" size="2" name="hours"/> </td>
-				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.sunday.job" type="text" size="2" name="job"/>   </td>
-				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.monday.hours" type="text" size="2" name="hours"/> </td>
-				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.monday.job" type="text" size="2" name="job"/>   </td>
-				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.tuesday.hours" type="text" size="2" name="hours"/> </td>
-				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.tuesday.job" type="text" size="2" name="job"/>   </td>
-				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.wednesday.hours" type="text" size="2" name="hours"/> </td>
-				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.wednesday.job" type="text" size="2" name="job"/>   </td>
-				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.thursday.hours" type="text" size="2" name="hours"/> </td>
-				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.thursday.job" type="text" size="2" name="job"/>   </td>
-				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.friday.hours" type="text" size="2" name="hours"/> </td>
-				<td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.friday.job" type="text" size="2" name="job"/>   </td>
-			</tr>
-		</tbody>
-	</table>
-	<div class="form-group">
-	  		<button type="submit" class="btn btn-primary">Submit</button>
-	</div>
-</form>

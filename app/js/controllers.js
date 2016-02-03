@@ -100,7 +100,6 @@ angular.module('myApp.controllers', [])
         
   		projectService.saveProject($scope.newProject, $scope.currentUser.id);
   		$scope.newProject = {name: '', jobNumber:'', projectInfo:'', startdate: ''};
-        //$location.path('#/projects');
   	};
 
 }])
@@ -126,9 +125,6 @@ angular.module('myApp.controllers', [])
         $scope.dailyReportTemp = {date: newDate, project:dailyReport.project, jobNumber: dailyReport.jobNumber, crew: dailyReport.crew, foreman: dailyReport.foreman, operators: dailyReport.operators, laborers: dailyReport.laborers, other: dailyReport.other, equipment: dailyReport.equipment, subcontractors: dailyReport.subcontractors, workPerformed: dailyReport.workPerformed, extraWorkPerformed: dailyReport.extraWorkPerformed, otherNotes: dailyReport.otherNotes};
         
         $scope.dailyReportId = dailyReportId;
-        
-        console.log($scope.dailyReportTemp);
-        console.log($scope.dailyReportId);
     };
     
     //bind daily reports to scope for this project, so I can display them to the user
@@ -137,11 +133,6 @@ angular.module('myApp.controllers', [])
     //function to update changes to a daily report
     $scope.updateDailyReport = function(){
         dailyReportsService.updateDailyReport($scope.dailyReportId, $scope.dailyReportTemp, $scope.projectId);  
-    };
-    
-    //function to clear the form
-    $scope.clearNewDailyReport = function(){
-        $scope.newDailyReport = {date: '', project:'', jobNumber: '', crew: '', foreman: '', operators: '', laborers: '', other: '', equipment: '', subcontractors:'', workPerformed: '', extraWorkPerformed: '', otherNotes: ''};
     };
 
     //navigation functions
@@ -160,32 +151,18 @@ angular.module('myApp.controllers', [])
 }])
 .controller('RequestForInfoController', ['$scope', '$routeParams', '$location', 'rfiService', 'navService', function($scope, $routeParams, $location, rfiService, navService){
     
-    //get todays date for the date input field on the rfi form
-//    var date = new Date();
-//    var day = date.getDate();
-//    var month = date.getMonth() + 1;
-//    var year = date.getFullYear();
-//    if (month < 10) month = "0" + month;
-//    if (day < 10) day = "0" + day;
-//    $scope.today = new Date(year, month, day);
-    
     //test the routeParams object
     $scope.projectId = $routeParams.projectId;
     
 	//Object to store data from the rfi form
-	$scope.newRfi = {rfiNumber:'', date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};
+	$scope.newRfi = {rfiNumber:'', date: '', project: '', jobNumber:'', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:''};
     
 	//function to save a new Rfi
 	$scope.saveRfi = function(){
         //console.log($scope.newRfi);
         rfiService.saveRfi($scope.newRfi, $scope.projectId);
-		$scope.newRfi = {rfiNumber:'', date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};
+		$scope.newRfi = {rfiNumber:'', date: '', project: '', jobNumber:'', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:''};
 	};
-    
-    //function for the Clear button
-    $scope.clearNewRfi = function(){
-        $scope.newRfi = {rfiNumber:'', date: '', project: '', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:'', isChange:''};        
-    };
     
     //Bind RFI's to the scope so I can display them for the user
     $scope.requestForInformation = rfiService.getRfisByProject($scope.projectId);
@@ -195,7 +172,7 @@ angular.module('myApp.controllers', [])
         //convert date string into correct format 
         var newDate = new Date(rfi.date);
         
-        $scope.rfiTemp = {rfiNumber:rfi.rfiNumber, date: newDate, project: rfi.project, to: rfi.to, cc:rfi.cc, requestedBy: rfi.requestedBy, subject: rfi.subject, contractorQuestion: rfi.contractorQuestion, contractorSuggestion:rfi.contractorSuggestion, isChange:rfi.isChange};
+        $scope.rfiTemp = {rfiNumber:rfi.rfiNumber, date: newDate, project: rfi.project, jobNumber: rfi.jobNumber, to: rfi.to, cc:rfi.cc, requestedBy: rfi.requestedBy, subject: rfi.subject, contractorQuestion: rfi.contractorQuestion, contractorSuggestion:rfi.contractorSuggestion};
         $scope.rfiId = rfiId;
 
     };

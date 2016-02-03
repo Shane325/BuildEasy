@@ -12,7 +12,7 @@
             <div class="pull-right">
                 <button ng-click="editRfi($id, rfi)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#rfiModal">Edit</button>
                 <button ng-click="submitRfi(rfi)"type="button" class="btn btn-primary">Send</button>
-                <button ng-click="deleteRfi($id)" type="button" class="btn btn-danger">Delete</button>  
+                <button ng-click="requestForInformation.$remove(rfi.$id)" type="button" class="btn btn-danger">Delete</button>  
             </div>
             </h3>  
           </div>
@@ -83,15 +83,6 @@
                                 <div class="col-md-8">
                                     <label class="sr-only" for="contractorSuggestion">Contractor Suggestion</label>
                                     <textarea ng-model="rfiTemp.contractorSuggestion" class="form-control" rows="5" id="contractorSuggestion" placeholder="Contractor Suggestion"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-3">
-                                    Is the above a change?
-                                    <label><input ng-model="rfiTemp.isChange" type="radio" name="isChange" value="Yes"/> Yes</label>
-                                    <label><input ng-model="rfiTemp.isChange" type="radio" name="isChange" value="No"/> No</label>
                                 </div>
                             </div>
                         </div>

@@ -6,7 +6,7 @@
           <li><a href="" ng-click="goToRfiList()">Rfi</a></li>
           <li class="active">Add Rfi</li>
         </ol>
-        <form ng-submit="saveRfi()" class="form-horizontal" role="form" name="rfiForm">
+        <form ng-submit="saveRfi()" class="form-horizontal" role="form" name="rfiForm"  style="padding-left:15px;">
             <div class="row">
                 <h2 style="padding-bottom:20px;">Submit a Request For Information</h2>
             </div>    
@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-md-3 col-md-offset-3">
                         <label class="sr-only" for="date">Date</label>
-                        <input ng-model="newRfi.date" type="date" class="form-control" id="date" placeholder="Date"/>
+                        <input ng-model="newRfi.date" type="text" class="form-control" id="date" placeholder="Date" onfocus="(this.type='date')" onblur="(this.type='text')"/>
                     </div>
                 </div>
             </div>
@@ -41,12 +41,20 @@
                         <input ng-model="newRfi.requestedBy" type="text" class="form-control" id="requestedBy" placeholder="Requested By"/>
                     </div>
                     <div class="col-md-3 col-md-offset-3">
+                        <label class="sr-only" for="jobNumber">Job Number</label>
+                        <input ng-model="newRfi.jobNumber" type="text" class="form-control" id="jobNumber" placeholder="Job Number"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top:20px;">
+                <div class="form-group">
+                    <div class="col-md-9">
                         <label class="sr-only" for="subject">Subject</label>
                         <input ng-model="newRfi.subject" type="text" class="form-control" id="subject" placeholder="Subject"/>
                     </div>
                 </div>
             </div>
-            <div class="row" style="padding-top:40px;">
+            <div class="row">
                 <div class="form-group">
                     <div class="col-md-9">
                         <label class="sr-only" for="contractorQuestion">Contractor Question</label>
@@ -75,7 +83,7 @@
 -->
             <div class="row">
                 <button type="submit" class="btn btn-primary">Add</button>
-                <button ng-click="clearNewRfi()" type="button" class="btn btn-default">Clear</button>
+                <button type="reset" class="btn btn-default">Clear</button>
                 <a href="javascript:history.back()" class="btn btn-default" role="button">Go Back</a>
             </div>
         </form>

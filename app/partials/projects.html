@@ -27,11 +27,7 @@
                     <td>{{ project.jobNumber }}</td>
                     <td>{{ project.projectInfo }}</td>
                     <td>{{ project.startdate | date : medium }}</td>
-                    <td>
-                        <a href="" ng-click="selectProject(project)">Select</a>
-                        
-<!--                        <button ng-click="selectProject(project)" type="button" class="btn btn-link">Add</button>-->
-                    </td>
+                    <td><a href="" ng-click="selectProject(project)">Select</a></td>
                     <td><a href="" ng-click="projects.$remove(project.$id)">Delete</a></td>
                   </tr>
                 </table>
@@ -57,7 +53,6 @@
                         </div> 
                     </div>
                     <button type="submit" class="btn btn-primary">Add</button>
-<!--                    <a href="" data-toggle="tab" data-target="#projects" type="submit" class="btn btn-primary">Add</a>-->
                     <button type="reset" class="btn btn-default">Clear</button>
                 </form>
             </div>

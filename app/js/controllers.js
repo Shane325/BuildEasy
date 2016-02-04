@@ -206,18 +206,29 @@ angular.module('myApp.controllers', [])
     };
 
 }])
-.controller('EmployeeController', ['$scope', '$routeParams', 'employeeService', 'alertService', 'navService', function($scope, $routeParams, employeeService, alertService, navService){
+.controller('EmployeeController', ['$scope', '$routeParams', 'employeeService', 'alertService', 'navService', 'authService', function($scope, $routeParams, employeeService, alertService, navService, authService){
     
     //get projectId from route params variable
     $scope.projectId = $routeParams.projectId;
+    
+    //get current userId
+    authService.getCurrentUser().then(function(user){
+		if(user){
+            //Bind employees to $scope so I can show them on the employee page
+            $scope.employees = employeeService.getEmployeesByUser(user.id);
+            //console.log(user.id);
+            $scope.userId = user.id;
+		};
+	});
 
 	//Object to store new employee details
 	$scope.newEmployee = {firstName: '', lastName: '', phone: '', email: '', rate: ''};
 
 	//function to save a new employee
 	$scope.saveNewEmployee = function(){
-		employeeService.saveNewEmployee($scope.newEmployee, $scope.projectId);
+		employeeService.saveNewEmployee($scope.newEmployee, $scope.userId);
 		$scope.newEmployee = {firstName: '', lastName: '', phone: '', email: '', rate: ''};
+       
 	};
     
     $scope.clearNewEmployee = function(){
@@ -226,9 +237,6 @@ angular.module('myApp.controllers', [])
         
     };
 
-    //Bind employees to $scope so I can show them on the employee page
-    $scope.employees = employeeService.getEmployeesByProject($scope.projectId);
-
     $scope.editEmployee = function(employee){
         
         $scope.employeeTemp = {firstName: employee.firstName, lastName: employee.lastName, phone: employee.phone, email: employee.email, rate: employee.rate};
@@ -236,11 +244,11 @@ angular.module('myApp.controllers', [])
     };
     
     $scope.updateEmployee = function(){
-        employeeService.updateEmployee($scope.employeeId, $scope.employeeTemp, $scope.projectId);
+        employeeService.updateEmployee($scope.employeeId, $scope.employeeTemp, $scope.userId);
     };
     
     $scope.deleteEmployee = function(employee){
-        employeeService.deleteEmployee(employee, $scope.projectId);  
+        employeeService.deleteEmployee(employee, $scope.userId);  
     };
     
     // navigation functions
@@ -250,8 +258,18 @@ angular.module('myApp.controllers', [])
 
 
 }])
-.controller('TimesheetController', ['$scope', '$routeParams', 'timesheetService', 'employeeService', 'navService', function($scope, $routeParams, timesheetService, employeeService, navService){
+.controller('TimesheetController', ['$scope', '$routeParams', 'timesheetService', 'employeeService', 'navService', 'authService', function($scope, $routeParams, timesheetService, employeeService, navService, authService){
 
+    //get current userEmployees
+    authService.getCurrentUser().then(function(user){
+		if(user){
+            //console.log(user.id);
+            $scope.userId = user.id;
+            //console.log($scope.userId);
+            $scope.employees = employeeService.getEmployeesByUser($scope.userId);
+		};
+	});
+    
     //get projectId from route params variable
     $scope.projectId = $routeParams.projectId;
     
@@ -269,20 +287,16 @@ angular.module('myApp.controllers', [])
                             }
 
 	//Bind employees to $scope so I can show them on the timesheet page
-	//$scope.employees = employeeService.getEmployees();
+//	$scope.employees = employeeService.getEmployeesByUser(user.id);
 
 	$scope.saveNewTimesheet = function(){
-        
         //Calculate date value for weekEnding field
         var curr = new Date; // get current date
         var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
         var last = first + 5; // last day is the first day + 5. This will give week ending of Friday
-        //var firstday = new Date(curr.setDate(first)).toUTCString();
-        //var lastday = new Date(curr.setDate(last)).toUTCString();
+        
         $scope.newTimesheet.weekEnding = new Date(curr.setDate(last)).toDateString();
         
-        //console.log($scope.newTimesheet.weekEnding);
-
 		timesheetService.saveNewTimesheet($scope.newTimesheet);
         //clear newTimesheet model
 		$scope.newTimesheet =  {weekEnding: '', timeSheet: {firstName:'', lastName:'', employeeTimeSheet: {

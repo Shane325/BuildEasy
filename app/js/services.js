@@ -213,7 +213,7 @@ angular.module('myApp.services', [])
 	return rfiServiceObject;
 })
 .factory('employeeService', function(dataService, alertService, $location, $timeout){
-    var projectEmployee = dataService.$child('projectEmployee');
+    var userEmployee = dataService.$child('userEmployee');
     
     //get employees data route
 //    var employees = dataService.$child('employees');
@@ -235,17 +235,17 @@ angular.module('myApp.services', [])
     };
     
 	var employeeServiceObject = {
-		saveNewEmployee: function(employee, projectId){
-            projectEmployee.$child(projectId).$child('employee').$add(employee, onComplete(null, 'save'));
+		saveNewEmployee: function(employee, userId){
+            userEmployee.$child(userId).$child('employee').$add(employee, onComplete(null, 'save'));
 		},
-        getEmployeesByProject: function(projectId){
-            return projectEmployee.$child(projectId).$child('employee');
+        getEmployeesByUser: function(userId){
+            return userEmployee.$child(userId).$child('employee');
         },
-        updateEmployee: function(empId, employee, projectId){
-            projectEmployee.$child(projectId).$child('employee').$child(empId).$set(employee, onComplete(null, 'save'));
+        updateEmployee: function(empId, employee, userId){
+            userEmployee.$child(userId).$child('employee').$child(empId).$set(employee, onComplete(null, 'save'));
         },
-        deleteEmployee: function(employee, projectId){
-            projectEmployee.$child(projectId).$child('employee').$remove(employee.$id, onComplete(null, 'delete'));
+        deleteEmployee: function(employee, userId){
+            userEmployee.$child(userId).$child('employee').$remove(employee.$id, onComplete(null, 'delete'));
         }
 	};
     

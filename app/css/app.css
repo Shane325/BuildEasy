@@ -61,10 +61,10 @@ fieldset {
     /* must be half of the width, minus scrollbar on the left (30px) */
     margin-left: -100px;
 }
-.glyphicon {
+.dashboard-glyph {
     font-size:100px; 
     margin-left:30px;
 }
-.glyphicon:hover {
+.dashboard-glyph:hover {
     cursor: pointer;
 }

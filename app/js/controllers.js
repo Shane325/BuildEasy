@@ -43,7 +43,7 @@ angular.module('myApp.controllers', [])
         if(user){
             $scope.userInfo = welcomeService.getUserInfo(user.id);
         }
-    })
+    }); 
     
 }])
 .controller('HomeController', ['$scope', 'homeService', 'authService', '$routeParams', '$location', function($scope, homeService, authService, $routeParams, $location){
@@ -204,6 +204,19 @@ angular.module('myApp.controllers', [])
     $scope.goToDashboard = function(){
         navService.goToDashboard($scope.projectId);
     };
+    
+    //PDF functions
+    $scope.openAsPdf = function(rfi){
+        var docDefinition = { content: rfi.contractorQuestion };
+        
+        pdfMake.createPdf(docDefinition).open();
+    };
+    
+    $scope.downloadPdf = function(){
+        var docDefinition = { content: 'This is an sample PDF printed with pdfMake' };
+        
+        pdfMake.createPdf(docDefinition).download();
+    }; 
 
 }])
 .controller('EmployeeController', ['$scope', '$routeParams', 'employeeService', 'alertService', 'navService', 'authService', function($scope, $routeParams, employeeService, alertService, navService, authService){

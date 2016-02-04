@@ -10,9 +10,29 @@
           <div class="panel-heading clearfix">
             <h3 class="panel-title">RFI #: {{ rfi.rfiNumber }} {{ rfi.date | date:'fullDate' }}
             <div class="pull-right">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="rfiDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+<!--                    Actions-->
+                    <span class="glyphicon glyphicon-th-list"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="rfiDropdown">
+                    <li><a href="#">Edit</a></li>
+                    <li><a href="#">Delete</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Email</a></li>
+                    <li><a href="#">PDF</a></li>
+                    <li><a href="#">Open</a></li>
+                    <li><a href="#">Print</a></li>
+                  </ul>
+                </div>
+<!--
                 <button ng-click="editRfi($id, rfi)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#rfiModal">Edit</button>
-                <button ng-click="submitRfi(rfi)"type="button" class="btn btn-primary">Send</button>
-                <button ng-click="requestForInformation.$remove(rfi.$id)" type="button" class="btn btn-danger">Delete</button>  
+                <button ng-click="requestForInformation.$remove(rfi.$id)" type="button" class="btn btn-danger">Delete</button> 
+                <button ng-click="submitRfi(rfi)" type="button" class="btn btn-link">Email</button> 
+                <button ng-click="openAsPdf(rfi)" type="button" class="btn btn-link">PDF</button>
+                <button ng-click="" type="button" class="btn btn-link">Open</button>
+                <button ng-click="" type="button" class="btn btn-link">Print</button>
+-->
             </div>
             </h3>  
           </div>

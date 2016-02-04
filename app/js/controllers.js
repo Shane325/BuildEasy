@@ -321,6 +321,64 @@ angular.module('myApp.controllers', [])
         
         pdfMake.createPdf(docDefinition).download();
     }; 
+    
+    $scope.printPdf = function(rfi){
+        var docDefinition = {
+            content: [
+                {
+                    text: 'Request For Information',
+                    style: 'header',
+                    alignment: 'center',
+                    bold: true,
+                    fontSize: 18
+                },
+                {
+                    text:[
+                        {text: 'Date: ', bold:true},
+                        {text: rfi.date}
+                    ],
+                    margin: [0, 50, 0, 0]
+                },
+                {
+                    text: [
+                        {text: 'To: ', bold:true},
+                        {text: rfi.to}
+                    ],
+                    margin: [0, 10, 0, 0]
+                },
+                {
+                    text: [
+                        {text: 'From: ', bold:true},
+                        {text: rfi.requestedBy}
+                    ],
+                    margin: [0, 10, 0, 0]
+                },
+                {
+                    text: [
+                        {text: 'Subject: ', bold:true},
+                        {text: rfi.subject}
+                    ],
+                    margin: [0, 50, 0, 0]
+                },
+                {
+                    text: [
+                        {text: 'Question: \n\n', bold:true},
+                        {text: rfi.contractorQuestion}
+                    ],
+                    margin: [0, 30, 0, 0]
+                },
+                {
+                    text: [
+                        {text: 'Suggestion: \n\n', bold:true},
+                        {text: rfi.contractorSuggestion}
+                    ],
+                    margin: [0, 30, 0, 0]
+                }
+            ]
+        }
+        
+        pdfMake.createPdf(docDefinition).print();
+    };
 
 }])
 .controller('EmployeeController', ['$scope', '$routeParams', 'employeeService', 'alertService', 'navService', 'authService', function($scope, $routeParams, employeeService, alertService, navService, authService){

@@ -12,12 +12,14 @@
                     <h3 class="panel-title">RFI</h3>
                   </div>
                   <div class="panel-body">
-                    RFI content...
+                    <span ng-click="selectRfis(projectId)" class="glyphicon glyphicon-wrench" aria-hidden="true" style="font-size:100px; margin-left:30px;"></span>
                   </div>
+<!--
                   <div class="panel-footer">
                     <button ng-click="selectRfis(projectId)" type="button" class="btn btn-primary btn-sm">Go</button> 
-<!--                    <a href="@("/#/rfi_list/"+projectId)" class="btn btn-primary btn-sm" role="button">Go</a>-->
+                    <a href="" ng-click="selectRfis(projectId)" type="button" class="btn btn-link">Go</a>
                   </div>
+-->
                 </div>
             </div>
             <div class="col-md-3">
@@ -26,11 +28,13 @@
                     <h3 class="panel-title">Daily Report</h3>
                   </div>
                   <div class="panel-body">
-                    Daily Report content...
+                    <span ng-click="selectDailyReport(projectId)" class="glyphicon glyphicon-folder-open" aria-hidden="true" style="font-size:100px; margin-left:30px;"></span>
                   </div>
+<!--
                   <div class="panel-footer">
                     <button ng-click="selectDailyReport(projectId)" type="button" class="btn btn-primary btn-sm">Go</button>  
                   </div>
+-->
                 </div>
             </div>
             <div class="col-md-3">
@@ -39,12 +43,14 @@
                     <h3 class="panel-title">Timesheet</h3>  
                   </div>
                   <div class="panel-body">
-                    Timesheet content...
+                    <span ng-click="selectTimesheet(projectId)" class="glyphicon glyphicon-calendar" aria-hidden="true" style="font-size:100px; margin-left:30px;"></span>
                   </div>
+<!--
                   <div class="panel-footer">
                     <button ng-click="selectTimesheet(projectId)" type="button" class="btn btn-primary btn-sm">Go</button>  
-<!--                    <a href="#/timesheet" class="btn btn-primary btn-sm" role="button">Go</a>-->
+                    <a href="#/timesheet" class="btn btn-primary btn-sm" role="button">Go</a>
                   </div>
+-->
                 </div>
             </div>
             <div class="col-md-3">
@@ -53,11 +59,13 @@
                     <h3 class="panel-title">Employees</h3>  
                   </div>
                   <div class="panel-body">
-                    Employees content...
+                    <span ng-click="selectEmployees(projectId)" class="glyphicon glyphicon-user" aria-hidden="true" style="font-size:100px; margin-left:30px;"></span>
                   </div>
+<!--
                   <div class="panel-footer">
                     <button ng-click="selectEmployees(projectId)" type="button" class="btn btn-primary btn-sm">Go</button>  
                   </div>
+-->
                 </div>
             </div>
         </div>

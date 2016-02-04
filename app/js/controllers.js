@@ -273,6 +273,13 @@ angular.module('myApp.controllers', [])
     //get projectId from route params variable
     $scope.projectId = $routeParams.projectId;
     
+    //Calculate date value for weekEnding field
+    var curr = new Date; // get current date
+    var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
+    var last = first + 5; // last day is the first day + 5. This will give week ending of Friday
+    
+    $scope.weekEnding = new Date(curr.setDate(last)).toDateString();
+    
 	//Object to store new Timesheet
 	$scope.newTimesheet =  {weekEnding: '', timeSheet: {firstName:'', lastName:'', employeeTimeSheet: {
                                                                                                         saturday: {job:'', hours:''},
@@ -290,12 +297,8 @@ angular.module('myApp.controllers', [])
 //	$scope.employees = employeeService.getEmployeesByUser(user.id);
 
 	$scope.saveNewTimesheet = function(){
-        //Calculate date value for weekEnding field
-        var curr = new Date; // get current date
-        var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
-        var last = first + 5; // last day is the first day + 5. This will give week ending of Friday
         
-        $scope.newTimesheet.weekEnding = new Date(curr.setDate(last)).toDateString();
+        $scope.newTimesheet.weekEnding = $scope.weekEnding;
         
 		timesheetService.saveNewTimesheet($scope.newTimesheet);
         //clear newTimesheet model

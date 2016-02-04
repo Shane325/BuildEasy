@@ -23,10 +23,10 @@
                 <td>{{ employee.phone }}</td>
                 <td>{{ employee.trade }}</td>
                 <td>
-                    <button ng-click="editEmployee(employee)" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Edit</button>
+                    <button ng-click="editEmployee(employee)" type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">Edit</button>
                 </td>
                 <td>
-                    <button ng-click="deleteEmployee(employee)" type="button" class="btn btn-danger">Delete</button>
+                    <button ng-click="deleteEmployee(employee)" type="button" class="btn btn-link">Delete</button>
                 </td>
             </tr>
             <tr>
@@ -45,7 +45,7 @@
                         <input ng-model="newEmployee.trade" type="text" class="form-control" placeholder="Trade"/>
                     </td>
                     <td>
-                        <button ng-click="saveNewEmployee()" type="submit" class="btn btn-success">Add</button>
+                        <button ng-click="saveNewEmployee()" type="submit" class="btn btn-default">Add</button>
                     </td>
                     <td>
                         <button ng-click="clearNewEmployee()" type="button" class="btn btn-default">Clear</button>

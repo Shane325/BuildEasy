@@ -61,6 +61,10 @@ fieldset {
     /* must be half of the width, minus scrollbar on the left (30px) */
     margin-left: -100px;
 }
+.modal-rfi {
+    width: 800px;
+    margin-left: -100px;
+}
 .dashboard-glyph {
     font-size:100px; 
     margin-left:30px;

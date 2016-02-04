@@ -16,13 +16,13 @@
                     <span class="glyphicon glyphicon-th-list"></span>
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="rfiDropdown">
-                    <li><a href="#">Edit</a></li>
-                    <li><a href="#">Delete</a></li>
+                    <li><a href="" ng-click="editRfi($id, rfi)" data-toggle="modal" data-target="#rfiModal">Edit</a></li>
+                    <li><a href="" ng-click="requestForInformation.$remove(rfi.$id)">Delete</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#">Email</a></li>
-                    <li><a href="#">PDF</a></li>
-                    <li><a href="#">Open</a></li>
-                    <li><a href="#">Print</a></li>
+                    <li><a href="" ng-click="submitRfi(rfi)">Email</a></li>
+                    <li><a href="" ng-click="openAsPdf(rfi)">PDF</a></li>
+                    <li><a href="" ng-click="downloadPdf(rfi)">Download</a></li>
+                    <li><a href="">Print</a></li>
                   </ul>
                 </div>
 <!--
@@ -47,7 +47,7 @@
 <!--Modal Code-->
 <div class="modal fade" id="rfiModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content modal-rfi">
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel">Edit RFI #: {{ rfiTemp.rfiNumber }}</h4>
             </div>

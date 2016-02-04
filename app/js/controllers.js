@@ -207,13 +207,117 @@ angular.module('myApp.controllers', [])
     
     //PDF functions
     $scope.openAsPdf = function(rfi){
-        var docDefinition = { content: rfi.contractorQuestion };
+        var docDefinition = {
+            content: [
+                {
+                    text: 'Request For Information',
+                    style: 'header',
+                    alignment: 'center',
+                    bold: true,
+                    fontSize: 18
+                },
+                {
+                    text:[
+                        {text: 'Date: ', bold:true},
+                        {text: rfi.date}
+                    ],
+                    margin: [0, 50, 0, 0]
+                },
+                {
+                    text: [
+                        {text: 'To: ', bold:true},
+                        {text: rfi.to}
+                    ],
+                    margin: [0, 10, 0, 0]
+                },
+                {
+                    text: [
+                        {text: 'From: ', bold:true},
+                        {text: rfi.requestedBy}
+                    ],
+                    margin: [0, 10, 0, 0]
+                },
+                {
+                    text: [
+                        {text: 'Subject: ', bold:true},
+                        {text: rfi.subject}
+                    ],
+                    margin: [0, 50, 0, 0]
+                },
+                {
+                    text: [
+                        {text: 'Question: \n\n', bold:true},
+                        {text: rfi.contractorQuestion}
+                    ],
+                    margin: [0, 30, 0, 0]
+                },
+                {
+                    text: [
+                        {text: 'Suggestion: \n\n', bold:true},
+                        {text: rfi.contractorSuggestion}
+                    ],
+                    margin: [0, 30, 0, 0]
+                }
+            ]
+        }
         
         pdfMake.createPdf(docDefinition).open();
     };
     
-    $scope.downloadPdf = function(){
-        var docDefinition = { content: 'This is an sample PDF printed with pdfMake' };
+    $scope.downloadPdf = function(rfi){
+        var docDefinition = {
+            content: [
+                {
+                    text: 'Request For Information',
+                    style: 'header',
+                    alignment: 'center',
+                    bold: true,
+                    fontSize: 18
+                },
+                {
+                    text:[
+                        {text: 'Date: ', bold:true},
+                        {text: rfi.date}
+                    ],
+                    margin: [0, 50, 0, 0]
+                },
+                {
+                    text: [
+                        {text: 'To: ', bold:true},
+                        {text: rfi.to}
+                    ],
+                    margin: [0, 10, 0, 0]
+                },
+                {
+                    text: [
+                        {text: 'From: ', bold:true},
+                        {text: rfi.requestedBy}
+                    ],
+                    margin: [0, 10, 0, 0]
+                },
+                {
+                    text: [
+                        {text: 'Subject: ', bold:true},
+                        {text: rfi.subject}
+                    ],
+                    margin: [0, 50, 0, 0]
+                },
+                {
+                    text: [
+                        {text: 'Question: \n\n', bold:true},
+                        {text: rfi.contractorQuestion}
+                    ],
+                    margin: [0, 30, 0, 0]
+                },
+                {
+                    text: [
+                        {text: 'Suggestion: \n\n', bold:true},
+                        {text: rfi.contractorSuggestion}
+                    ],
+                    margin: [0, 30, 0, 0]
+                }
+            ]
+        };
         
         pdfMake.createPdf(docDefinition).download();
     }; 

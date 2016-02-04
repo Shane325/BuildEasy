@@ -222,24 +222,24 @@ angular.module('myApp.controllers', [])
 	});
 
 	//Object to store new employee details
-	$scope.newEmployee = {firstName: '', lastName: '', phone: '', email: '', rate: ''};
+	$scope.newEmployee = {firstName: '', lastName: '', phone: '', trade:''};
 
 	//function to save a new employee
 	$scope.saveNewEmployee = function(){
 		employeeService.saveNewEmployee($scope.newEmployee, $scope.userId);
-		$scope.newEmployee = {firstName: '', lastName: '', phone: '', email: '', rate: ''};
+		$scope.newEmployee = {firstName: '', lastName: '', phone: '', trade:''};
        
 	};
     
     $scope.clearNewEmployee = function(){
 
-        $scope.newEmployee = {firstName: '', lastName: '', phone: '', email: '', rate: ''}; 
+        $scope.newEmployee = {firstName: '', lastName: '', phone: '', trade:''}; 
         
     };
 
     $scope.editEmployee = function(employee){
         
-        $scope.employeeTemp = {firstName: employee.firstName, lastName: employee.lastName, phone: employee.phone, email: employee.email, rate: employee.rate};
+        $scope.employeeTemp = {firstName: employee.firstName, lastName: employee.lastName, phone: employee.phone, trade: employee.trade};
         $scope.employeeId = employee.$id;
     };
     

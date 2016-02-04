@@ -214,11 +214,7 @@ angular.module('myApp.services', [])
 })
 .factory('employeeService', function(dataService, alertService, $location, $timeout){
     var userEmployee = dataService.$child('userEmployee');
-    
-    //get employees data route
-//    var employees = dataService.$child('employees');
-    
-    
+
     //onComplete method
     var onComplete = function(error, type) {
         

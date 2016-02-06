@@ -20,7 +20,7 @@
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="rfiDropdown">
                     <li><a href="" ng-click="editRfi($id, rfi)" data-toggle="modal" data-target="#rfiModal">Edit</a></li>
-                    <li><a href="" ng-click="requestForInformation.$remove(rfi.$id)">Delete</a></li>
+                    <li><a href="" ng-click="requestForInformation.$remove($id)">Delete</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="" ng-click="submitRfi(rfi)">Email</a></li>
                     <li><a href="" ng-click="openAsPdf(rfi)">PDF</a></li>

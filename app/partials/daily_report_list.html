@@ -8,11 +8,16 @@
         <h2>Daily Report List
                 <button ng-click="goToDailyReportPage()" type="button" class="btn btn-link">Add</button>
         </h2>
+        <div ng-repeat="($id, dailyReport) in dailyReports track by $index">
+            <a href="" ng-click="editDailyReport($id, dailyReport)" data-toggle="modal" data-target="#dailyReportModal">{{ dailyReport.date | date: MM-DD-YYYY }}</a>
+        </div>
+<!--
         <div class="panel panel-default" ng-repeat="($id, dailyReport) in dailyReports track by $index" style="width:150px;">
             <div class="panel-body">
                 <button ng-click="editDailyReport($id, dailyReport)" type="button" class="btn btn-link" data-toggle="modal" data-target="#dailyReportModal">{{ dailyReport.date | date: medium }}</button>
             </div>
         </div>
+-->
 <!--        <button ng-click="goToDailyReportPage()" type="button" class="btn btn-link">Add</button>-->
     </div>
 </div>

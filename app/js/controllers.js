@@ -456,7 +456,7 @@ angular.module('myApp.controllers', [])
     $scope.weekEnding = new Date(curr.setDate(last)).toDateString();
     
 	//Object to store new Timesheet
-	$scope.newTimesheet =  {weekEnding: '', timeSheet: {firstName:'', lastName:'', employeeTimeSheet: {
+	$scope.newTimesheet =  {weekEnding: $scope.weekEnding, timeSheet: {firstName:'', lastName:'', employeeTimeSheet: {
                                                                                                         saturday: {job:'', hours:''},
                                                                                                         sunday: {job:'', hours:''},
                                                                                                         monday: {job:'', hours:''},
@@ -465,11 +465,8 @@ angular.module('myApp.controllers', [])
                                                                                                         thursday: {job:'', hours:''},
                                                                                                         friday: {job:'', hours:''}
 														                                              }
-                                                       }
+                                                        }
                             }
-
-	//Bind employees to $scope so I can show them on the timesheet page
-//	$scope.employees = employeeService.getEmployeesByUser(user.id);
 
 	$scope.saveNewTimesheet = function(){
         

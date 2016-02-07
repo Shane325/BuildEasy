@@ -422,8 +422,8 @@ angular.module('myApp.controllers', [])
         employeeService.updateEmployee($scope.employeeId, $scope.employeeTemp, $scope.userId);
     };
     
-    $scope.deleteEmployee = function(employee){
-        employeeService.deleteEmployee(employee, $scope.userId);  
+    $scope.deleteEmployee = function(employeeId){
+        employeeService.deleteEmployee(employeeId, $scope.userId);  
     };
     
     // navigation functions

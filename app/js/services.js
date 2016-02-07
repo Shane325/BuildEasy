@@ -240,8 +240,10 @@ angular.module('myApp.services', [])
         updateEmployee: function(empId, employee, userId){
             userEmployee.$child(userId).$child('employee').$child(empId).$set(employee, onComplete(null, 'save'));
         },
-        deleteEmployee: function(employee, userId){
-            userEmployee.$child(userId).$child('employee').$remove(employee.$id, onComplete(null, 'delete'));
+        deleteEmployee: function(employeeId, userId){
+//            console.log(employeeId);
+//            console.log(userId);
+            userEmployee.$child(userId).$child('employee').$remove(employeeId, onComplete(null, 'delete'));
         }
 	};
     

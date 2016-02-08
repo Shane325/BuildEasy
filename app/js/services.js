@@ -251,16 +251,12 @@ angular.module('myApp.services', [])
     
 })
 .factory('timesheetService', function(dataService, $location){
-	var newTimesheet = dataService.$child('timeSheets');
-	var employees = dataService.$child('employees');
+	var userTimesheet = dataService.$child('userTimesheet');
 
 	var timesheetServiceObject = {
-		saveNewTimesheet: function(timesheet){
-			newTimesheet.$add(timesheet);
-            console.log(timesheet);
-		},
-		getEmployees: function(){
-			return employees;
+		saveNewTimesheet: function(timesheet, userId){
+            userTimesheet.$child(userId).$child('timesheet').$add(timesheet);
+            //console.log(timesheet);
 		}
 	};
 

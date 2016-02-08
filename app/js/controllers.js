@@ -453,7 +453,8 @@ angular.module('myApp.controllers', [])
     var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
     var last = first + 5; // last day is the first day + 5. This will give week ending of Friday
     
-    $scope.weekEnding = new Date(curr.setDate(last)).toDateString();
+//    $scope.weekEnding = new Date(curr.setDate(last)).toDateString();
+    $scope.weekEnding = new Date(curr.setDate(last));
     
 	//Object to store new Timesheet
 	$scope.newTimesheet =  {weekEnding: $scope.weekEnding, timeSheet: {firstName:'', lastName:'', employeeTimeSheet: {
@@ -472,7 +473,7 @@ angular.module('myApp.controllers', [])
         
         $scope.newTimesheet.weekEnding = $scope.weekEnding;
         
-		timesheetService.saveNewTimesheet($scope.newTimesheet);
+		timesheetService.saveNewTimesheet($scope.newTimesheet, $scope.userId);
         //clear newTimesheet model
 		$scope.newTimesheet =  {weekEnding: '', timeSheet: {firstName:'', lastName:'', employeeTimeSheet: {
                                                                                                         saturday: {job:'', hours:''},

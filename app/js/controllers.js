@@ -457,16 +457,15 @@ angular.module('myApp.controllers', [])
     $scope.weekEnding = new Date(curr.setDate(last));
     
 	//Object to store new Timesheet
-	$scope.newTimesheet =  {weekEnding: $scope.weekEnding, timeSheet: {firstName:'', lastName:'', employeeTimeSheet: {
-                                                                                                        saturday: {job:'', hours:''},
-                                                                                                        sunday: {job:'', hours:''},
-                                                                                                        monday: {job:'', hours:''},
-                                                                                                        tuesday: {job:'', hours:''},
-                                                                                                        wednesday: {job:'', hours:''},
-                                                                                                        thursday: {job:'', hours:''},
-                                                                                                        friday: {job:'', hours:''}
-														                                              }
-                                                        }
+	$scope.newTimesheet =  {employeeTimeSheet:  {
+                                                    saturday: {job:'', hours:''},
+                                                    sunday: {job:'', hours:''},
+                                                    monday: {job:'', hours:''},
+                                                    tuesday: {job:'', hours:''},
+                                                    wednesday: {job:'', hours:''},
+                                                    thursday: {job:'', hours:''},
+                                                    friday: {job:'', hours:''}
+                                                }
                             }
 
 	$scope.saveNewTimesheet = function(){

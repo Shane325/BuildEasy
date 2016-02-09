@@ -254,8 +254,8 @@ angular.module('myApp.services', [])
 	var userTimesheet = dataService.$child('userTimesheet');
 
 	var timesheetServiceObject = {
-		saveNewTimesheet: function(timesheet, userId){
-            userTimesheet.$child(userId).$child('timesheet').$add(timesheet);
+		saveNewTimesheet: function(employeeTimesheet, userId, weekEnding){
+            userTimesheet.$child(userId).$child(weekEnding).$add(employeeTimesheet);
             //console.log(timesheet);
 		}
 	};

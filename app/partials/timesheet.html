@@ -51,8 +51,8 @@
                         <td>{{ employee.lastName }}</td>
                         <td>&nbsp</td>
                         <td>&nbsp</td>
-                        <td><input ng-model="newTimesheet.employeeTimeSheet.saturday.hours[$index]" type="text" size="2" name="hours"/></td>
-                        <td><input ng-model="newTimesheet.employeeTimeSheet.saturday.job[$index]" type="text" size="2" name="job"/></td>
+                        <td><input ng-model="employeeTimesheet[$id].timesheet.saturday.hours" type="text" size="2" name="hours"/></td>
+                        <td><input ng-model="employeeTimesheet[$id].timesheet.saturday.job" type="text" size="2" name="job"/></td>
 <!--
                         <td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.sunday.hours" type="text" size="2" name="hours"/> </td>
                         <td><input ng-model="newTimesheet.timeSheet.employeeTimeSheet.sunday.job" type="text" size="2" name="job"/>   </td>
@@ -76,12 +76,8 @@
         </form>
         <div>
         <p>UserId: {{ userId }}</p>
-        <p>Week Ending: {{ weekEnding | date:'MM/dd/yyyy' }}</p>
-        <div ng-repeat="($id, employee) in employees track by $index">
-            <p>Employee: {{ $id }}</p>
-            <p>{{ newTimesheet }}</p>
-        </div>
-<!--        <p>Timesheet Model: {{ newTimesheet }}</p>-->
+        <p>Week Ending: {{ weekEnding }}</p>
+        <p>Timesheet Model: {{ employeeTimesheet }}</p>
         </div>
     </div>
 </div>

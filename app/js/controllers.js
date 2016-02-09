@@ -458,13 +458,14 @@ angular.module('myApp.controllers', [])
     
 	//Object to store new Timesheet
 	$scope.newTimesheet =  {employeeTimeSheet:  {
-                                                    saturday: {job:'', hours:''},
-                                                    sunday: {job:'', hours:''},
-                                                    monday: {job:'', hours:''},
-                                                    tuesday: {job:'', hours:''},
-                                                    wednesday: {job:'', hours:''},
-                                                    thursday: {job:'', hours:''},
-                                                    friday: {job:'', hours:''}
+                                                    saturday: {job:'', hours:''}
+//        ,
+//                                                    sunday: {job:'', hours:''},
+//                                                    monday: {job:'', hours:''},
+//                                                    tuesday: {job:'', hours:''},
+//                                                    wednesday: {job:'', hours:''},
+//                                                    thursday: {job:'', hours:''},
+//                                                    friday: {job:'', hours:''}
                                                 }
                             }
 

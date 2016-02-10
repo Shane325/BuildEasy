@@ -40,6 +40,10 @@ config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/timesheet.html',
     controller: 'TimesheetController'
   });
+  $routeProvider.when('/timesheet_list/:projectId', {
+    templateUrl: 'partials/timesheet_list.html',
+    controller: 'TimesheetController'
+  });
   $routeProvider.when('/home_page/:projectId', {
     templateUrl: 'partials/home_page.html',
     controller: 'HomeController'

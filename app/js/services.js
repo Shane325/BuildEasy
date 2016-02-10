@@ -116,6 +116,12 @@ angular.module('myApp.services', [])
         },
         goToDailyReportList: function(projectId){
             $location.path('/daily_report_list/' + projectId);
+        },
+        goToTimesheet: function(projectId){
+            $location.path('/timesheet/' + projectId);
+        },
+        goToTimesheetList: function(projectId){
+            $location.path('/timesheet_list/' + projectId);
         }
     };
     

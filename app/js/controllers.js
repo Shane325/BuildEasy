@@ -75,7 +75,7 @@ angular.module('myApp.controllers', [])
     
     //navigate to the timesheet page
     $scope.selectTimesheet = function(projectId){
-        $location.path('/timesheet/' + projectId);
+        $location.path('/timesheet_list/' + projectId);
     };
     
 }])
@@ -454,44 +454,25 @@ angular.module('myApp.controllers', [])
     var last = first + 5; // last day is the first day + 5. This will give week ending of Friday    
     
     $scope.weekEnding = new Date(curr.setDate(last)).toDateString();
-//    $scope.weekEnding = new Date(curr.setDate(last));
     
     $scope.employeeTimesheet = {};
-    
-	//Object to store new Timesheet
-//	$scope.newTimesheet =  {employeeTimeSheet:  {
-//                                                    saturday: {job:'', hours:''}
-////        ,
-////                                                    sunday: {job:'', hours:''},
-////                                                    monday: {job:'', hours:''},
-////                                                    tuesday: {job:'', hours:''},
-////                                                    wednesday: {job:'', hours:''},
-////                                                    thursday: {job:'', hours:''},
-////                                                    friday: {job:'', hours:''}
-//                                                }
-//                            }
 
 	$scope.saveNewTimesheet = function(){
-        
-		timesheetService.saveNewTimesheet($scope.employeeTimesheet, $scope.userId, $scope.weekEnding);
+        timesheetService.saveNewTimesheet($scope.employeeTimesheet, $scope.userId, $scope.weekEnding);
         $scope.employeeTimesheet = {};
-        //clear newTimesheet model
-//		$scope.newTimesheet =  {weekEnding: '', timeSheet: {firstName:'', lastName:'', employeeTimeSheet: {
-//                                                                                                        saturday: {job:'', hours:''},
-//                                                                                                        sunday: {job:'', hours:''},
-//                                                                                                        monday: {job:'', hours:''},
-//                                                                                                        tuesday: {job:'', hours:''},
-//                                                                                                        wednesday: {job:'', hours:''},
-//                                                                                                        thursday: {job:'', hours:''},
-//                                                                                                        friday: {job:'', hours:''}
-//														                                              }
-//                                                       }
-//                            }
 	};
     
     // navigation functions
     $scope.goToDashboard = function(){
         navService.goToDashboard($scope.projectId);
+    };
+    
+    $scope.goToTimesheet = function(){
+        navService.goToTimesheet($scope.projectId);  
+    };
+    
+    $scope.goToTimesheetList = function(){
+        navService.goToTimesheetList($scope.projectId);
     };
     
 }])

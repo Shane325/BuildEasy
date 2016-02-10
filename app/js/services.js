@@ -255,7 +255,7 @@ angular.module('myApp.services', [])
 
 	var timesheetServiceObject = {
 		saveNewTimesheet: function(employeeTimesheet, userId, weekEnding){
-            userTimesheet.$child(userId).$child(weekEnding).$add(employeeTimesheet);
+            userTimesheet.$child(userId).$child(weekEnding).$child('employeeTimesheet').$add(employeeTimesheet);
             //console.log(timesheet);
 		}
 	};

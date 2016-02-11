@@ -442,6 +442,7 @@ angular.module('myApp.controllers', [])
             $scope.userId = user.id;
             //console.log($scope.userId);
             $scope.employees = employeeService.getEmployeesByUser($scope.userId);
+            $scope.timesheets = timesheetService.getTimesheetByUser($scope.userId);
 		};
 	});
     
@@ -460,7 +461,14 @@ angular.module('myApp.controllers', [])
 	$scope.saveNewTimesheet = function(){
         timesheetService.saveNewTimesheet($scope.employeeTimesheet, $scope.userId, $scope.weekEnding);
         $scope.employeeTimesheet = {};
+        $scope.goToTimesheetList();
 	};
+    
+    $scope.editTimesheet = function(timesheetId){
+        $scope.timesheetTemp = {};
+        $scope.timesheetTemp = timesheetService.getTimesheetByWeekEnding($scope.userId, timesheetId);
+        console.log($scope.timesheetTemp);
+    }
     
     // navigation functions
     $scope.goToDashboard = function(){

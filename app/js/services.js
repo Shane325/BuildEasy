@@ -261,9 +261,15 @@ angular.module('myApp.services', [])
 
 	var timesheetServiceObject = {
 		saveNewTimesheet: function(employeeTimesheet, userId, weekEnding){
-            userTimesheet.$child(userId).$child(weekEnding).$child('employeeTimesheet').$add(employeeTimesheet);
+            userTimesheet.$child(userId).$child('weekEnding').$child(weekEnding).$child('employeeTimesheet').$add(employeeTimesheet);
             //console.log(timesheet);
-		}
+		},
+        getTimesheetByUser: function(userId){
+            return userTimesheet.$child(userId).$child('weekEnding');
+        },
+        getTimesheetByWeekEnding: function(userId, weekEnding){
+            return userTimesheet.$child(userId).$child('weekEnding').$child(weekEnding);
+        }
 	};
 
 	return timesheetServiceObject;

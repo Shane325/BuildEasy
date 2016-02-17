@@ -467,6 +467,7 @@ angular.module('myApp.controllers', [])
     $scope.editTimesheet = function(timesheetId){
         $scope.timesheetTemp = {};
         $scope.timesheetTemp = timesheetService.getTimesheetByWeekEnding($scope.userId, timesheetId);
+        //$scope.timesheetIds  = $scope.timesheetTemp.
         console.log($scope.timesheetTemp);
     }
     

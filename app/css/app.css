@@ -72,3 +72,7 @@ fieldset {
 .dashboard-glyph:hover {
     cursor: pointer;
 }
+.modal-timesheet {
+    width: 1200px;
+    margin-left: -300px;
+}

@@ -59,10 +59,9 @@
                             </tr>
                         </thead>
                         <tbody>
-<!--
-                            <tr ng-repeat="($id, employee) in employees track by $index">
-                                <td>{{ employee.firstName }}</td>
-                                <td>{{ employee.lastName }}</td>
+                            <tr ng-repeat="timesheet in timesheetTemp.employeeTimesheet">
+                                <td></td>
+                                <td></td>
                                 <td>&nbsp</td>
                                 <td>&nbsp</td>
                                 <td><input ng-model="employeeTimesheet[$id].timesheet.saturday.hours" type="text" size="2" name="hours"/></td>
@@ -80,7 +79,6 @@
                                 <td><input ng-model="employeeTimesheet[$id].timesheet.friday.hours" type="text" size="2" name="hours"/> </td>
                                 <td><input ng-model="employeeTimesheet[$id].timesheet.friday.job" type="text" size="2" name="job"/>   </td>
                             </tr>
--->
                         </tbody>
                     </table>
                 </form>  

@@ -467,8 +467,20 @@ angular.module('myApp.controllers', [])
     $scope.editTimesheet = function(timesheetId){
         $scope.timesheetTemp = {};
         $scope.timesheetTemp = timesheetService.getTimesheetByWeekEnding($scope.userId, timesheetId);
-        //$scope.timesheetIds  = $scope.timesheetTemp.
-        console.log($scope.timesheetTemp);
+        console.log($scope.timesheetTemp.employeeTimesheet);
+//        console.log($scope.timesheetTemp.employeeTimesheet);
+//        angular.forEach($scope.employees, function(value, key){
+//            console.log();
+//        })
+//        console.log($scope.employees);
+
+//        angular.forEach($scope.timesheetTemp.employeeTimesheet, function(value, key){
+////                        console.log(key);
+////                        console.log(value);
+//            angular.forEach(value, function(value, key){
+//                console.log(key);
+//            })
+//                        })
     }
     
     // navigation functions

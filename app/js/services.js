@@ -277,6 +277,22 @@ angular.module('myApp.services', [])
 
 	return timesheetServiceObject;
 })
+.factory('taskService', function(dataService){
+    var projectTaskList = dataService.$child('projectTaskList');
+    
+    var taskServiceObject = {
+        saveTask: function(task, projectId){
+            projectTaskList.$child(projectId).$child('taskList').$add(task);
+        },
+        getTasksByProject: function(projectId){
+            return projectTaskList.$child(projectId).$child('taskList');
+        }
+        
+    };
+    
+    return taskServiceObject;
+    
+})
 .factory('alertService', function($timeout) {
     
     var alertServiceObject = {

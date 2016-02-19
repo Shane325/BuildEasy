@@ -68,5 +68,9 @@ config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/daily_report_list.html',
     controller: 'DailyReportsController'
   });
+  $routeProvider.when('/tasks/:projectId', {
+    templateUrl: 'partials/tasks.html',
+    controller: 'TaskController'
+  });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

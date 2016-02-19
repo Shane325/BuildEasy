@@ -78,6 +78,11 @@ angular.module('myApp.controllers', [])
         $location.path('/timesheet_list/' + projectId);
     };
     
+    //navigate to the tasks page
+    $scope.selectTasks = function(projectId){
+        $location.path('/tasks/' + projectId);  
+    };
+    
 }])
 .controller('ProjectsController', ['$scope', 'projectService', 'authService', '$location', function($scope, projectService, authService, $location) {   
     //Bind user projects to $scope.projects
@@ -501,6 +506,29 @@ angular.module('myApp.controllers', [])
     
     $scope.alerts = alertService.alerts;
 
+}])
+.controller('TaskController', ['$scope', '$routeParams', 'navService', 'taskService', function($scope, $routeParams, navService, taskService){
+    
+    //get projectId from route params variable
+    $scope.projectId = $routeParams.projectId;
+    
+    //navigation functions
+    $scope.goToDashboard = function(){
+        navService.goToDashboard($scope.projectId);
+    };
+    
+    //taskList
+    $scope.taskList = {};
+    
+    //save task function
+    $scope.saveTask = function(){
+        taskService.saveTask($scope.taskList, $scope.projectId);
+        $scope.taskList = {};
+    }
+    
+    //get task by project
+    $scope.projectTasks = taskService.getTasksByProject($scope.projectId);
+    
 }])
 
 

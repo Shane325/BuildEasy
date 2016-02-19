@@ -5,17 +5,27 @@
           <li><a href="" ng-click="goToDashboard()">Dashboard</a></li>
           <li class="active">Tasks</li>
         </ol>
-<!--        <h3>Task List</h3>-->
-        <div class="input-group col-md-3 col-md-offset-4">
+        <h3 style="width:100px; margin:auto;">Task List</h3>
+        <div class="input-group col-md-3" style="width:250px; margin:auto; margin-top:20px; margin-bottom:20px;">
            <input ng-model="taskList.task" type="text" class="form-control" id="task" placeholder="New Task">
            <span class="input-group-btn">
                 <button ng-click="saveTask()" class="btn btn-default" type="button">Add</button>
            </span>
         </div>
-        <ul ng-repeat="($id, task) in taskList" class="list-group" style="width:300px; margin-top:20px">
-          <li class="list-group-item">{{ task.task }}</li>
-        </ul> 
-        <p>entered: {{ taskList }}</p>
-        <p>saved: {{ projectTasks }}</p>
+        <div class="task-list-group" id="to-do-list">
+            <h4 style="width: 100px; margin:auto;">To-Do</h4>
+            <ul ng-repeat="($id, task) in projectTasks track by $index" class="list-group" style="width:300px; margin:auto; margin-top:20px">
+              <li class="list-group-item" id="taskName">{{ task.task }}<span class="list-group-addon glyphicon glyphicon-remove pull-right" id="delete-task-icon" ng-click="deleteTask($id)"></span></li>
+            </ul> 
+        </div>
+        <div class="task-list-group pull-right" id="complete-list">
+            <h4 style="width: 100px; margin:auto;">Complete</h4>
+            <ul ng-repeat="($id, task) in projectTasks track by $index" class="list-group" style="width:300px; margin:auto; margin-top:20px;">
+                <li class="list-group-item"><del>{{ task.task }}</del><span class="list-group-addon glyphicon glyphicon-remove pull-right" id="delete-task-icon" ng-click="deleteTask($id)"></li>
+            </ul>
+        </div>
+<!--        <p>entered: {{ taskList }}</p>-->
+<!--        <p>saved: {{ projectTasks }}</p>-->
+<!--        <p>{{ taskDelete }}</p>-->
     </div>
 </div>

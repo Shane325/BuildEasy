@@ -526,6 +526,11 @@ angular.module('myApp.controllers', [])
         $scope.taskList = {};
     }
     
+    //delete task function
+    $scope.deleteTask = function(taskId){
+        taskService.deleteTask(taskId, $scope.projectId);
+    }
+    
     //get task by project
     $scope.projectTasks = taskService.getTasksByProject($scope.projectId);
     

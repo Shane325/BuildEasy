@@ -76,3 +76,21 @@ fieldset {
     width: 1200px;
     margin-left: -300px;
 }
+#delete-task-icon {
+    color:#D4D8D9;
+}
+#delete-task-icon:hover {
+    cursor: pointer;
+}
+.task-list-group {
+    width:430px;
+    float:left;
+    background:#F5F5F5;
+    padding:20px;
+}
+#to-do-list {
+    
+}
+#complete-list {
+    
+}

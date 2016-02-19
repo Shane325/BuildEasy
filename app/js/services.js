@@ -286,6 +286,9 @@ angular.module('myApp.services', [])
         },
         getTasksByProject: function(projectId){
             return projectTaskList.$child(projectId).$child('taskList');
+        },
+        deleteTask: function(taskId, projectId){
+            projectTaskList.$child(projectId).$child('taskList').$remove(taskId);
         }
         
     };

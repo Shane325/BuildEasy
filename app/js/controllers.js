@@ -522,8 +522,13 @@ angular.module('myApp.controllers', [])
     
     //save task function
     $scope.saveTask = function(){
-        taskService.saveTask($scope.taskList, $scope.projectId);
+        taskService.saveToDoTask($scope.taskList, $scope.projectId);
         $scope.taskList = {};
+    }
+    
+    $scope.completeTask = function(taskId){
+        taskService.saveCompleteTask(taskId, $scope.projectId);
+        //taskService.deleteTask(taskId, $scope.projectId);
     }
     
     //delete task function
@@ -532,7 +537,8 @@ angular.module('myApp.controllers', [])
     }
     
     //get task by project
-    $scope.projectTasks = taskService.getTasksByProject($scope.projectId);
+    $scope.toDoProjectTasks = taskService.getToDoTasksByProject($scope.projectId);
+    $scope.completeProjectTasks = taskService.getCompleteTasksByProject($scope.projectId);
     
 }])
 

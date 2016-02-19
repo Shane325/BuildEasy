@@ -281,14 +281,25 @@ angular.module('myApp.services', [])
     var projectTaskList = dataService.$child('projectTaskList');
     
     var taskServiceObject = {
-        saveTask: function(task, projectId){
-            projectTaskList.$child(projectId).$child('taskList').$add(task);
+        saveToDoTask: function(task, projectId){
+            projectTaskList.$child(projectId).$child('taskList').$child('toDo').$add(task);
         },
-        getTasksByProject: function(projectId){
-            return projectTaskList.$child(projectId).$child('taskList');
+        saveCompleteTask: function(taskId, projectId){
+            var taskObject = projectTaskList.$child(projectId).$child('taskList').$child('toDo').$child(taskId);
+            //console.log(taskObject.task);
+            var newTask = {task: taskObject.task};
+            projectTaskList.$child(projectId).$child('taskList').$child('complete').$add(newTask);  
+            
+            projectTaskList.$child(projectId).$child('taskList').$child('toDo').$remove(taskId);
+        },
+        getToDoTasksByProject: function(projectId){
+            return projectTaskList.$child(projectId).$child('taskList').$child('toDo');
+        },
+        getCompleteTasksByProject: function(projectId){
+            return projectTaskList.$child(projectId).$child('taskList').$child('complete');  
         },
         deleteTask: function(taskId, projectId){
-            projectTaskList.$child(projectId).$child('taskList').$remove(taskId);
+            projectTaskList.$child(projectId).$child('taskList').$child('toDo').$remove(taskId);
         }
         
     };

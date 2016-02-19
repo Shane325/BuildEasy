@@ -1,7 +1,7 @@
 <div class="container">
     <div class="inner-container">
         <ol class="breadcrumb">
-          <li><a href="#/projects">Project</a></li>
+          <li><a href="#/projects">Projects</a></li>
           <li><a href="" ng-click="goToDashboard()">Dashboard</a></li>
           <li class="active">Daily Report</li>
         </ol>
@@ -27,7 +27,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content modal-daily">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel"> Edit Daily Report: {{ dailyReportTemp.date | date : medium }}</h4>
+                <h4 class="modal-title" id="myModalLabel"> Edit Daily Report: {{ dailyReportTemp.date | date : MM-DD-YYYY }}</h4>
             </div>
             <div class="modal-body">
                 <div class="container">

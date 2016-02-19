@@ -1,7 +1,7 @@
 <div class="container">
     <div class="inner-container">
         <ol class="breadcrumb">
-            <li><a href="#/projects">Project</a></li>
+            <li><a href="#/projects">Projects</a></li>
             <li><a href="" ng-click="goToDashboard()">Dashboard</a></li>
             <li class="active">Timesheet</li>
         </ol>
@@ -9,10 +9,10 @@
         <button ng-click="goToTimesheet()" type="button" class="btn btn-link">Add</button></h2>
         <div class="panel panel-default" ng-repeat="($id, timesheet) in timesheets track by $index">
           <div class="panel-body">
-            Week Ending <a href="" ng-click="editTimesheet($id)" data-toggle="modal" data-target="#timesheetModal">{{ $id }}</a>
+            <a href="" ng-click="editTimesheet($id)" data-toggle="modal" data-target="#timesheetModal">Week Ending {{ $id }}</a>
           </div>
         </div>
-        Timesheet: {{ timesheetTemp }}
+<!--        Timesheet: {{ timesheetTemp }}-->
     </div>
 </div>
 

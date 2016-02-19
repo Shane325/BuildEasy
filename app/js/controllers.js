@@ -412,10 +412,10 @@ angular.module('myApp.controllers', [])
         
     };
 
-    $scope.editEmployee = function(employee){
+    $scope.editEmployee = function(empId, employee){
         
         $scope.employeeTemp = {firstName: employee.firstName, lastName: employee.lastName, phone: employee.phone, trade: employee.trade};
-        $scope.employeeId = employee.$id;
+        $scope.employeeId = empId;
     };
     
     $scope.updateEmployee = function(){

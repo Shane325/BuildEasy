@@ -244,6 +244,9 @@ angular.module('myApp.services', [])
             return userEmployee.$child(userId).$child('employee');
         },
         updateEmployee: function(empId, employee, userId){
+//            console.log(empId);
+//            console.log(employee);
+//            console.log(userId);
             userEmployee.$child(userId).$child('employee').$child(empId).$set(employee, onComplete(null, 'save'));
         },
         deleteEmployee: function(employeeId, userId){

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="inner-container">
         <ol class="breadcrumb">
-          <li><a href="#/projects">Project</a></li>
+          <li><a href="#/projects">Projects</a></li>
           <li><a ng-click="goToDashboard()" href="">Dashboard</a></li>
           <li class="active">Employees</li>
         </ol>
@@ -40,13 +40,13 @@
                     </td>
                 </form>
             </tr>
-            <tr ng-repeat="($id, employee) in employees | orderBy:'employee.firstName'">
+            <tr ng-repeat="($id, employee) in employees">
                 <td>{{ employee.firstName }}</td>
                 <td>{{ employee.lastName }}</td>
                 <td>{{ employee.phone }}</td>
                 <td>{{ employee.trade }}</td>
                 <td>
-                    <button ng-click="editEmployee(employee)" type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">Edit</button>
+                    <button ng-click="editEmployee($id, employee)" type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">Edit</button>
                 </td>
                 <td>
                     <button ng-click="deleteEmployee($id)" type="button" class="btn btn-link">Delete</button>

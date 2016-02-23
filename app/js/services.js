@@ -307,6 +307,32 @@ angular.module('myApp.services', [])
     return taskServiceObject;
     
 })
+.factory('timelineService', function(dataService){
+    var projectTimeline = dataService.$child('projectTimeline');
+    
+    var timelineServiceObject = {
+        saveNewTask: function(newTask, projectId){
+            
+        var originDate = new Date('03/01/2016');
+        var enteredDate = new Date(newTask.startDate);
+        var miliseconds = enteredDate - originDate;
+        var seconds = miliseconds/1000;
+        var minutes = seconds/60;
+        var hours = minutes/60;
+        var days = hours/24;
+        console.log(days);
+            
+//            projectTimeline.$child(projectId).$child('taskList').$add(newTask);
+        },
+        getTimelineTasksByProject: function(projectId){
+            return projectTimeline.$child(projectId).$child('taskList');
+        }
+        
+    };
+    
+    return timelineServiceObject;
+    
+})
 .factory('alertService', function($timeout) {
     
     var alertServiceObject = {

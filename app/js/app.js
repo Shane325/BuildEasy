@@ -72,5 +72,9 @@ config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/tasks.html',
     controller: 'TaskController'
   });
+  $routeProvider.when('/timeline/:projectId', {
+    templateUrl: 'partials/timeline.html',
+    controller: 'TimelineController'
+  });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

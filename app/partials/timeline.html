@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="inner-container">
+        <ol class="breadcrumb">
+          <li><a href="#/projects">Projects</a></li>
+          <li><a href="" ng-click="goToDashboard()">Dashboard</a></li>
+          <li class="active">Timeline</li>
+        </ol>
+        <h2>Project Timeline</h2>
+        <div class="timeline-task-form">
+            <form class="form-inline" ng-submit="saveNewTask()">
+                <div class="row">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="newTask.taskName" placeholder="Task">
+                        <input ng-model="newTask.startDate" type="text" class="form-control" placeholder="Start Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        <input ng-model="newTask.endDate" type="text" class="form-control" placeholder="End Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="reset" class="btn btn-default">Clear</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+<!--        {{ newTask }}-->
+        <div class="timeline-task-table">
+            <table class="table">
+                <thead>
+                    <th>Task</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Delay</th>
+                    <th>Duration</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="task in timelineTasks">
+                        <td>{{ task.taskName }}</td>
+                        <td>{{ task.startDate }}</td>
+                        <td>{{ task.endDate }}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

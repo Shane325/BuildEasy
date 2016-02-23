@@ -83,6 +83,11 @@ angular.module('myApp.controllers', [])
         $location.path('/tasks/' + projectId);  
     };
     
+    //navigate to timeline page
+    $scope.selectTimeline = function(projectId){
+        $location.path('/timeline/' + projectId);  
+    };
+    
 }])
 .controller('ProjectsController', ['$scope', 'projectService', 'authService', '$location', function($scope, projectService, authService, $location) {   
     //Bind user projects to $scope.projects
@@ -540,6 +545,25 @@ angular.module('myApp.controllers', [])
     $scope.toDoProjectTasks = taskService.getToDoTasksByProject($scope.projectId);
     $scope.completeProjectTasks = taskService.getCompleteTasksByProject($scope.projectId);
     
+}])
+.controller('TimelineController', ['$scope', '$routeParams', 'navService', 'timelineService', function ($scope, $routeParams, navService, timelineService){
+    //get projectId from routeParams
+    $scope.projectId = $routeParams.projectId;
+    
+    $scope.newTask = {taskName:'', startDate:'', endDate:'', delay:'', duration:''};
+    
+    //save new task item
+    $scope.saveNewTask = function(){
+        timelineService.saveNewTask($scope.newTask, $scope.projectId);
+        $scope.newTask = {taskName:'', startDate:'', endDate:'', delay:'', duration:''};
+    }
+    
+    $scope.timelineTasks = timelineService.getTimelineTasksByProject($scope.projectId);
+    
+    //navigation function
+    $scope.goToDashboard = function(){
+        navService.goToDashboard($scope.projectId);  
+    };
 }])
 
 

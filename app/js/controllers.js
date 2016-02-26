@@ -89,7 +89,7 @@ angular.module('myApp.controllers', [])
     };
     
 }])
-.controller('ProjectsController', ['$scope', 'projectService', 'authService', '$location', function($scope, projectService, authService, $location) {   
+.controller('ProjectsController', ['$scope', 'projectService', 'authService', 'navService', function($scope, projectService, authService, navService) {   
     //Bind user projects to $scope.projects
 	authService.getCurrentUser().then(function(user){
 		if(user){
@@ -99,7 +99,7 @@ angular.module('myApp.controllers', [])
 
     //function to select a project from the table
     $scope.selectProject = function(project){
-        $location.path('/home_page/' + project.$id);
+        navService.goToHomePage(project.$id);
     };
 
 	//Object to store data from the project form
@@ -107,7 +107,6 @@ angular.module('myApp.controllers', [])
 
   	//function to save a new project
   	$scope.saveProject = function(){
-        
   		projectService.saveProject($scope.newProject, $scope.currentUser.id);
   		$scope.newProject = {name: '', jobNumber:'', projectInfo:'', startdate: ''};
   	};
@@ -115,7 +114,7 @@ angular.module('myApp.controllers', [])
 }])
 .controller('DailyReportsController', ['$scope', '$routeParams', '$location', 'dailyReportsService', 'navService', function($scope, $routeParams, $location, dailyReportsService, navService) {
     
-    //capture the routeparams variable
+    //get projectId from routeParams
     $scope.projectId = $routeParams.projectId;
     
 	//Object to store data from the Daily reports form
@@ -129,11 +128,8 @@ angular.module('myApp.controllers', [])
     
     //function that populates daily report modal
     $scope.editDailyReport = function(dailyReportId, dailyReport){
-        
         var newDate = new Date(dailyReport.date);
-        
         $scope.dailyReportTemp = {date: newDate, project:dailyReport.project, jobNumber: dailyReport.jobNumber, crew: dailyReport.crew, foreman: dailyReport.foreman, operators: dailyReport.operators, laborers: dailyReport.laborers, other: dailyReport.other, equipment: dailyReport.equipment, subcontractors: dailyReport.subcontractors, workPerformed: dailyReport.workPerformed, extraWorkPerformed: dailyReport.extraWorkPerformed, otherNotes: dailyReport.otherNotes};
-        
         $scope.dailyReportId = dailyReportId;
     };
     
@@ -147,7 +143,7 @@ angular.module('myApp.controllers', [])
 
     //navigation functions
     $scope.goToDailyReportPage = function(){
-        $location.path('/daily_reports/' + $scope.projectId);  
+        navService.goToDailyReports($scope.projectId);
     };
     
     $scope.goToDashboard = function(){
@@ -161,7 +157,7 @@ angular.module('myApp.controllers', [])
 }])
 .controller('RequestForInfoController', ['$scope', '$routeParams', '$location', 'rfiService', 'navService', function($scope, $routeParams, $location, rfiService, navService){
     
-    //test the routeParams object
+    //get projectId from routeParams
     $scope.projectId = $routeParams.projectId;
     
 	//Object to store data from the rfi form
@@ -169,7 +165,6 @@ angular.module('myApp.controllers', [])
     
 	//function to save a new Rfi
 	$scope.saveRfi = function(){
-        //console.log($scope.newRfi);
         rfiService.saveRfi($scope.newRfi, $scope.projectId);
 		$scope.newRfi = {rfiNumber:'', date: '', project: '', jobNumber:'', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:''};
 	};
@@ -179,12 +174,9 @@ angular.module('myApp.controllers', [])
     
     //Edit rfi function
     $scope.editRfi = function(rfiId, rfi){
-        //convert date string into correct format 
         var newDate = new Date(rfi.date);
-        
         $scope.rfiTemp = {rfiNumber:rfi.rfiNumber, date: newDate, project: rfi.project, jobNumber: rfi.jobNumber, to: rfi.to, cc:rfi.cc, requestedBy: rfi.requestedBy, subject: rfi.subject, contractorQuestion: rfi.contractorQuestion, contractorSuggestion:rfi.contractorSuggestion};
         $scope.rfiId = rfiId;
-
     };
     
     //update rfi object
@@ -217,177 +209,15 @@ angular.module('myApp.controllers', [])
     
     //PDF functions
     $scope.openAsPdf = function(rfi){
-        var docDefinition = {
-            content: [
-                {
-                    text: 'Request For Information',
-                    style: 'header',
-                    alignment: 'center',
-                    bold: true,
-                    fontSize: 18
-                },
-                {
-                    text:[
-                        {text: 'Date: ', bold:true},
-                        {text: rfi.date}
-                    ],
-                    margin: [0, 50, 0, 0]
-                },
-                {
-                    text: [
-                        {text: 'To: ', bold:true},
-                        {text: rfi.to}
-                    ],
-                    margin: [0, 10, 0, 0]
-                },
-                {
-                    text: [
-                        {text: 'From: ', bold:true},
-                        {text: rfi.requestedBy}
-                    ],
-                    margin: [0, 10, 0, 0]
-                },
-                {
-                    text: [
-                        {text: 'Subject: ', bold:true},
-                        {text: rfi.subject}
-                    ],
-                    margin: [0, 50, 0, 0]
-                },
-                {
-                    text: [
-                        {text: 'Question: \n\n', bold:true},
-                        {text: rfi.contractorQuestion}
-                    ],
-                    margin: [0, 30, 0, 0]
-                },
-                {
-                    text: [
-                        {text: 'Suggestion: \n\n', bold:true},
-                        {text: rfi.contractorSuggestion}
-                    ],
-                    margin: [0, 30, 0, 0]
-                }
-            ]
-        }
-        
-        pdfMake.createPdf(docDefinition).open();
+        rfiService.openAsPdf(rfi);
     };
     
     $scope.downloadPdf = function(rfi){
-        var docDefinition = {
-            content: [
-                {
-                    text: 'Request For Information',
-                    style: 'header',
-                    alignment: 'center',
-                    bold: true,
-                    fontSize: 18
-                },
-                {
-                    text:[
-                        {text: 'Date: ', bold:true},
-                        {text: rfi.date}
-                    ],
-                    margin: [0, 50, 0, 0]
-                },
-                {
-                    text: [
-                        {text: 'To: ', bold:true},
-                        {text: rfi.to}
-                    ],
-                    margin: [0, 10, 0, 0]
-                },
-                {
-                    text: [
-                        {text: 'From: ', bold:true},
-                        {text: rfi.requestedBy}
-                    ],
-                    margin: [0, 10, 0, 0]
-                },
-                {
-                    text: [
-                        {text: 'Subject: ', bold:true},
-                        {text: rfi.subject}
-                    ],
-                    margin: [0, 50, 0, 0]
-                },
-                {
-                    text: [
-                        {text: 'Question: \n\n', bold:true},
-                        {text: rfi.contractorQuestion}
-                    ],
-                    margin: [0, 30, 0, 0]
-                },
-                {
-                    text: [
-                        {text: 'Suggestion: \n\n', bold:true},
-                        {text: rfi.contractorSuggestion}
-                    ],
-                    margin: [0, 30, 0, 0]
-                }
-            ]
-        };
-        
-        pdfMake.createPdf(docDefinition).download();
+        rfiService.downloadPdf(rfi);
     }; 
     
     $scope.printPdf = function(rfi){
-        var docDefinition = {
-            content: [
-                {
-                    text: 'Request For Information',
-                    style: 'header',
-                    alignment: 'center',
-                    bold: true,
-                    fontSize: 18
-                },
-                {
-                    text:[
-                        {text: 'Date: ', bold:true},
-                        {text: rfi.date}
-                    ],
-                    margin: [0, 50, 0, 0]
-                },
-                {
-                    text: [
-                        {text: 'To: ', bold:true},
-                        {text: rfi.to}
-                    ],
-                    margin: [0, 10, 0, 0]
-                },
-                {
-                    text: [
-                        {text: 'From: ', bold:true},
-                        {text: rfi.requestedBy}
-                    ],
-                    margin: [0, 10, 0, 0]
-                },
-                {
-                    text: [
-                        {text: 'Subject: ', bold:true},
-                        {text: rfi.subject}
-                    ],
-                    margin: [0, 50, 0, 0]
-                },
-                {
-                    text: [
-                        {text: 'Question: \n\n', bold:true},
-                        {text: rfi.contractorQuestion}
-                    ],
-                    margin: [0, 30, 0, 0]
-                },
-                {
-                    text: [
-                        {text: 'Suggestion: \n\n', bold:true},
-                        {text: rfi.contractorSuggestion}
-                    ],
-                    margin: [0, 30, 0, 0]
-                }
-            ]
-        }
-        
-        pdfMake.createPdf(docDefinition).print();
+        rfiService.printPdf(rfi);
     };
 
 }])

@@ -114,6 +114,9 @@ angular.module('myApp.services', [])
         goToRfi: function(projectId){
             $location.path('/rfi/' + projectId);
         },
+        goToDailyReports: function(projectId){
+            $location.path('/daily_reports/' + projectId);  
+        },
         goToDailyReportList: function(projectId){
             $location.path('/daily_report_list/' + projectId);
         },
@@ -131,6 +134,9 @@ angular.module('myApp.services', [])
         },
         goToTimeline: function(projectId){
             $location.path('/timeline/' + projectId);
+        },
+        goToHomePage: function(projectId){
+            $location.path('/home_page/' + projectId);
         }
     };
     
@@ -222,6 +228,177 @@ angular.module('myApp.services', [])
         },
         submitRfi: function(rfi){
             submitRfi.$add(rfi);
+        },
+        openAsPdf: function(rfi){
+            var docDefinition = {
+                content: [
+                    {
+                        text: 'Request For Information',
+                        style: 'header',
+                        alignment: 'center',
+                        bold: true,
+                        fontSize: 18
+                    },
+                    {
+                        text:[
+                            {text: 'Date: ', bold:true},
+                            {text: rfi.date}
+                        ],
+                        margin: [0, 50, 0, 0]
+                    },
+                    {
+                        text: [
+                            {text: 'To: ', bold:true},
+                            {text: rfi.to}
+                        ],
+                        margin: [0, 10, 0, 0]
+                    },
+                    {
+                        text: [
+                            {text: 'From: ', bold:true},
+                            {text: rfi.requestedBy}
+                        ],
+                        margin: [0, 10, 0, 0]
+                    },
+                    {
+                        text: [
+                            {text: 'Subject: ', bold:true},
+                            {text: rfi.subject}
+                        ],
+                        margin: [0, 50, 0, 0]
+                    },
+                    {
+                        text: [
+                            {text: 'Question: \n\n', bold:true},
+                            {text: rfi.contractorQuestion}
+                        ],
+                        margin: [0, 30, 0, 0]
+                    },
+                    {
+                        text: [
+                            {text: 'Suggestion: \n\n', bold:true},
+                            {text: rfi.contractorSuggestion}
+                        ],
+                        margin: [0, 30, 0, 0]
+                    }
+                ]
+            }
+
+            pdfMake.createPdf(docDefinition).open();
+        },
+        downloadPdf: function(rfi){
+            var docDefinition = {
+                content: [
+                    {
+                        text: 'Request For Information',
+                        style: 'header',
+                        alignment: 'center',
+                        bold: true,
+                        fontSize: 18
+                    },
+                    {
+                        text:[
+                            {text: 'Date: ', bold:true},
+                            {text: rfi.date}
+                        ],
+                        margin: [0, 50, 0, 0]
+                    },
+                    {
+                        text: [
+                            {text: 'To: ', bold:true},
+                            {text: rfi.to}
+                        ],
+                        margin: [0, 10, 0, 0]
+                    },
+                    {
+                        text: [
+                            {text: 'From: ', bold:true},
+                            {text: rfi.requestedBy}
+                        ],
+                        margin: [0, 10, 0, 0]
+                    },
+                    {
+                        text: [
+                            {text: 'Subject: ', bold:true},
+                            {text: rfi.subject}
+                        ],
+                        margin: [0, 50, 0, 0]
+                    },
+                    {
+                        text: [
+                            {text: 'Question: \n\n', bold:true},
+                            {text: rfi.contractorQuestion}
+                        ],
+                        margin: [0, 30, 0, 0]
+                    },
+                    {
+                        text: [
+                            {text: 'Suggestion: \n\n', bold:true},
+                            {text: rfi.contractorSuggestion}
+                        ],
+                        margin: [0, 30, 0, 0]
+                    }
+                ]
+            };
+
+            pdfMake.createPdf(docDefinition).download();
+        },
+        printPdf: function(rfi){
+            var docDefinition = {
+                content: [
+                    {
+                        text: 'Request For Information',
+                        style: 'header',
+                        alignment: 'center',
+                        bold: true,
+                        fontSize: 18
+                    },
+                    {
+                        text:[
+                            {text: 'Date: ', bold:true},
+                            {text: rfi.date}
+                        ],
+                        margin: [0, 50, 0, 0]
+                    },
+                    {
+                        text: [
+                            {text: 'To: ', bold:true},
+                            {text: rfi.to}
+                        ],
+                        margin: [0, 10, 0, 0]
+                    },
+                    {
+                        text: [
+                            {text: 'From: ', bold:true},
+                            {text: rfi.requestedBy}
+                        ],
+                        margin: [0, 10, 0, 0]
+                    },
+                    {
+                        text: [
+                            {text: 'Subject: ', bold:true},
+                            {text: rfi.subject}
+                        ],
+                        margin: [0, 50, 0, 0]
+                    },
+                    {
+                        text: [
+                            {text: 'Question: \n\n', bold:true},
+                            {text: rfi.contractorQuestion}
+                        ],
+                        margin: [0, 30, 0, 0]
+                    },
+                    {
+                        text: [
+                            {text: 'Suggestion: \n\n', bold:true},
+                            {text: rfi.contractorSuggestion}
+                        ],
+                        margin: [0, 30, 0, 0]
+                    }
+                ]
+            }
+
+            pdfMake.createPdf(docDefinition).print();
         }
 	};
 

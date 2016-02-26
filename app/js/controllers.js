@@ -46,46 +46,52 @@ angular.module('myApp.controllers', [])
     }); 
     
 }])
-.controller('HomeController', ['$scope', 'homeService', 'authService', '$routeParams', '$location', function($scope, homeService, authService, $routeParams, $location){
+.controller('HomeController', ['$scope', '$routeParams', 'homeService', 'authService', 'navService', function($scope, $routeParams, homeService, authService, navService){
     
+    //get projectId from the routeParams
     $scope.projectId = $routeParams.projectId;
     
+    //get current user and their project list
     authService.getCurrentUser().then(function(user){
         if(user){
             $scope.currentProject = homeService.getProjectByProjectId(user.id, $scope.projectId);
-            
-            console.log($scope.currentProject);
         } 
     });
     
     //navigate to the rfi page
     $scope.selectRfis = function(projectId){
-        $location.path('/rfi_list/' + projectId);  
+        //$location.path('/rfi_list/' + projectId); 
+        navService.goToRfiList(projectId);
     };
     
     //navigate to the daily report page
     $scope.selectDailyReport = function(projectId){
-        $location.path('/daily_report_list/' + projectId);  
+        //$location.path('/daily_report_list/' + projectId); 
+        navService.goToDailyReportList(projectId);
     };
     
     //navigate to the employee page
     $scope.selectEmployees = function(projectId){
-        $location.path('/employees/' + projectId);  
+        //$location.path('/employees/' + projectId);  
+        navService.goToEmployees(projectId);
     };
     
     //navigate to the timesheet page
     $scope.selectTimesheet = function(projectId){
-        $location.path('/timesheet_list/' + projectId);
+        //$location.path('/timesheet_list/' + projectId);
+        navService.goToTimesheetList(projectId);
     };
     
     //navigate to the tasks page
     $scope.selectTasks = function(projectId){
-        $location.path('/tasks/' + projectId);  
+        //$location.path('/tasks/' + projectId); 
+        navService.goToTasks(projectId);
     };
     
     //navigate to timeline page
     $scope.selectTimeline = function(projectId){
-        $location.path('/timeline/' + projectId);  
+        //$location.path('/timeline/' + projectId); 
+        navService.goToTimeline(projectId);
     };
     
 }])

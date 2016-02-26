@@ -122,6 +122,15 @@ angular.module('myApp.services', [])
         },
         goToTimesheetList: function(projectId){
             $location.path('/timesheet_list/' + projectId);
+        },
+        goToEmployees: function(projectId){
+            $location.path('/employees/' + projectId);
+        },
+        goToTasks: function(projectId){
+            $location.path('/tasks/' + projectId);
+        },
+        goToTimeline: function(projectId){
+            $location.path('/timeline/' + projectId);
         }
     };
     

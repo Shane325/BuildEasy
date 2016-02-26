@@ -70,21 +70,10 @@
                     </div>
                 </div>
             </div>
-<!--
-            <div class="row">
-                <div class="form-group">
-                    <div class="col-md-3">
-                        Is the above a change?
-                        <label><input ng-model="newRfi.isChange" type="radio" name="isChange" value="Yes"/> Yes</label>
-                        <label><input ng-model="newRfi.isChange" type="radio" name="isChange" value="No"/> No</label>
-                    </div>
-                </div>
-            </div>
--->
             <div class="row">
                 <button type="submit" class="btn btn-primary">Add</button>
-                <button type="reset" class="btn btn-default">Clear</button>
-                <a href="javascript:history.back()" class="btn btn-default" role="button">Go Back</a>
+                <button ng-click="clearNewRfi()" type="button" class="btn btn-default">Clear</button>
+<!--                <a href="javascript:history.back()" class="btn btn-default" role="button">Go Back</a>-->
             </div>
         </form>
     </div>

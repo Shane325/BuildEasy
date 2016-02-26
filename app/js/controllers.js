@@ -110,6 +110,11 @@ angular.module('myApp.controllers', [])
   		projectService.saveProject($scope.newProject, $scope.currentUser.id);
   		$scope.newProject = {name: '', jobNumber:'', projectInfo:'', startdate: ''};
   	};
+    
+    //clear project form and scope
+    $scope.clearNewProject = function(){
+        $scope.newProject = {name: '', jobNumber: '', projectInfo:'', startdate: ''};  
+    };
 
 }])
 .controller('DailyReportsController', ['$scope', '$routeParams', '$location', 'dailyReportsService', 'navService', function($scope, $routeParams, $location, dailyReportsService, navService) {
@@ -131,6 +136,11 @@ angular.module('myApp.controllers', [])
         var newDate = new Date(dailyReport.date);
         $scope.dailyReportTemp = {date: newDate, project:dailyReport.project, jobNumber: dailyReport.jobNumber, crew: dailyReport.crew, foreman: dailyReport.foreman, operators: dailyReport.operators, laborers: dailyReport.laborers, other: dailyReport.other, equipment: dailyReport.equipment, subcontractors: dailyReport.subcontractors, workPerformed: dailyReport.workPerformed, extraWorkPerformed: dailyReport.extraWorkPerformed, otherNotes: dailyReport.otherNotes};
         $scope.dailyReportId = dailyReportId;
+    };
+    
+    //clear daily report form and scope
+    $scope.clearNewDailyReport = function(){
+        $scope.newDailyReport = {date: '', project:'', jobNumber: '', crew: '', foreman: '', operators: '', laborers: '', other: '', equipment: '', subcontractors:'', workPerformed: '', extraWorkPerformed: '', otherNotes: ''};
     };
     
     //bind daily reports to scope for this project, so I can display them to the user
@@ -177,6 +187,11 @@ angular.module('myApp.controllers', [])
         var newDate = new Date(rfi.date);
         $scope.rfiTemp = {rfiNumber:rfi.rfiNumber, date: newDate, project: rfi.project, jobNumber: rfi.jobNumber, to: rfi.to, cc:rfi.cc, requestedBy: rfi.requestedBy, subject: rfi.subject, contractorQuestion: rfi.contractorQuestion, contractorSuggestion:rfi.contractorSuggestion};
         $scope.rfiId = rfiId;
+    };
+    
+    //clear rfi form and scope
+    $scope.clearNewRfi = function(){
+        $scope.newRfi = {rfiNumber:'', date: '', project: '', jobNumber:'', to: '', cc:'', requestedBy: '', subject: '', contractorQuestion: '', contractorSuggestion:''};  
     };
     
     //update rfi object

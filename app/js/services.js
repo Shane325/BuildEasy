@@ -472,10 +472,8 @@ angular.module('myApp.services', [])
         },
         saveCompleteTask: function(taskId, projectId){
             var taskObject = projectTaskList.$child(projectId).$child('taskList').$child('toDo').$child(taskId);
-            //console.log(taskObject.task);
             var newTask = {task: taskObject.task};
             projectTaskList.$child(projectId).$child('taskList').$child('complete').$add(newTask);  
-            
             projectTaskList.$child(projectId).$child('taskList').$child('toDo').$remove(taskId);
         },
         getToDoTasksByProject: function(projectId){

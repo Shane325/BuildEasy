@@ -231,7 +231,6 @@ angular.module('myApp.controllers', [])
 		if(user){
             //Bind employees to $scope so I can show them on the employee page
             $scope.employees = employeeService.getEmployeesByUser(user.id);
-            //console.log(user.id);
             $scope.userId = user.id;
 		};
 	});
@@ -243,25 +242,25 @@ angular.module('myApp.controllers', [])
 	$scope.saveNewEmployee = function(){
 		employeeService.saveNewEmployee($scope.newEmployee, $scope.userId);
 		$scope.newEmployee = {firstName: '', lastName: '', phone: '', trade:''};
-       
 	};
     
+    //clear new employee object from form and scope
     $scope.clearNewEmployee = function(){
-
         $scope.newEmployee = {firstName: '', lastName: '', phone: '', trade:''}; 
-        
     };
 
+    //edit existing employee object
     $scope.editEmployee = function(empId, employee){
-        
         $scope.employeeTemp = {firstName: employee.firstName, lastName: employee.lastName, phone: employee.phone, trade: employee.trade};
         $scope.employeeId = empId;
     };
     
+    //update employee object
     $scope.updateEmployee = function(){
         employeeService.updateEmployee($scope.employeeId, $scope.employeeTemp, $scope.userId);
     };
     
+    //delete an employee object
     $scope.deleteEmployee = function(employeeId){
         employeeService.deleteEmployee(employeeId, $scope.userId);  
     };
@@ -278,9 +277,7 @@ angular.module('myApp.controllers', [])
     //get current userEmployees
     authService.getCurrentUser().then(function(user){
 		if(user){
-            //console.log(user.id);
             $scope.userId = user.id;
-            //console.log($scope.userId);
             $scope.employees = employeeService.getEmployeesByUser($scope.userId);
             $scope.timesheets = timesheetService.getTimesheetByUser($scope.userId);
 		};
@@ -293,34 +290,22 @@ angular.module('myApp.controllers', [])
     var curr = new Date; // get current date
     var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
     var last = first + 5; // last day is the first day + 5. This will give week ending of Friday    
-    
     $scope.weekEnding = new Date(curr.setDate(last)).toDateString();
     
+    //object to store the timesheet info
     $scope.employeeTimesheet = {};
 
+    //save new timesheet object
 	$scope.saveNewTimesheet = function(){
         timesheetService.saveNewTimesheet($scope.employeeTimesheet, $scope.userId, $scope.weekEnding);
         $scope.employeeTimesheet = {};
         $scope.goToTimesheetList();
 	};
     
+    //edit timesheet object
     $scope.editTimesheet = function(timesheetId){
         $scope.timesheetTemp = {};
         $scope.timesheetTemp = timesheetService.getTimesheetByWeekEnding($scope.userId, timesheetId);
-        console.log($scope.timesheetTemp.employeeTimesheet);
-//        console.log($scope.timesheetTemp.employeeTimesheet);
-//        angular.forEach($scope.employees, function(value, key){
-//            console.log();
-//        })
-//        console.log($scope.employees);
-
-//        angular.forEach($scope.timesheetTemp.employeeTimesheet, function(value, key){
-////                        console.log(key);
-////                        console.log(value);
-//            angular.forEach(value, function(value, key){
-//                console.log(key);
-//            })
-//                        })
     }
     
     // navigation functions
@@ -347,13 +332,12 @@ angular.module('myApp.controllers', [])
     //get projectId from route params variable
     $scope.projectId = $routeParams.projectId;
     
-    //navigation functions
-    $scope.goToDashboard = function(){
-        navService.goToDashboard($scope.projectId);
-    };
-    
-    //taskList
+    //taskList object
     $scope.taskList = {};
+    
+    //get task by project
+    $scope.toDoProjectTasks = taskService.getToDoTasksByProject($scope.projectId);
+    $scope.completeProjectTasks = taskService.getCompleteTasksByProject($scope.projectId);
     
     //save task function
     $scope.saveTask = function(){
@@ -363,7 +347,6 @@ angular.module('myApp.controllers', [])
     
     $scope.completeTask = function(taskId){
         taskService.saveCompleteTask(taskId, $scope.projectId);
-        //taskService.deleteTask(taskId, $scope.projectId);
     }
     
     //delete task function
@@ -371,9 +354,10 @@ angular.module('myApp.controllers', [])
         taskService.deleteTask(taskId, $scope.projectId);
     }
     
-    //get task by project
-    $scope.toDoProjectTasks = taskService.getToDoTasksByProject($scope.projectId);
-    $scope.completeProjectTasks = taskService.getCompleteTasksByProject($scope.projectId);
+    //navigation functions
+    $scope.goToDashboard = function(){
+        navService.goToDashboard($scope.projectId);
+    };
     
 }])
 .controller('TimelineController', ['$scope', '$routeParams', 'navService', 'timelineService', function ($scope, $routeParams, navService, timelineService){

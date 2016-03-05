@@ -19,7 +19,6 @@
                 </div>
             </form>
         </div>
-<!--        {{ newTask }}-->
         <div class="timeline-task-table">
             <table class="table">
                 <thead>
@@ -34,7 +33,7 @@
                         <td>{{ task.taskName }}</td>
                         <td>{{ task.startDate }}</td>
                         <td>{{ task.endDate }}</td>
-                        <td></td>
+                        <td>{{ task.startDate | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</td>
                         <td></td>
                     </tr>
                 </tbody>

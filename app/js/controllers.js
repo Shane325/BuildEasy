@@ -393,6 +393,19 @@ angular.module('myApp.controllers', [])
     $scope.goToDashboard = function(){
         navService.goToDashboard($scope.projectId);  
     };
+    
+    $scope.data = [
+                    {name: 'row1', tasks: [
+                        {name: 'task1', from: '2016-01-10', to: '2016-01-20'},
+                        {name: 'task2', from: '2016-01-21', to: '2016-01-25'}
+                        ]
+                    },
+                    {name: 'row2', tasks: [
+                        {name: 'task3', from: '2016-02-01', to: '2016-02-10'},
+                        {name: 'task4', from: '2016-02-11', to: '2016-02-20'}
+                      ]
+                    }
+                ]
 }])
 
 

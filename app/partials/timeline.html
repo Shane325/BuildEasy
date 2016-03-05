@@ -25,20 +25,17 @@
                     <th>Task</th>
                     <th>Start Date</th>
                     <th>End Date</th>
-                    <th>Delay</th>
-                    <th>Duration</th>
                 </thead>
                 <tbody>
                     <tr ng-repeat="task in timelineTasks">
                         <td>{{ task.taskName }}</td>
                         <td>{{ task.startDate }}</td>
                         <td>{{ task.endDate }}</td>
-                        <td>{{ task.startDate | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</td>
-                        <td></td>
                     </tr>
                 </tbody>
-
             </table>
         </div>
+        
     </div>
 </div>
+<div gantt data=data></div>

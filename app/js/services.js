@@ -497,14 +497,14 @@ angular.module('myApp.services', [])
     var timelineServiceObject = {
         saveNewTask: function(newTask, projectId){
             
-//            var originDate = new Date('03/01/2016');
-//            var enteredDate = new Date(newTask.startDate);
-//            var miliseconds = enteredDate - originDate;
-//            var seconds = miliseconds/1000;
-//            var minutes = seconds/60;
-//            var hours = minutes/60;
-//            var days = hours/24;
-//            console.log(days);
+            var a = moment(newTask.endDate);
+            var b = moment(newTask.startDate);
+            var c = moment("2016-03-01");
+            var delay = b.diff(c, 'days');
+            var duration = a.diff(b, 'days'); 
+            
+            newTask.delay = delay;
+            newTask.duration = duration;
             
             projectTimeline.$child(projectId).$child('taskList').$add(newTask);
         },

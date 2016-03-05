@@ -495,7 +495,7 @@ angular.module('myApp.services', [])
     var projectTimeline = dataService.$child('projectTimeline');
     
     var timelineServiceObject = {
-        saveNewTask: function(newTask, projectId){
+        saveNewTask: function(newTask, newData, projectId){
             
             var a = moment(newTask.endDate);
             var b = moment(newTask.startDate);
@@ -506,11 +506,29 @@ angular.module('myApp.services', [])
             newTask.delay = delay;
             newTask.duration = duration;
             
-            projectTimeline.$child(projectId).$child('taskList').$add(newTask);
+            //projectTimeline.$child(projectId).$child('taskList').$add(newTask);
+            
+            var taskData =  [
+                                {
+                                    name: 'row', 
+                                    tasks:  [
+                                                {
+                                                    name: newTask.taskName, from: newTask.startDate, to: newTask.endDate
+                                                }
+                                            ]
+                                }
+                            ];
+            
+            //console.log(taskData);
+            projectTimeline.$child(projectId).$child('taskData').$add(taskData);
+            
         },
         getTimelineTasksByProject: function(projectId){
             return projectTimeline.$child(projectId).$child('taskList');
-        }
+        },
+        getTimelineDataByProjects: function(projectId){
+            return projectTimeline.$child(projectId).$child('taskData');  
+        },
         
     };
     

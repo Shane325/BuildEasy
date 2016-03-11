@@ -388,7 +388,48 @@ angular.module('myApp.controllers', [])
     }
     
     $scope.timelineTasks = timelineService.getTimelineTasksByProject($scope.projectId);
-    $scope.data = timelineService.getTimelineDataByProjects($scope.projectId);
+    //$scope.data = timelineService.getTimelineDataByProjects($scope.projectId);
+    
+    $scope.data = [{
+                        name: 'Phase 1', tasks: [{
+                            name: 'Task 1',
+                            color: '#93C47D',
+                            from: '2016-03-01',
+                            to: '2016-03-05'
+                        },
+                                                {
+                            name: 'Task 2',
+                            color: '#C390D4',
+                            from: '2016-03-07',
+                            to: '2016-03-17' 
+                                                },
+                                                {
+                            name: 'Task 3',
+                            color: '#D4A190',
+                            from: '2016-03-20',
+                            to: '2016-03-29'
+                                                }]
+                    },
+                    {
+                       name: 'Phase 2', tasks: [{
+                           name:'Task 4',
+                           color:'#90C3D4',
+                           from:'2016-04-01',
+                           to:'2016-04-10'
+                       },
+                                               {
+                            name: 'Task 5',
+                            color: '#93C47D',
+                            from: '2016-04-12',
+                            to: '2016-04-15'
+                                               },
+                                               {
+                            name: 'Task 6',
+                            color: '#93C47D',
+                            from: '2016-04-15',
+                            to: '2016-04-17'
+                                               }]
+                   }];
     
     console.log($scope.data);
     //navigation function

@@ -6,7 +6,7 @@
           <li class="active">Timeline</li>
         </ol>
         <h2>Project Timeline</h2>
-        <div class="timeline-task-form">
+        <div class="timeline-task-form" style="margin-bottom:30px;">
             <form class="form-inline" ng-submit="saveNewTask()">
                 <div class="row">
                     <div class="form-group">
@@ -19,23 +19,34 @@
                 </div>
             </form>
         </div>
-        <div class="timeline-task-table">
-            <table class="table">
-                <thead>
-                    <th>Task</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="task in timelineTasks">
-                        <td>{{ task.taskName }}</td>
-                        <td>{{ task.startDate }}</td>
-                        <td>{{ task.endDate }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
         
+        <!-- Nav tabs -->
+        <ul class="nav nav-pills">
+        <li role="presentation" class="active"><a data-toggle="tab" data-target="#timeline">Tasks</a></li>
+        <li role="presentation"><a data-toggle="tab" data-target="#gantt-chart">Timeline</a></li>
+        </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="timeline">
+                    <div class="timeline-task-table">
+                        <table class="table">
+                            <thead>
+                                <th>Task</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="task in timelineTasks">
+                                    <td>{{ task.taskName }}</td>
+                                    <td>{{ task.startDate }}</td>
+                                    <td>{{ task.endDate }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>  
+                </div>
+                <div class="tab-pane" id="gantt-chart">
+                    <div gantt data=data></div>
+                </div>
+            </div>
     </div>
 </div>
-<div gantt data=data></div>

@@ -78,5 +78,9 @@ config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/timeline.html',
     controller: 'TimelineController'
   });
+  $routeProvider.when('/gantt', {
+    templateUrl: 'partials/gantt.html',
+    controller: 'TimelineController'
+  });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

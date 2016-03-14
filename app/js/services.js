@@ -14,7 +14,6 @@ angular.module('myApp.services', [])
 	return fireData;
 })
 .factory('authService', function($firebaseSimpleLogin, $location, $rootScope, FIREBASE_URL, dataService, alertService){
-	//
     var authRef = new Firebase(FIREBASE_URL);
 	var auth = $firebaseSimpleLogin(authRef);
 	var emails = dataService.$child('emails');
@@ -491,36 +490,47 @@ angular.module('myApp.services', [])
     return taskServiceObject;
     
 })
-.factory('timelineService', function(dataService){
+.factory('timelineService', function(dataService, FIREBASE_URL){
     var projectTimeline = dataService.$child('projectTimeline');
+    var ref = new Firebase(FIREBASE_URL);
+    
     
     var timelineServiceObject = {
-        saveNewTask: function(newTask, newData, projectId){
+        saveNewTask: function(newData, projectId){
+            var timelineRef = ref.child("timeline");
+            timelineRef.set({
+                            name: 'Row Name', tasks: {
+                                name: 'Task Name',
+                                color: '#93C47D',
+                                from: '2016-03-01',
+                                to: '2016-03-10'
+                            }
+                        });
             
-            var a = moment(newTask.endDate);
-            var b = moment(newTask.startDate);
-            var c = moment("2016-03-01");
-            var delay = b.diff(c, 'days');
-            var duration = a.diff(b, 'days'); 
-            
-            newTask.delay = delay;
-            newTask.duration = duration;
+//            var a = moment(newTask.endDate);
+//            var b = moment(newTask.startDate);
+//            var c = moment("2016-03-01");
+//            var delay = b.diff(c, 'days');
+//            var duration = a.diff(b, 'days'); 
+//            
+//            newTask.delay = delay;
+//            newTask.duration = duration;
             
             //projectTimeline.$child(projectId).$child('taskList').$add(newTask);
             
-            var taskData =  [
-                                {
-                                    name: 'row', 
-                                    tasks:  [
-                                                {
-                                                    name: newTask.taskName, from: newTask.startDate, to: newTask.endDate
-                                                }
-                                            ]
-                                }
-                            ];
+//            var taskData =  [
+//                                {
+//                                    name: 'row', 
+//                                    tasks:  [
+//                                                {
+//                                                    name: newTask.taskName, from: newTask.startDate, to: newTask.endDate
+//                                                }
+//                                            ]
+//                                }
+//                            ];
             
             //console.log(taskData);
-            projectTimeline.$child(projectId).$child('taskData').$add(taskData);
+//            projectTimeline.$child(projectId).$child('taskData').$add(taskData);
             
         },
         getTimelineTasksByProject: function(projectId){

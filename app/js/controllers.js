@@ -379,7 +379,19 @@ angular.module('myApp.controllers', [])
     //get projectId from routeParams
     $scope.projectId = $routeParams.projectId;
     
-    $scope.newTask = {taskName:'', startDate:'', endDate:'', delay:'', duration:''};
+    $scope.newData =    [{
+                            name: 'Row Name', tasks: [{
+                                name: 'Task Name',
+                                color: '#93C47D',
+                                from: '2016-03-01',
+                                to: '2016-03-10'
+                            }]
+                        }];
+    
+    //save new data TEST
+    $scope.saveData = function(){
+        timelineService.saveNewTask($scope.newData, $scope.projectId);
+    }
     
     //save new task item
     $scope.saveNewTask = function(){
@@ -431,7 +443,7 @@ angular.module('myApp.controllers', [])
                                                }]
                    }];
     
-    console.log($scope.data);
+    console.log($scope.newData);
     //navigation function
     $scope.goToDashboard = function(){
         navService.goToDashboard($scope.projectId);  

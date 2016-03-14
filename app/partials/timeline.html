@@ -18,15 +18,18 @@
                     </div>
                 </div>
             </form>
+            <button type="button" class="btn btn-default" ng-click="saveData()">Save</button>
         </div>
         
-        <!-- Nav tabs -->
+<!--
+         Nav tabs 
         <ul class="nav nav-pills">
         <li role="presentation" class="active"><a data-toggle="tab" data-target="#timeline">Tasks</a></li>
         <li role="presentation"><a data-toggle="tab" data-target="#gantt-chart">Timeline</a></li>
         </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="timeline">
+-->
                     <div class="timeline-task-table">
                         <table class="table">
                             <thead>
@@ -43,10 +46,12 @@
                             </tbody>
                         </table>
                     </div>  
+<!--
                 </div>
                 <div class="tab-pane" id="gantt-chart">
+-->
                     <div gantt data=data></div>
-                </div>
-            </div>
+<!--                </div>-->
+<!--            </div>-->
     </div>
 </div>

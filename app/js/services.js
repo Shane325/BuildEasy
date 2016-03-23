@@ -136,6 +136,9 @@ angular.module('myApp.services', [])
         },
         goToHomePage: function(projectId){
             $location.path('/home_page/' + projectId);
+        },
+        goToCostTracking: function(projectId){
+            $location.path('/cost_tracking/' + projectId);
         }
     };
     

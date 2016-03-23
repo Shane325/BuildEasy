@@ -88,6 +88,11 @@ angular.module('myApp.controllers', [])
         navService.goToTimeline(projectId);
     };
     
+    //navigate to cost tracking page
+    $scope.selectCostTracking = function(projectId){
+        navService.goToCostTracking(projectId);  
+    };
+    
 }])
 .controller('ProjectsController', ['$scope', 'projectService', 'authService', 'navService', function($scope, projectService, authService, navService) {   
     //Bind user projects to $scope.projects
@@ -449,6 +454,16 @@ angular.module('myApp.controllers', [])
         navService.goToDashboard($scope.projectId);  
     };
    
+}])
+.controller('CostTrackingController', ['$scope', '$routeParams', 'navService', function($scope, $routeParams, navService){
+    //get projectId from routeParams
+    $scope.projectId = $routeParams.projectId;
+    
+    //navigation function
+    $scope.goToDashboard = function(){
+        navService.goToDashboard($scope.projectId);  
+    };
+
 }])
 
 

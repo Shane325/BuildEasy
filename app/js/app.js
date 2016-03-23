@@ -82,5 +82,9 @@ config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/gantt.html',
     controller: 'TimelineController'
   });
+  $routeProvider.when('/cost_tracking/:projectId', {
+    templateUrl: 'partials/cost_tracking.html',
+    controller: 'CostTrackingController'
+  });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

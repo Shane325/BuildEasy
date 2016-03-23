@@ -6,6 +6,130 @@
           <li class="active">Cost Tracking</li>
         </ol>
         <h2>Cost Tracking</h2>
-        <p>{{ projectId }}</p>
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active"><a data-toggle="tab" data-target="#home">Home</a></li>
+          <li role="presentation"><a data-toggle="tab" data-target="#vendors">Vendors</a></li>
+          <li role="presentation"><a data-toggle="tab" data-target="#payroll">Payroll</a></li>
+          <li role="presentation"><a data-toggle="tab" data-target="#workerscomp">Workers Comp</a></li>
+          <li role="presentation"><a data-toggle="tab" data-target="#union">Union</a></li>
+          <li role="presentation"><a data-toggle="tab" data-target="#rental">Equipment Rental</a></li>
+        </ul>
+        
+        <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-bordered">
+                            <tr class="warning">
+                                <td>TOTAL CONTRACT AMOUNT</td>
+                                <td>$50,167.00</td>
+                            </tr>
+                            <tr>
+                                <td>Additional Change Order</td>
+                                <td>$15,678.00</td>
+                            </tr>
+                            <tr>
+                                <td>Additional Change Order</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>TOTAL INCOME FOR JOB</td>
+                                <td>$66,589.00</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-bordered">
+                            <tr class="success">
+                                <td>PROFIT</td>
+                                <td>$34,987.00</td>
+                            </tr>
+                            <tr class="info">
+                                <td>MARGIN</td>
+                                <td>57%</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>TOTAL JOB COSTS</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Vendors</td>
+                                <td>$642.85</td>
+                            </tr>
+                            <tr>
+                                <td>Payroll</td>
+                                <td>$2281.49</td>
+                            </tr>
+                            <tr>
+                                <td>Union</td>
+                                <td>$1,292.80</td>
+                            </tr>
+                            <tr>
+                                <td>Workers Comp</td>
+                                <td>$828.80</td>
+                            </tr>
+                            <tr>
+                                <td>Equipment Rental</td>
+                                <td>$8960.00</td>
+                            </tr>
+                            <tr class="danger">
+                                <td>TOTAL COSTS FOR JOB</td>
+                                <td>$14,005.94</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="vendors">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+                            <tr class="active">
+                                <td>Date</td>
+                                <td>Vendor</td>
+                                <td>Details</td>
+                                <td>Total</td>
+                            </tr>
+                            <tr>
+                                <td>01/19/2016</td>
+                                <td>DPW</td>
+                                <td>400 Grove Street - Permit 131E-0927</td>
+                                <td>$804.00</td>
+                            </tr>
+                            <tr>
+                                <td>01/29/2016</td>
+                                <td>HD Supply</td>
+                                <td>Invoice # 3858595-0001 - 400 Grove St # 104</td>
+                                <td>$518.00</td>
+                            </tr>
+                            <tr>
+                                <td>02/16/2016</td>
+                                <td>Ronan Construction</td>
+                                <td>bay area concrete recycling</td>
+                                <td>$625.60</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="payroll">
+                <h5>Payroll</h5>
+            </div>
+            <div class="tab-pane" id="workerscomp">
+                <h5>Workers Comp</h5>
+            </div>
+            <div class="tab-pane" id="union">
+                <h5>Union</h5>
+            </div>
+            <div class="tab-pane" id="rental">
+                <h5>Rental</h5>
+            </div>
+        </div>
     </div>
 </div>

@@ -88,16 +88,11 @@ fieldset {
     background:#F5F5F5;
     padding:20px;
 }
-#to-do-list {
-    
+.timeline-form {
+    margin: 3rem;
 }
-#complete-list {
-    
+#timeline-form-form {
+    width:70rem;
+    margin: auto;
 }
-.timeline-task-form {
-    margin-top: 30px;
-    margin-left: 15px;
-}
-.timeline-task-table {
-    margin-top:30px;
-}
+

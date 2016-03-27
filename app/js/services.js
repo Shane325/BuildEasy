@@ -495,54 +495,14 @@ angular.module('myApp.services', [])
 })
 .factory('timelineService', function(dataService, FIREBASE_URL){
     var projectTimeline = dataService.$child('projectTimeline');
-    var ref = new Firebase(FIREBASE_URL);
-    
     
     var timelineServiceObject = {
         saveNewTask: function(newData, projectId){
-            var timelineRef = ref.child("timeline");
-            timelineRef.set({
-                            name: 'Row Name', tasks: {
-                                name: 'Task Name',
-                                color: '#93C47D',
-                                from: '2016-03-01',
-                                to: '2016-03-10'
-                            }
-                        });
-            
-//            var a = moment(newTask.endDate);
-//            var b = moment(newTask.startDate);
-//            var c = moment("2016-03-01");
-//            var delay = b.diff(c, 'days');
-//            var duration = a.diff(b, 'days'); 
-//            
-//            newTask.delay = delay;
-//            newTask.duration = duration;
-            
-            //projectTimeline.$child(projectId).$child('taskList').$add(newTask);
-            
-//            var taskData =  [
-//                                {
-//                                    name: 'row', 
-//                                    tasks:  [
-//                                                {
-//                                                    name: newTask.taskName, from: newTask.startDate, to: newTask.endDate
-//                                                }
-//                                            ]
-//                                }
-//                            ];
-            
-            //console.log(taskData);
-//            projectTimeline.$child(projectId).$child('taskData').$add(taskData);
-            
+            projectTimeline.$child(projectId).$add(newData);
         },
         getTimelineTasksByProject: function(projectId){
-            return projectTimeline.$child(projectId).$child('taskList');
-        },
-        getTimelineDataByProjects: function(projectId){
-            return projectTimeline.$child(projectId).$child('taskData');  
-        },
-        
+            return projectTimeline.$child(projectId);
+        }
     };
     
     return timelineServiceObject;

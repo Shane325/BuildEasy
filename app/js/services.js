@@ -518,7 +518,6 @@ angular.module('myApp.services', [])
             this.alerts[type] = this.alerts[type] || [];
             this.alerts[type].push(message);
             
-            //console.log(this.alerts);
             //Wait 5 seconds and clear the alerts array
             $timeout(function(){
                     alertServiceObject.clearAlerts();

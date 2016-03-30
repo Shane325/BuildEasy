@@ -493,7 +493,7 @@ angular.module('myApp.services', [])
     return taskServiceObject;
     
 })
-.factory('timelineService', function(dataService, FIREBASE_URL){
+.factory('timelineService', function(dataService){
     var projectTimeline = dataService.$child('projectTimeline');
     
     var timelineServiceObject = {

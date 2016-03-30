@@ -9,9 +9,9 @@
             <form class="form-inline" ng-submit="saveNewTask()" id="timeline-form-form">
                 <div class="row">
                     <div class="form-group">
-                        <input type="text" class="form-control" ng-model="newTask.row.name" placeholder="Task">
-                        <input ng-model="newTask.row.tasks.from" type="text" class="form-control" placeholder="Start Date" onfocus="(this.type='date')" onblur="(this.type='text')">
-                        <input ng-model="newTask.row.tasks.to" type="text" class="form-control" placeholder="End Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        <input type="text" class="form-control" ng-model="newTask[0].tasks[0].name" placeholder="Task">
+                        <input ng-model="newTask[0].tasks[0].from" type="text" class="form-control" placeholder="Start Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        <input ng-model="newTask[0].tasks[0].to" type="text" class="form-control" placeholder="End Date" onfocus="(this.type='date')" onblur="(this.type='text')">
                         <button type="submit" class="btn btn-primary">Add</button>
                         <button type="reset" class="btn btn-default">Clear</button>
                     </div>
@@ -28,16 +28,24 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="task in projectTimelineTasks">
-                            <td>{{ task.row.name }}</td>
-                            <td>{{ task.row.tasks.from }}</td>
-                            <td>{{ task.row.tasks.to }}</td>
+                            <td>{{ task[0].tasks[0].name }}</td>
+                            <td>{{ task[0].tasks[0].from }}</td>
+                            <td>{{ task[0].tasks[0].to }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>  
             <div class="col-md-8">
-                <div gantt data=projectTimelineTasks></div>
+                <div gantt data=data></div>
             </div>
         </div>
-        {{ newTask | json }}
+        My format:</br>
+{{ projectTimelineTasks }}</br>
+Correct format:</br>
+{{ data }}
+<!--
+        <div ng-repeat="(key, value) in projectTimelineTasks">
+            {{key}} => {{value}}
+        </div>
+-->
       

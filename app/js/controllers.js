@@ -384,32 +384,15 @@ angular.module('myApp.controllers', [])
     //get projectId from routeParams
     $scope.projectId = $routeParams.projectId;
     
-//    $scope.newTask = [{
-//        name: '',
-//        tasks: [{
-//            name: '',
-//            from: '',
-//            to: ''
-//        }]
-//    }];
-    
     //save new task item
     $scope.saveNewTask = function(){
         timelineService.saveNewTask($scope.newTask, $scope.projectId);
-//        $scope.newTask = {taskName:'', startDate:'', endDate:''};
+        $scope.newTask = {};
     }
     
     //get tasks by project
     $scope.projectTimelineTasks = timelineService.getTimelineTasksByProject($scope.projectId);
-//    console.log($scope.projectTimelineTasks);
-    $scope.data = [{
-                        name: 'row 1',
-                        tasks: [{
-                            name: 'task 1',
-                            from: '2016-01-01',
-                            to: '2016-01-20'
-                        }]
-                    }];
+    console.log($scope.projectTimelineTasks);
     
     //navigation function
     $scope.goToDashboard = function(){

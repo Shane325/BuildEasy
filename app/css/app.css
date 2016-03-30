@@ -43,6 +43,11 @@ fieldset {
 #rfiModal .modal-body {
 /*    max-height: 525px;*/
 }
+#rfiForm {
+    padding-left: 1.5rem;
+    background: #FAFAFA;
+    padding: 2rem;
+}
 .dashboard-panel {
     width:200px;
 /*    height:200px;*/

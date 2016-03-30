@@ -9,9 +9,9 @@
             <form class="form-inline" ng-submit="saveNewTask()" id="timeline-form-form">
                 <div class="row">
                     <div class="form-group">
-                        <input type="text" class="form-control" ng-model="newTask.tasks.name" placeholder="Task">
-                        <input ng-model="newTask.tasks.from" type="text" class="form-control" placeholder="Start Date" onfocus="(this.type='date')" onblur="(this.type='text')">
-                        <input ng-model="newTask.tasks.to" type="text" class="form-control" placeholder="End Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        <input type="text" class="form-control" ng-model="newTask.row.name" placeholder="Task">
+                        <input ng-model="newTask.row.tasks.from" type="text" class="form-control" placeholder="Start Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        <input ng-model="newTask.row.tasks.to" type="text" class="form-control" placeholder="End Date" onfocus="(this.type='date')" onblur="(this.type='text')">
                         <button type="submit" class="btn btn-primary">Add</button>
                         <button type="reset" class="btn btn-default">Clear</button>
                     </div>
@@ -28,15 +28,15 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="task in projectTimelineTasks">
-                            <td>{{ task.taskName }}</td>
-                            <td>{{ task.startDate }}</td>
-                            <td>{{ task.endDate }}</td>
+                            <td>{{ task.row.name }}</td>
+                            <td>{{ task.row.tasks.from }}</td>
+                            <td>{{ task.row.tasks.to }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>  
             <div class="col-md-8">
-                <div gantt data=newTask></div>
+                <div gantt data=projectTimelineTasks></div>
             </div>
         </div>
         {{ newTask | json }}

@@ -1,22 +1,24 @@
 <div class="container">
-    <div class="inner-container">
+<!--    <div class="inner-container">-->
         <ol class="breadcrumb">
           <li><a href="#/projects">Projects</a></li>
           <li><a href="" ng-click="goToDashboard()">Dashboard</a></li>
           <li><a href="" ng-click="goToRfiList()">Rfi</a></li>
           <li class="active">Add Rfi</li>
         </ol>
-        <form ng-submit="saveRfi()" class="form-horizontal" role="form" name="rfiForm" style="padding-left:15px;">
+        <form ng-submit="saveRfi()" class="form-horizontal" role="form" name="rfiForm" id="rfiForm">
             <div class="row">
-                <h2 style="padding-bottom:20px;">Submit a Request For Information</h2>
+                <div class="col-md-offset-2">
+                    <h2 style="padding-bottom:20px;">Submit a Request For Information</h2>
+                </div>
             </div>    
             <div class="row">
                 <div class="form-group">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-md-offset-2">
                         <label class="sr-only" for="to">To</label>
                         <input ng-model="newRfi.to" type="email" class="form-control" id="to" placeholder="To (email address)"/>
                     </div>
-                    <div class="col-md-3 col-md-offset-3">
+                    <div class="col-md-3 col-md-offset-2">
                         <label class="sr-only" for="date">Date</label>
                         <input ng-model="newRfi.date" type="text" class="form-control" id="date" placeholder="Date" onfocus="(this.type='date')" onblur="(this.type='text')"/>
                     </div>
@@ -24,11 +26,11 @@
             </div>
             <div class="row">
                 <div class="form-group">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-md-offset-2">
                         <label class="sr-only" for="cc">CC</label>
                         <input ng-model="newRfi.cc" type="email" class="form-control" id="to" placeholder="CC (email address)"/>
                     </div>
-                    <div class="col-md-3 col-md-offset-3">
+                    <div class="col-md-3 col-md-offset-2">
                         <label class="sr-only" for="project">Project</label>
                         <input ng-model="newRfi.project" name="project" type="text" class="form-control" id="project" placeholder="Project"/>
                     </div>
@@ -36,11 +38,11 @@
             </div>
             <div class="row">
                 <div class="form-group">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-md-offset-2">
                         <label class="sr-only" for="requestedBy">Requested By</label>
                         <input ng-model="newRfi.requestedBy" type="text" class="form-control" id="requestedBy" placeholder="Requested By"/>
                     </div>
-                    <div class="col-md-3 col-md-offset-3">
+                    <div class="col-md-3 col-md-offset-2">
                         <label class="sr-only" for="jobNumber">Job Number</label>
                         <input ng-model="newRfi.jobNumber" type="text" class="form-control" id="jobNumber" placeholder="Job Number"/>
                     </div>
@@ -48,7 +50,7 @@
             </div>
             <div class="row" style="padding-top:20px;">
                 <div class="form-group">
-                    <div class="col-md-9">
+                    <div class="col-md-8 col-md-offset-2">
                         <label class="sr-only" for="subject">Subject</label>
                         <input ng-model="newRfi.subject" type="text" class="form-control" id="subject" placeholder="Subject"/>
                     </div>
@@ -56,7 +58,7 @@
             </div>
             <div class="row">
                 <div class="form-group">
-                    <div class="col-md-9">
+                    <div class="col-md-8 col-md-offset-2">
                         <label class="sr-only" for="contractorQuestion">Contractor Question</label>
                         <textarea ng-model="newRfi.contractorQuestion" class="form-control" rows="5" id="contractorQuestion" placeholder="Contractor Question"/>
                     </div>
@@ -64,17 +66,18 @@
             </div>
             <div class="row">
                 <div class="form-group">
-                    <div class="col-md-9">
+                    <div class="col-md-8 col-md-offset-2">
                         <label class="sr-only" for="contractorSuggestion">Contractor Suggestion</label>
                         <textarea ng-model="newRfi.contractorSuggestion" class="form-control" rows="5" id="contractorSuggestion" placeholder="Contractor Suggestion"/>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <button type="submit" class="btn btn-primary">Add</button>
-                <button ng-click="clearNewRfi()" type="button" class="btn btn-default">Clear</button>
-<!--                <a href="javascript:history.back()" class="btn btn-default" role="button">Go Back</a>-->
+                <div class="col-md-offset-2">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button ng-click="clearNewRfi()" type="button" class="btn btn-default">Clear</button>
+                </div>
             </div>
         </form>
-    </div>
+<!--    </div>-->
 </div>
